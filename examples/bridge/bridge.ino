@@ -26,7 +26,6 @@ ESP32TransceiverIEEE802_15_4 transceiver(RX_CHANNEL, 0x1234, local);
 const int NUM_SAMPLES = 100;
 Frame frame;
 static bool transmitting = false;
-// Log performance
 
 int64_t total_time_us = 0;
 uint32_t sample_count = 0;
@@ -55,19 +54,20 @@ void capture_done() {
 
 //=========================================================================================
 // Callbacks
-void onRxDone(Frame& frame,
-              esp_ieee802154_frame_info_t& frame_info, void* user_data) {
+void onRxDone(Frame& frame, esp_ieee802154_frame_info_t& frame_info,
+              void* user_data) {
   // ESP_LOGI(TAG, "Received.");
   // ESP_LOGI(TAG, "payloadLen: %d", frame.payloadLen);
   capture_start();
 
   // Send to another channel
-  if (!transceiver.send(TX_CHANNEL, nullptr, 0)) {
+  transmitting = true;
+  if (!transceiver.send(TX_CHANNEL, frame.payload, frame.payloadLen)) {
     ESP_LOGE(TAG, "transmit failed.");
+    transmitting = false;
   }
 
   // Wait for the end of transmitting
-  transmitting = true;
   while (transmitting) {
     vTaskDelay(1 / portTICK_PERIOD_MS);
   }

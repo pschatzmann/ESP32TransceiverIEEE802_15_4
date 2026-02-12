@@ -103,6 +103,8 @@ void setup() {
 
   // Set receive callback
   transceiver.setRxCallback(rx_callback, NULL);
+  // Enable promiscuous mode to capture all frames, including those not addressed to us
+  transceiver.setPromiscuousMode(true);
 
   // Initialize transceiver with channel
   if (!transceiver.begin()) {

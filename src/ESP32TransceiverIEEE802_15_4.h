@@ -119,7 +119,8 @@ class ESP32TransceiverIEEE802_15_4 {
  public:
   /**
    * @brief Construct a new ESP32TransceiverIEEE802_15_4 object.
-   * @param panID The PAN ID to use for the transceiver.
+   * @param panID The Personal Area Network Identifier to use for the
+   * transceiver.
    * @param localAddress The local address for the device.
    */
   ESP32TransceiverIEEE802_15_4(channel_t channel, int16_t panID,
@@ -308,7 +309,8 @@ class ESP32TransceiverIEEE802_15_4 {
   }
 
   /***
-   * @brief Get a reference to the actual frame object that is used for sending..
+   * @brief Get a reference to the actual frame object that is used for
+   * sending..
    * @return Reference to the current Frame object.
    */
   Frame& getFrame() { return frame; }
@@ -320,17 +322,11 @@ class ESP32TransceiverIEEE802_15_4 {
   bool is_active = false;
   // current frame
   Frame frame;
-  // local address information
   channel_t channel = channel_t::CHANNEL_11;
-  int16_t panID;
+  int16_t panID;          // Personal Area Network Identifier
   Address local_address;  // Local address for filtering (0, 2, or 8 bytes)
-  Address destination_address =
-      BROADCAST_ADDRESS;  // Destination address for sending (0, 2, or 8 bytes)
-
-  FrameControlField
-      frame_control_field{};  // Frame Control Field for building frames
-  // Global state
-  // Transmit buffer
+  Address destination_address = BROADCAST_ADDRESS;
+  FrameControlField frame_control_field{};
   uint8_t transmit_buffer[MAX_FRAME_LEN] = {0};
   StreamBufferHandle_t message_buffer = NULL;
   TaskHandle_t rx_task_handle = NULL;

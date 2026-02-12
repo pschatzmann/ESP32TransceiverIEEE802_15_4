@@ -143,6 +143,7 @@ struct Frame {
     payloadLen = len;
   }
 
+  /// Defines the Personal Area Network Identifier (PAN ID) for the frame.
   void setPAN(uint16_t panId) {
     destPanId = panId;
     srcPanId = panId;
