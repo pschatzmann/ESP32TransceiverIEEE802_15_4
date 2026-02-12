@@ -1,3 +1,4 @@
+#pragma once
 
 #include "Buffers.h"
 #include "ESP32TransceiverIEEE802_15_4.h"
