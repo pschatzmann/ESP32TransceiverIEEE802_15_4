@@ -9,6 +9,9 @@ This library provides an high level API for [IEEE 802.15.4 ](https://en.wikipedi
 
 This library was inspired by shoderico's [esp_ieee802154-transceiver](https://components.espressif.com/components/shoderico/ieee802154_transceiver/versions/1.0.0/readme) ESP-IDF component, extended and refactured for C++.
 
+This library enables ESP32 devices to send and receive custom low-power IEEE 802.15.4 wireless packets, making it suitable for building lightweight device-to-device links such as sensor networks, telemetry systems, remote controls, or custom mesh communication without using Wi-Fi or Bluetooth.
+
+
 ## Features
 
 - Initialize the IEEE 802.15.4 radio in promiscuous or filtering mode for flexible frame capture.
