@@ -122,9 +122,7 @@ class Address {
    * @brief Get a human-readable string representation of the address.
    * @return Pointer to static string buffer.
    */
-  const char* to_str() const {
-    return to_str(local_address, local_addr_mode);
-  }
+  const char* to_str() const { return to_str(local_address, local_addr_mode); }
 
   /**
    * @brief Get a human-readable string for a raw address and length.
