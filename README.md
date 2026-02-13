@@ -15,8 +15,7 @@ This library enables ESP32 devices to send and receive custom low-power IEEE 802
 
 - Initialize the IEEE 802.15.4 radio in promiscuous or filtering mode for flexible frame capture.
 - Transmit and receive IEEE 802.15.4 frames with support for custom frame structures.
-- Register callbacks to process received frames with RSSI and LQI information.
-- Dynamically switch channels (11-26) without reinitializing the radio.
+- Register callbacks to process received frames.
 - Arduino Stream integration
 
 ## Requirements
@@ -42,16 +41,12 @@ You can download the library as zip and call include Library -> zip library. Or 
 
 ```
 cd  ~/Documents/Arduino/libraries
-git clone https://github.com/pschatzmann/ESP32TransceiverIEE802_15_4.git
+git clone https://github.com/pschatzmann/ESP32TransceiverIEEE802_15_4
 ```
 
 I recommend to use git because you can easily update to the latest version just by executing the ```git pull``` command in the project folder.
 
-## License
-
-Licensed under the [MIT](LICENSE).
-
 ## Contributing
 
-Contributions are welcome! Submit issues or pull requests to the repository at [your repository URL].
+Contributions are welcome! Submit issues or pull requests to the repository.
 
