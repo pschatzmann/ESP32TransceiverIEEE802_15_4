@@ -11,7 +11,6 @@ This library was inspired by shoderico's [esp_ieee802154-transceiver](https://co
 
 This library enables ESP32 devices to send and receive custom low-power IEEE 802.15.4 wireless packets, making it suitable for building lightweight device-to-device links such as sensor networks, telemetry systems, remote controls, or custom mesh communication without using Wi-Fi or Bluetooth.
 
-
 ## Features
 
 - Initialize the IEEE 802.15.4 radio in promiscuous or filtering mode for flexible frame capture.
@@ -34,7 +33,6 @@ This library enables ESP32 devices to send and receive custom low-power IEEE 802
   - [ESP IDF IEEE802.15.4 API](https://github.com/espressif/esp-idf/blob/master/components/ieee802154/include/esp_ieee802154.h)
 
 - Examples
-  - [bridge](examples/bridge/bridge.ino)
   - [sniffer](examples/sniffer/sniffer.ino)
   - [transceiver](examples/transceiver/transceiver.ino)
 
