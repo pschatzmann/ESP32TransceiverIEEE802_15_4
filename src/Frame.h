@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
+
 #include <cstdio>
 #include <cstring>
 #include <vector>
@@ -17,7 +18,7 @@
 
 namespace ieee802154 {
 
-// IEEE 802.15.4 FCF field value enumerations
+/// IEEE 802.15.4 FCF field value enumerations
 enum class Frameype_t : uint8_t {
   BEACON = 0x0,   // Beacon frame
   DATA = 0x1,     // Data frame
@@ -26,6 +27,7 @@ enum class Frameype_t : uint8_t {
                   // 0x4 to 0x7 are reserved
 };
 
+/// IEEE 802.15.4 address mode enumerations
 enum class addr_mode_t : uint8_t {
   NONE = 0x0,      // No address
   RESERVED = 0x1,  // Reserved
@@ -33,6 +35,7 @@ enum class addr_mode_t : uint8_t {
   EXTENDED = 0x3,  // 64-bit extended address
 };
 
+/// IEEE 802.15.4 frame version enumerations
 enum class frame_version_t : uint8_t {
   V_2003 = 0x0,       // IEEE 802.15.4-2003
   V_2006 = 0x1,       // IEEE 802.15.4-2006
@@ -40,8 +43,8 @@ enum class frame_version_t : uint8_t {
   V_RESERVED2 = 0x3,  // Reserved
 };
 
-// IEEE 802.15.4 Frame Control Field (FCF) structure
-// Bit fields are ordered LSB to MSB to match IEEE 802.15.4 specification
+/// IEEE 802.15.4 Frame Control Field (FCF) structure
+/// Bit fields are ordered LSB to MSB to match IEEE 802.15.4 specification
 struct FrameControlField {
   uint8_t frameType : 3 = 0x1;
   uint8_t securityEnabled : 1 = 0;   // Security Enabled (bit 3)
@@ -59,8 +62,18 @@ struct FrameControlField {
   uint8_t srcAddrMode : 2 = 0;           // Source Address Mode (bits 14-15)
 };
 
+/**
+ * @brief IEEE 802.15.4 Address abstraction.
+ *
+ * Represents a short (16-bit) or extended (64-bit) address for IEEE 802.15.4
+ * frames. Provides constructors for both address types and utility methods for
+ * access and string conversion.
+ */
 class Address {
  public:
+  /**
+   * @brief Default constructor. Initializes address mode to NONE.
+   */
   Address() = default;
   /**
    * @brief Construct an Address from a pointer and mode.
@@ -78,6 +91,8 @@ class Address {
   /**
    * @brief Template constructor to deduce address length and mode at compile
    * time.
+   * @tparam N Address length (must be 2 or 8).
+   * @param addr Array of address bytes.
    */
   template <size_t N>
   Address(const uint8_t (&addr)[N]) {
@@ -91,35 +106,79 @@ class Address {
     }
   }
 
+  /**
+   * @brief Get a pointer to the address bytes.
+   * @return Pointer to address data (2 or 8 bytes).
+   */
   uint8_t* data() { return local_address; }
+
+  /**
+   * @brief Get the address mode (NONE, SHORT, EXTENDED).
+   * @return Address mode.
+   */
   addr_mode_t mode() { return local_addr_mode; }
 
+  /**
+   * @brief Get a human-readable string representation of the address.
+   * @return Pointer to static string buffer.
+   */
   const char* to_str() const {
-    static char str[25];  // Enough for "XX:XX" or "XX:XX:...:XX"
-    if (local_addr_mode == addr_mode_t::SHORT) {
-      snprintf(str, sizeof(str), "%02X:%02X", local_address[0],
-               local_address[1]);
-    } else if (local_addr_mode == addr_mode_t::EXTENDED) {
-      snprintf(str, sizeof(str),
-               "%02X:%02X:%02X:%02X:%02X:%02X:%02X:%02X", local_address[0],
-               local_address[1], local_address[2], local_address[3],
-               local_address[4], local_address[5], local_address[6],
-               local_address[7]);
+    return to_str(local_address, local_addr_mode);
+  }
+
+  /**
+   * @brief Get a human-readable string for a raw address and length.
+   * @param addr Pointer to address bytes.
+   * @param len Length of address (2 or 8).
+   * @return Pointer to static string buffer.
+   */
+  static const char* to_str(const uint8_t* addr, int len) {
+    static char str[25];
+    if (len == 2) {
+      snprintf(str, sizeof(str), "%02X:%02X", addr[0], addr[1]);
+    } else if (len == 8) {
+      snprintf(str, sizeof(str), "%02X:%02X:%02X:%02X:%02X:%02X:%02X:%02X",
+               addr[0], addr[1], addr[2], addr[3], addr[4], addr[5], addr[6],
+               addr[7]);
     } else {
-      snprintf(str, sizeof(str), "None");
+      snprintf(str, sizeof(str), "Invalid");
     }
     return str;
   }
 
- private:
-  addr_mode_t local_addr_mode = addr_mode_t::NONE;  // Local address mode
-  uint8_t local_address[8] = {
-      0};  // Local address for filtering (0, 2, or 8 bytes)
+  /**
+   * @brief Get a human-readable string for a raw address and mode.
+   * @param addr Pointer to address bytes.
+   * @param mode Address mode (NONE, SHORT, EXTENDED).
+   * @return Pointer to static string buffer.
+   */
+  static const char* to_str(const uint8_t* addr, addr_mode_t mode) {
+    switch (mode) {
+      case addr_mode_t::NONE:
+        return "None";
+      case addr_mode_t::SHORT:
+        return to_str(addr, 2);
+      case addr_mode_t::EXTENDED:
+        return to_str(addr, 8);
+      default:
+        return "Invalid";
+    }
+  }
+
+ protected:
+  /**
+   * @brief Local address mode (NONE, SHORT, EXTENDED).
+   */
+  addr_mode_t local_addr_mode = addr_mode_t::NONE;
+  /**
+   * @brief Local address bytes (0, 2, or 8 bytes used).
+   */
+  uint8_t local_address[8] = {0};
 };
 
-// IEEE 802.15.4 MAC frame structure
+/// IEEE 802.15.4 MAC frame structure
 struct Frame {
-  FrameControlField fcf{};      // Frame Control Field
+  FrameControlField fcf{};     // Frame Control Field
   uint8_t sequenceNumber = 0;  // Sequence Number (if not suppressed)
   uint16_t destPanId = 0;      // Destination PAN ID (if present)
   uint8_t destAddress[8];      // Destination Address (0, 2, or 8 bytes)
@@ -130,13 +189,17 @@ struct Frame {
   size_t payloadLen = 0;       // Length of payload
   uint8_t* payload = nullptr;  // Pointer to payload data
   uint8_t rssi_lqi = 0;        // RSSI and LQI (combined in 1 byte)
-  // Public API
+
+  /// parse frame from raw data
   bool parse(const uint8_t* data, bool verbose);
 
+  /// Build IEEE 802.15.4 frame array with length byte at start and 0x00 at end
   size_t build(uint8_t* buffer, bool verbose) const;
 
+  /// Get a human-readable string representation of the frame.
   const char* to_str(uint8_t frameType);
 
+  /// Set the source address for the frame.
   void setSourceAddress(Address address) {
     memcpy(srcAddress, address.data(),
            address.mode() == addr_mode_t::SHORT ? 2 : 8);
@@ -144,6 +207,7 @@ struct Frame {
     fcf.srcAddrMode = static_cast<uint8_t>(address.mode());
   }
 
+  /// Set the destination address for the frame.
   void setDestinationAddress(Address address) {
     memcpy(destAddress, address.data(),
            address.mode() == addr_mode_t::SHORT ? 2 : 8);
@@ -151,6 +215,7 @@ struct Frame {
     fcf.destAddrMode = static_cast<uint8_t>(address.mode());
   }
 
+  /// Set the payload for the frame.
   void setPayload(const uint8_t* data, size_t len) {
     if (buffer.size() < len) {
       buffer.resize(len);  // Resize buffer if needed

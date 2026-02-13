@@ -11,9 +11,13 @@ var searchData=
   ['ieee802154_5ftransceiver_5ftx_5fdone_5fcallback_5ft_8',['ieee802154_transceiver_tx_done_callback_t',['../namespaceieee802154.html#a1cfa789fe9fec911337b07be2438ba1d',1,'ieee802154']]],
   ['ieee802154_5ftransceiver_5ftx_5ffailed_5fcallback_5ft_9',['ieee802154_transceiver_tx_failed_callback_t',['../namespaceieee802154.html#a30148a8607f296198a2944c0c60f44e9',1,'ieee802154']]],
   ['informationelementspresent_10',['informationElementsPresent',['../structieee802154_1_1FrameControlField.html#a08744ebd1e6894eee148396886f5d74f',1,'ieee802154::FrameControlField']]],
-  ['iscoordinatoractive_11',['isCoordinatorActive',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a52a03dc83b7147988b47927f22c3f768',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
-  ['isempty_12',['isEmpty',['../classieee802154_1_1BufferRTOS.html#a89dfd1e36b12b18294397c80bc6cc45c',1,'ieee802154::BufferRTOS']]],
-  ['isfull_13',['isfull',['../classieee802154_1_1BufferRTOS.html#a17354849b9d4b46220305cb8593f79da',1,'ieee802154::BufferRTOS::isFull()'],['../classieee802154_1_1Buffer.html#a723119e80a3a49bc58d579d993d0bb0b',1,'ieee802154::Buffer::isFull()']]],
-  ['ispromiscuousmodeactive_14',['isPromiscuousModeActive',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#ada1d2d7f5e26b56b1a071e89584dae0a',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
-  ['isrxwhenidleactive_15',['isRxWhenIdleActive',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#aa04f2443a206b3ed868f573be0420c11',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]]
+  ['is_5factive_11',['is_active',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a08868487dcbbfb8500cb2055f54b677f',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
+  ['is_5fcoordinator_12',['is_coordinator',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a1245951a0b5f8853451fc052add1a4b2',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
+  ['is_5fpromiscuous_5fmode_13',['is_promiscuous_mode',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a845a7fe28f59d7135ceadf98311870c2',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
+  ['is_5frx_5fwhen_5fidle_14',['is_rx_when_idle',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a07ee1141cc087441f3fbcfc3b89a9dcc',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
+  ['iscoordinatoractive_15',['isCoordinatorActive',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a52a03dc83b7147988b47927f22c3f768',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
+  ['isempty_16',['isEmpty',['../classieee802154_1_1BufferRTOS.html#a89dfd1e36b12b18294397c80bc6cc45c',1,'ieee802154::BufferRTOS']]],
+  ['isfull_17',['isfull',['../classieee802154_1_1BufferRTOS.html#a17354849b9d4b46220305cb8593f79da',1,'ieee802154::BufferRTOS::isFull()'],['../classieee802154_1_1Buffer.html#a723119e80a3a49bc58d579d993d0bb0b',1,'ieee802154::Buffer::isFull()']]],
+  ['ispromiscuousmodeactive_18',['isPromiscuousModeActive',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#ada1d2d7f5e26b56b1a071e89584dae0a',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
+  ['isrxwhenidleactive_19',['isRxWhenIdleActive',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#aa04f2443a206b3ed868f573be0420c11',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]]
 ];

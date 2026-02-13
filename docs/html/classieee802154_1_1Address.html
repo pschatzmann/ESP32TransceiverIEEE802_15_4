@@ -75,30 +75,62 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classieee802154_1_1Address-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">ieee802154::Address Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>IEEE 802.15.4 <a class="el" href="classieee802154_1_1Address.html" title="IEEE 802.15.4 Address abstraction.">Address</a> abstraction.  
+ <a href="classieee802154_1_1Address.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Frame_8h_source.html">Frame.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a50eedceb322912bf52ffddb681deeacb" id="r_a50eedceb322912bf52ffddb681deeacb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1Address.html#a50eedceb322912bf52ffddb681deeacb">Address</a> ()=default</td></tr>
+<tr class="memdesc:a50eedceb322912bf52ffddb681deeacb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. Initializes address mode to NONE.  <br /></td></tr>
 <tr class="separator:a50eedceb322912bf52ffddb681deeacb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ad6d682bd1e1d79527562df921ea754" id="r_a1ad6d682bd1e1d79527562df921ea754"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1Address.html#a1ad6d682bd1e1d79527562df921ea754">Address</a> (const uint8_t *addr, <a class="el" href="namespaceieee802154.html#a0dad406dcef7c26e09faa9662317d10d">addr_mode_t</a> <a class="el" href="classieee802154_1_1Address.html#a3112e1a7760307d7e9d7cb3609d731d2">mode</a>)</td></tr>
-<tr class="memdesc:a1ad6d682bd1e1d79527562df921ea754"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an <a class="el" href="classieee802154_1_1Address.html">Address</a> from a pointer and mode.  <br /></td></tr>
+<tr class="memdesc:a1ad6d682bd1e1d79527562df921ea754"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an <a class="el" href="classieee802154_1_1Address.html" title="IEEE 802.15.4 Address abstraction.">Address</a> from a pointer and mode.  <br /></td></tr>
 <tr class="separator:a1ad6d682bd1e1d79527562df921ea754"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2da22a877dfd2d3257604f543cfc1ce2" id="r_a2da22a877dfd2d3257604f543cfc1ce2"><td class="memTemplParams" colspan="2">template&lt;size_t N&gt; </td></tr>
 <tr class="memitem:a2da22a877dfd2d3257604f543cfc1ce2"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classieee802154_1_1Address.html#a2da22a877dfd2d3257604f543cfc1ce2">Address</a> (const uint8_t(&amp;addr)[N])</td></tr>
 <tr class="memdesc:a2da22a877dfd2d3257604f543cfc1ce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Template constructor to deduce address length and mode at compile time.  <br /></td></tr>
 <tr class="separator:a2da22a877dfd2d3257604f543cfc1ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf5ce74e111a99dfd007df649d63a52b" id="r_aaf5ce74e111a99dfd007df649d63a52b"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1Address.html#aaf5ce74e111a99dfd007df649d63a52b">data</a> ()</td></tr>
+<tr class="memdesc:aaf5ce74e111a99dfd007df649d63a52b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the address bytes.  <br /></td></tr>
 <tr class="separator:aaf5ce74e111a99dfd007df649d63a52b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3112e1a7760307d7e9d7cb3609d731d2" id="r_a3112e1a7760307d7e9d7cb3609d731d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceieee802154.html#a0dad406dcef7c26e09faa9662317d10d">addr_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1Address.html#a3112e1a7760307d7e9d7cb3609d731d2">mode</a> ()</td></tr>
+<tr class="memdesc:a3112e1a7760307d7e9d7cb3609d731d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the address mode (NONE, SHORT, EXTENDED).  <br /></td></tr>
 <tr class="separator:a3112e1a7760307d7e9d7cb3609d731d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaae21fd3ceeb06470f45524821e1c72" id="r_adaae21fd3ceeb06470f45524821e1c72"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1Address.html#adaae21fd3ceeb06470f45524821e1c72">to_str</a> () const</td></tr>
+<tr class="memdesc:adaae21fd3ceeb06470f45524821e1c72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a human-readable string representation of the address.  <br /></td></tr>
+<tr class="separator:adaae21fd3ceeb06470f45524821e1c72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:aac5a32f6b6ce30c4e15bdbd98178201c" id="r_aac5a32f6b6ce30c4e15bdbd98178201c"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1Address.html#aac5a32f6b6ce30c4e15bdbd98178201c">to_str</a> (const uint8_t *addr, int len)</td></tr>
+<tr class="memdesc:aac5a32f6b6ce30c4e15bdbd98178201c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a human-readable string for a raw address and length.  <br /></td></tr>
+<tr class="separator:aac5a32f6b6ce30c4e15bdbd98178201c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acba4fc284e46379b39105ba0714abb15" id="r_acba4fc284e46379b39105ba0714abb15"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1Address.html#acba4fc284e46379b39105ba0714abb15">to_str</a> (const uint8_t *addr, <a class="el" href="namespaceieee802154.html#a0dad406dcef7c26e09faa9662317d10d">addr_mode_t</a> <a class="el" href="classieee802154_1_1Address.html#a3112e1a7760307d7e9d7cb3609d731d2">mode</a>)</td></tr>
+<tr class="memdesc:acba4fc284e46379b39105ba0714abb15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a human-readable string for a raw address and mode.  <br /></td></tr>
+<tr class="separator:acba4fc284e46379b39105ba0714abb15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a34204c6cca89e563add6ae654c07592e" id="r_a34204c6cca89e563add6ae654c07592e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceieee802154.html#a0dad406dcef7c26e09faa9662317d10d">addr_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1Address.html#a34204c6cca89e563add6ae654c07592e">local_addr_mode</a> = <a class="el" href="namespaceieee802154.html#a0dad406dcef7c26e09faa9662317d10dab50339a10e1de285ac99d4c3990b8693">addr_mode_t::NONE</a></td></tr>
+<tr class="memdesc:a34204c6cca89e563add6ae654c07592e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Local address mode (NONE, SHORT, EXTENDED).  <br /></td></tr>
+<tr class="separator:a34204c6cca89e563add6ae654c07592e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9d526194e75a02aa636f0210ef9012f" id="r_ad9d526194e75a02aa636f0210ef9012f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1Address.html#ad9d526194e75a02aa636f0210ef9012f">local_address</a> [8] = {0}</td></tr>
+<tr class="memdesc:ad9d526194e75a02aa636f0210ef9012f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Local address bytes (0, 2, or 8 bytes used).  <br /></td></tr>
+<tr class="separator:ad9d526194e75a02aa636f0210ef9012f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>IEEE 802.15.4 <a class="el" href="classieee802154_1_1Address.html" title="IEEE 802.15.4 Address abstraction.">Address</a> abstraction. </p>
+<p>Represents a short (16-bit) or extended (64-bit) address for IEEE 802.15.4 frames. Provides constructors for both address types and utility methods for access and string conversion. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a50eedceb322912bf52ffddb681deeacb" name="a50eedceb322912bf52ffddb681deeacb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a50eedceb322912bf52ffddb681deeacb">&#9670;&#160;</a></span>Address() <span class="overload">[1/3]</span></h2>
 
@@ -121,6 +153,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Default constructor. Initializes address mode to NONE. </p>
 
 </div>
 </div>
@@ -158,7 +192,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Construct an <a class="el" href="classieee802154_1_1Address.html">Address</a> from a pointer and mode. </p>
+<p>Construct an <a class="el" href="classieee802154_1_1Address.html" title="IEEE 802.15.4 Address abstraction.">Address</a> from a pointer and mode. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">addr</td><td>Pointer to address bytes (2 or 8 bytes). </td></tr>
@@ -196,6 +230,18 @@ template&lt;size_t N&gt; </div>
 </div><div class="memdoc">
 
 <p>Template constructor to deduce address length and mode at compile time. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">N</td><td><a class="el" href="classieee802154_1_1Address.html" title="IEEE 802.15.4 Address abstraction.">Address</a> length (must be 2 or 8). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td>Array of address bytes. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -223,6 +269,9 @@ template&lt;size_t N&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Get a pointer to the address bytes. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to address data (2 or 8 bytes). </dd></dl>
+
 </div>
 </div>
 <a id="a3112e1a7760307d7e9d7cb3609d731d2" name="a3112e1a7760307d7e9d7cb3609d731d2"></a>
@@ -247,6 +296,178 @@ template&lt;size_t N&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Get the address mode (NONE, SHORT, EXTENDED). </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classieee802154_1_1Address.html" title="IEEE 802.15.4 Address abstraction.">Address</a> mode. </dd></dl>
+
+</div>
+</div>
+<a id="adaae21fd3ceeb06470f45524821e1c72" name="adaae21fd3ceeb06470f45524821e1c72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaae21fd3ceeb06470f45524821e1c72">&#9670;&#160;</a></span>to_str() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * ieee802154::Address::to_str </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get a human-readable string representation of the address. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to static string buffer. </dd></dl>
+
+</div>
+</div>
+<a id="acba4fc284e46379b39105ba0714abb15" name="acba4fc284e46379b39105ba0714abb15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acba4fc284e46379b39105ba0714abb15">&#9670;&#160;</a></span>to_str() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const char * ieee802154::Address::to_str </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceieee802154.html#a0dad406dcef7c26e09faa9662317d10d">addr_mode_t</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get a human-readable string for a raw address and mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td>Pointer to address bytes. </td></tr>
+    <tr><td class="paramname">mode</td><td><a class="el" href="classieee802154_1_1Address.html" title="IEEE 802.15.4 Address abstraction.">Address</a> mode (NONE, SHORT, EXTENDED). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to static string buffer. </dd></dl>
+
+</div>
+</div>
+<a id="aac5a32f6b6ce30c4e15bdbd98178201c" name="aac5a32f6b6ce30c4e15bdbd98178201c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac5a32f6b6ce30c4e15bdbd98178201c">&#9670;&#160;</a></span>to_str() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const char * ieee802154::Address::to_str </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get a human-readable string for a raw address and length. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td>Pointer to address bytes. </td></tr>
+    <tr><td class="paramname">len</td><td>Length of address (2 or 8). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to static string buffer. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a34204c6cca89e563add6ae654c07592e" name="a34204c6cca89e563add6ae654c07592e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34204c6cca89e563add6ae654c07592e">&#9670;&#160;</a></span>local_addr_mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceieee802154.html#a0dad406dcef7c26e09faa9662317d10d">addr_mode_t</a> ieee802154::Address::local_addr_mode = <a class="el" href="namespaceieee802154.html#a0dad406dcef7c26e09faa9662317d10dab50339a10e1de285ac99d4c3990b8693">addr_mode_t::NONE</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Local address mode (NONE, SHORT, EXTENDED). </p>
+
+</div>
+</div>
+<a id="ad9d526194e75a02aa636f0210ef9012f" name="ad9d526194e75a02aa636f0210ef9012f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9d526194e75a02aa636f0210ef9012f">&#9670;&#160;</a></span>local_address</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ieee802154::Address::local_address[8] = {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Local address bytes (0, 2, or 8 bytes used). </p>
 
 </div>
 </div>

@@ -82,6 +82,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1Address.html">Address</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">IEEE 802.15.4 <a class="el" href="classieee802154_1_1Address.html" title="IEEE 802.15.4 Address abstraction.">Address</a> abstraction.  <a href="classieee802154_1_1Address.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1Buffer.html">Buffer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple byte buffer for storing frame data.  <a href="classieee802154_1_1Buffer.html#details">More...</a><br /></td></tr>
@@ -96,6 +97,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arduino Stream interface for IEEE 802.15.4 transceiver.  <a href="classieee802154_1_1ESP32TransceiverStream.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html">Frame</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">IEEE 802.15.4 MAC frame structure.  <a href="structieee802154_1_1Frame.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1frame__data__t.html">frame_data_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -114,7 +116,7 @@ Typedefs</h2></td></tr>
 <tr class="memdesc:a30148a8607f296198a2944c0c60f44e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function type for failed IEEE 802.15.4 frame transmission.  <br /></td></tr>
 <tr class="separator:a30148a8607f296198a2944c0c60f44e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b022c6439ba931c7842ef4f76077e9a" id="r_a7b022c6439ba931c7842ef4f76077e9a"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceieee802154.html#a7b022c6439ba931c7842ef4f76077e9a">ieee802154_transceiver_sfd_callback_t</a>) (void *user_data)</td></tr>
-<tr class="memdesc:a7b022c6439ba931c7842ef4f76077e9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function type for SFD (Start <a class="el" href="structieee802154_1_1Frame.html">Frame</a> Delimiter) received event.  <br /></td></tr>
+<tr class="memdesc:a7b022c6439ba931c7842ef4f76077e9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function type for SFD (Start <a class="el" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure.">Frame</a> Delimiter) received event.  <br /></td></tr>
 <tr class="separator:a7b022c6439ba931c7842ef4f76077e9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec907c420489a273d79266fe1432a1f4" id="r_aec907c420489a273d79266fe1432a1f4"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceieee802154.html#aec907c420489a273d79266fe1432a1f4">ieee802154_transceiver_sfd_tx_callback_t</a>) (uint8_t *frame, void *user_data)</td></tr>
 <tr class="memdesc:aec907c420489a273d79266fe1432a1f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function type for SFD transmitted event.  <br /></td></tr>
@@ -151,18 +153,21 @@ Enumerations</h2></td></tr>
 , <a class="el" href="namespaceieee802154.html#a6c5000bb7db5903ad056d37b8f901012a0fc437bc317835cad5faafc12a83fad5">ACK</a> = 0x2
 , <a class="el" href="namespaceieee802154.html#a6c5000bb7db5903ad056d37b8f901012a8aa0e16358bcf493c4824ac4d51a0cf1">MAC_CMD</a> = 0x3
  }</td></tr>
+<tr class="memdesc:a6c5000bb7db5903ad056d37b8f901012"><td class="mdescLeft">&#160;</td><td class="mdescRight">IEEE 802.15.4 FCF field value enumerations.  <a href="namespaceieee802154.html#a6c5000bb7db5903ad056d37b8f901012">More...</a><br /></td></tr>
 <tr class="separator:a6c5000bb7db5903ad056d37b8f901012"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dad406dcef7c26e09faa9662317d10d" id="r_a0dad406dcef7c26e09faa9662317d10d"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceieee802154.html#a0dad406dcef7c26e09faa9662317d10d">addr_mode_t</a> : uint8_t { <a class="el" href="namespaceieee802154.html#a0dad406dcef7c26e09faa9662317d10dab50339a10e1de285ac99d4c3990b8693">NONE</a> = 0x0
 , <a class="el" href="namespaceieee802154.html#a0dad406dcef7c26e09faa9662317d10da83c7f2aa8c3ac10ed8beb75cad162827">RESERVED</a> = 0x1
 , <a class="el" href="namespaceieee802154.html#a0dad406dcef7c26e09faa9662317d10daa35c2b02966b1563e5bf7b81b8b0cf77">SHORT</a> = 0x2
 , <a class="el" href="namespaceieee802154.html#a0dad406dcef7c26e09faa9662317d10da137134e62b2c971eba88c77734c14658">EXTENDED</a> = 0x3
  }</td></tr>
+<tr class="memdesc:a0dad406dcef7c26e09faa9662317d10d"><td class="mdescLeft">&#160;</td><td class="mdescRight">IEEE 802.15.4 address mode enumerations.  <a href="namespaceieee802154.html#a0dad406dcef7c26e09faa9662317d10d">More...</a><br /></td></tr>
 <tr class="separator:a0dad406dcef7c26e09faa9662317d10d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d160c84ec32faf188db8c12259eceff" id="r_a0d160c84ec32faf188db8c12259eceff"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceieee802154.html#a0d160c84ec32faf188db8c12259eceff">frame_version_t</a> : uint8_t { <a class="el" href="namespaceieee802154.html#a0d160c84ec32faf188db8c12259eceffa2b749337b533008428d5356db6e30b5d">V_2003</a> = 0x0
 , <a class="el" href="namespaceieee802154.html#a0d160c84ec32faf188db8c12259eceffa051d79865be720f608e9213808806f82">V_2006</a> = 0x1
 , <a class="el" href="namespaceieee802154.html#a0d160c84ec32faf188db8c12259eceffaaf899f8d590ba6037f289496985701e7">V_RESERVED1</a> = 0x2
 , <a class="el" href="namespaceieee802154.html#a0d160c84ec32faf188db8c12259eceffaff0a2cda708abef576bceaa3d522cb3c">V_RESERVED2</a> = 0x3
  }</td></tr>
+<tr class="memdesc:a0d160c84ec32faf188db8c12259eceff"><td class="mdescLeft">&#160;</td><td class="mdescRight">IEEE 802.15.4 frame version enumerations.  <a href="namespaceieee802154.html#a0d160c84ec32faf188db8c12259eceff">More...</a><br /></td></tr>
 <tr class="separator:a0d160c84ec32faf188db8c12259eceff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -197,7 +202,7 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">frame</td><td>Parsed IEEE 802.15.4 frame. </td></tr>
-    <tr><td class="paramname">frame_info</td><td><a class="el" href="structieee802154_1_1Frame.html">Frame</a> information (e.g., RSSI, LQI, channel). </td></tr>
+    <tr><td class="paramname">frame_info</td><td><a class="el" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure.">Frame</a> information (e.g., RSSI, LQI, channel). </td></tr>
     <tr><td class="paramname">user_data</td><td>User-defined data passed to the callback. </td></tr>
   </table>
   </dd>
@@ -217,7 +222,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Callback function type for SFD (Start <a class="el" href="structieee802154_1_1Frame.html">Frame</a> Delimiter) received event. </p>
+<p>Callback function type for SFD (Start <a class="el" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure.">Frame</a> Delimiter) received event. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">user_data</td><td>User-defined data passed to the callback. </td></tr>
@@ -267,7 +272,7 @@ Variables</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">frame</td><td>Pointer to transmitted frame data. </td></tr>
     <tr><td class="paramname">ack</td><td>Pointer to acknowledgment frame data (if any). </td></tr>
-    <tr><td class="paramname">ack_frame_info</td><td><a class="el" href="structieee802154_1_1Frame.html">Frame</a> info for the acknowledgment. </td></tr>
+    <tr><td class="paramname">ack_frame_info</td><td><a class="el" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure.">Frame</a> info for the acknowledgment. </td></tr>
     <tr><td class="paramname">user_data</td><td>User-defined data passed to the callback. </td></tr>
   </table>
   </dd>
@@ -319,6 +324,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>IEEE 802.15.4 address mode enumerations. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a0dad406dcef7c26e09faa9662317d10dab50339a10e1de285ac99d4c3990b8693" name="a0dad406dcef7c26e09faa9662317d10dab50339a10e1de285ac99d4c3990b8693"></a>NONE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a0dad406dcef7c26e09faa9662317d10da83c7f2aa8c3ac10ed8beb75cad162827" name="a0dad406dcef7c26e09faa9662317d10da83c7f2aa8c3ac10ed8beb75cad162827"></a>RESERVED&#160;</td><td class="fielddoc"></td></tr>
@@ -389,6 +396,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>IEEE 802.15.4 frame version enumerations. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a0d160c84ec32faf188db8c12259eceffa2b749337b533008428d5356db6e30b5d" name="a0d160c84ec32faf188db8c12259eceffa2b749337b533008428d5356db6e30b5d"></a>V_2003&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a0d160c84ec32faf188db8c12259eceffa051d79865be720f608e9213808806f82" name="a0d160c84ec32faf188db8c12259eceffa051d79865be720f608e9213808806f82"></a>V_2006&#160;</td><td class="fielddoc"></td></tr>
@@ -417,6 +426,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>IEEE 802.15.4 FCF field value enumerations. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a6c5000bb7db5903ad056d37b8f901012a4a3fd580504c35a69c1ea7fda0f01fce" name="a6c5000bb7db5903ad056d37b8f901012a4a3fd580504c35a69c1ea7fda0f01fce"></a>BEACON&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a6c5000bb7db5903ad056d37b8f901012ae44f9e348e41cb272efa87387728571b" name="a6c5000bb7db5903ad056d37b8f901012ae44f9e348e41cb272efa87387728571b"></a>DATA&#160;</td><td class="fielddoc"></td></tr>

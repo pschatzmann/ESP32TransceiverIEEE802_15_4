@@ -102,15 +102,22 @@ Collaboration diagram for ieee802154::ESP32TransceiverStream:</div>
 <div class="dyncontent">
 <div class="center"><img src="classieee802154_1_1ESP32TransceiverStream__coll__graph.png" border="0" usemap="#aieee802154_1_1ESP32TransceiverStream_coll__map" alt="Collaboration graph"/></div>
 <map name="aieee802154_1_1ESP32TransceiverStream_coll__map" id="aieee802154_1_1ESP32TransceiverStream_coll__map">
-<area shape="rect" title="Arduino Stream interface for IEEE 802.15.4 transceiver." alt="" coords="351,87,571,127"/>
-<area shape="rect" title=" " alt="" coords="81,5,150,31"/>
-<area shape="poly" title=" " alt="" coords="164,26,226,41,327,66,393,85,392,90,326,71,225,46,163,31"/>
-<area shape="rect" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html" title="Class to manage an IEEE 802.15.4 transceiver using the ESP&#45;IDF API. On the sending side we support br..." alt="" coords="5,55,225,95"/>
-<area shape="poly" title=" " alt="" coords="240,84,350,94,350,100,239,89"/>
-<area shape="rect" href="classieee802154_1_1BufferRTOS.html" title=" " alt="" coords="26,119,205,159"/>
-<area shape="poly" title=" " alt="" coords="218,127,350,115,351,120,218,133"/>
-<area shape="rect" href="classieee802154_1_1Buffer.html" title=" " alt="" coords="43,183,188,223"/>
-<area shape="poly" title=" " alt="" coords="201,179,326,145,394,125,395,130,327,150,202,184"/>
+<area shape="rect" title="Arduino Stream interface for IEEE 802.15.4 transceiver." alt="" coords="957,87,1177,127"/>
+<area shape="rect" title=" " alt="" coords="687,5,757,31"/>
+<area shape="poly" title=" " alt="" coords="771,26,833,41,934,66,1000,85,998,90,933,71,831,46,770,31"/>
+<area shape="rect" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html" title="Class to manage an IEEE 802.15.4 transceiver using the ESP&#45;IDF API. On the sending side we support br..." alt="" coords="612,55,832,95"/>
+<area shape="poly" title=" " alt="" coords="846,84,957,94,957,100,846,89"/>
+<area shape="rect" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure." alt="" coords="275,68,422,93"/>
+<area shape="poly" title=" " alt="" coords="436,77,612,74,612,80,436,82"/>
+<area shape="rect" href="structieee802154_1_1FrameControlField.html" title=" " alt="" coords="5,30,200,70"/>
+<area shape="poly" title=" " alt="" coords="214,38,390,31,490,33,588,41,651,53,651,58,588,46,489,38,390,36,214,43"/>
+<area shape="poly" title=" " alt="" coords="214,61,275,69,275,74,213,66"/>
+<area shape="rect" href="classieee802154_1_1Address.html" title="IEEE 802.15.4 Address abstraction." alt="" coords="269,123,428,148"/>
+<area shape="poly" title=" " alt="" coords="441,129,513,122,587,111,652,93,654,98,589,117,514,128,442,134"/>
+<area shape="rect" href="classieee802154_1_1BufferRTOS.html" title=" " alt="" coords="633,119,811,159"/>
+<area shape="poly" title=" " alt="" coords="825,127,957,115,957,120,825,133"/>
+<area shape="rect" href="classieee802154_1_1Buffer.html" title=" " alt="" coords="649,183,795,223"/>
+<area shape="poly" title=" " alt="" coords="807,179,933,145,1000,125,1002,130,934,150,809,184"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -149,6 +156,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8b828b9d095c8afddb84de6422150f08" id="r_a8b828b9d095c8afddb84de6422150f08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a8b828b9d095c8afddb84de6422150f08">flush</a> () override</td></tr>
 <tr class="memdesc:a8b828b9d095c8afddb84de6422150f08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush the transmit buffer and send its contents as a frame.  <br /></td></tr>
 <tr class="separator:a8b828b9d095c8afddb84de6422150f08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1fa5030471ba9cc6c0dc68b41292a52" id="r_af1fa5030471ba9cc6c0dc68b41292a52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#af1fa5030471ba9cc6c0dc68b41292a52">setReadBufferSize</a> (size_t size)</td></tr>
+<tr class="memdesc:af1fa5030471ba9cc6c0dc68b41292a52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the size of the receive buffer.  <br /></td></tr>
+<tr class="separator:af1fa5030471ba9cc6c0dc68b41292a52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-methods" name="pro-static-methods"></a>
 Static Protected Member Functions</h2></td></tr>
@@ -394,7 +404,7 @@ Static Protected Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">frame</td><td>Reference to the received frame. </td></tr>
-    <tr><td class="paramname">frame_info</td><td><a class="el" href="structieee802154_1_1Frame.html">Frame</a> information from ESP-IDF. </td></tr>
+    <tr><td class="paramname">frame_info</td><td><a class="el" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure.">Frame</a> information from ESP-IDF. </td></tr>
     <tr><td class="paramname">user_data</td><td>Pointer to the <a class="el" href="classieee802154_1_1ESP32TransceiverStream.html" title="Arduino Stream interface for IEEE 802.15.4 transceiver.">ESP32TransceiverStream</a> instance. </td></tr>
   </table>
   </dd>
@@ -501,6 +511,41 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Number of bytes actually read. </dd></dl>
+
+</div>
+</div>
+<a id="af1fa5030471ba9cc6c0dc68b41292a52" name="af1fa5030471ba9cc6c0dc68b41292a52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1fa5030471ba9cc6c0dc68b41292a52">&#9670;&#160;</a></span>setReadBufferSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ieee802154::ESP32TransceiverStream::setReadBufferSize </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the size of the receive buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>New size of the receive buffer in bytes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This will resize the internal buffer used for storing received frames. Be cautious when setting this value, as it may lead to increased memory usage. </dd></dl>
 
 </div>
 </div>

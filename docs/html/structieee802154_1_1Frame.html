@@ -82,13 +82,16 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>IEEE 802.15.4 MAC frame structure.  
+ <a href="structieee802154_1_1Frame.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="Frame_8h_source.html">Frame.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for ieee802154::Frame:</div>
 <div class="dyncontent">
 <div class="center"><img src="structieee802154_1_1Frame__coll__graph.png" border="0" usemap="#aieee802154_1_1Frame_coll__map" alt="Collaboration graph"/></div>
 <map name="aieee802154_1_1Frame_coll__map" id="aieee802154_1_1Frame_coll__map">
-<area shape="rect" title=" " alt="" coords="29,108,176,133"/>
+<area shape="rect" title="IEEE 802.15.4 MAC frame structure." alt="" coords="29,108,176,133"/>
 <area shape="rect" href="structieee802154_1_1FrameControlField.html" title=" " alt="" coords="5,5,200,45"/>
 <area shape="poly" title=" " alt="" coords="105,59,105,108,100,108,100,59"/>
 </map>
@@ -97,16 +100,22 @@ Collaboration diagram for ieee802154::Frame:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac49ba363010d505f6c8aa26e0b05faa4" id="r_ac49ba363010d505f6c8aa26e0b05faa4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#ac49ba363010d505f6c8aa26e0b05faa4">parse</a> (const uint8_t *data, bool verbose)</td></tr>
+<tr class="memdesc:ac49ba363010d505f6c8aa26e0b05faa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">parse frame from raw data  <br /></td></tr>
 <tr class="separator:ac49ba363010d505f6c8aa26e0b05faa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58f9a3e6025d0f303e9b2551e0c0dab3" id="r_a58f9a3e6025d0f303e9b2551e0c0dab3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a58f9a3e6025d0f303e9b2551e0c0dab3">build</a> (uint8_t *<a class="el" href="structieee802154_1_1Frame.html#ad22391fb510cd5f367fba670ac0172a7">buffer</a>, bool verbose) const</td></tr>
+<tr class="memdesc:a58f9a3e6025d0f303e9b2551e0c0dab3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build IEEE 802.15.4 frame array with length byte at start and 0x00 at end.  <br /></td></tr>
 <tr class="separator:a58f9a3e6025d0f303e9b2551e0c0dab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a760c80bc4e2fc24749dbb1e7ddd1caf4" id="r_a760c80bc4e2fc24749dbb1e7ddd1caf4"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a760c80bc4e2fc24749dbb1e7ddd1caf4">to_str</a> (uint8_t frameType)</td></tr>
+<tr class="memdesc:a760c80bc4e2fc24749dbb1e7ddd1caf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a human-readable string representation of the frame.  <br /></td></tr>
 <tr class="separator:a760c80bc4e2fc24749dbb1e7ddd1caf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcf906b40cd1bbd4b99140263f0d3192" id="r_afcf906b40cd1bbd4b99140263f0d3192"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#afcf906b40cd1bbd4b99140263f0d3192">setSourceAddress</a> (<a class="el" href="classieee802154_1_1Address.html">Address</a> address)</td></tr>
+<tr class="memdesc:afcf906b40cd1bbd4b99140263f0d3192"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the source address for the frame.  <br /></td></tr>
 <tr class="separator:afcf906b40cd1bbd4b99140263f0d3192"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00c731188ffb491dd143c4e73c5f996e" id="r_a00c731188ffb491dd143c4e73c5f996e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a00c731188ffb491dd143c4e73c5f996e">setDestinationAddress</a> (<a class="el" href="classieee802154_1_1Address.html">Address</a> address)</td></tr>
+<tr class="memdesc:a00c731188ffb491dd143c4e73c5f996e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the destination address for the frame.  <br /></td></tr>
 <tr class="separator:a00c731188ffb491dd143c4e73c5f996e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56c9829ab58425631149421b91dd12f9" id="r_a56c9829ab58425631149421b91dd12f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a56c9829ab58425631149421b91dd12f9">setPayload</a> (const uint8_t *data, size_t len)</td></tr>
+<tr class="memdesc:a56c9829ab58425631149421b91dd12f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the payload for the frame.  <br /></td></tr>
 <tr class="separator:a56c9829ab58425631149421b91dd12f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab045e5329ce34ee82828735167a03dc1" id="r_ab045e5329ce34ee82828735167a03dc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#ab045e5329ce34ee82828735167a03dc1">setPAN</a> (uint16_t panId)</td></tr>
 <tr class="memdesc:ab045e5329ce34ee82828735167a03dc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the Personal Area Network Identifier (PAN ID) for the frame.  <br /></td></tr>
@@ -142,7 +151,9 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:ad22391fb510cd5f367fba670ac0172a7" id="r_ad22391fb510cd5f367fba670ac0172a7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#ad22391fb510cd5f367fba670ac0172a7">buffer</a></td></tr>
 <tr class="separator:ad22391fb510cd5f367fba670ac0172a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>IEEE 802.15.4 MAC frame structure. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a58f9a3e6025d0f303e9b2551e0c0dab3" name="a58f9a3e6025d0f303e9b2551e0c0dab3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a58f9a3e6025d0f303e9b2551e0c0dab3">&#9670;&#160;</a></span>build()</h2>
 
@@ -168,6 +179,8 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Build IEEE 802.15.4 frame array with length byte at start and 0x00 at end. </p>
 
 </div>
 </div>
@@ -197,6 +210,8 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>parse frame from raw data </p>
+
 </div>
 </div>
 <a id="a00c731188ffb491dd143c4e73c5f996e" name="a00c731188ffb491dd143c4e73c5f996e"></a>
@@ -222,6 +237,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Set the destination address for the frame. </p>
 
 </div>
 </div>
@@ -287,6 +304,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Set the payload for the frame. </p>
+
 </div>
 </div>
 <a id="afcf906b40cd1bbd4b99140263f0d3192" name="afcf906b40cd1bbd4b99140263f0d3192"></a>
@@ -313,6 +332,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Set the source address for the frame. </p>
+
 </div>
 </div>
 <a id="a760c80bc4e2fc24749dbb1e7ddd1caf4" name="a760c80bc4e2fc24749dbb1e7ddd1caf4"></a>
@@ -330,6 +351,8 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Get a human-readable string representation of the frame. </p>
 
 </div>
 </div>
