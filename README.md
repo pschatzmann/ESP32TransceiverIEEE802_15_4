@@ -24,8 +24,8 @@ This library was inspired by shoderico's [esp_ieee802154-transceiver](https://co
 ## Documentation
 
 - Class Documentation
-  - ESP32TransceiverIEEE802_15_4 
-  - ESP32TransceiverStream
+  - [ESP32TransceiverIEEE802_15_4](https://pschatzmann.github.io/ESP32TransceiverIEEE802_15_4/html/classieee802154_1_1ESP32TransceiverIEEE802__15__4.html) 
+  - [ESP32TransceiverStream](https://pschatzmann.github.io/ESP32TransceiverIEEE802_15_4/html/classieee802154_1_1ESP32TransceiverStream.html)
 
 - ESP API used by this project
   - [ESP IDF IEEE802.15.4 API](https://github.com/espressif/esp-idf/blob/master/components/ieee802154/include/esp_ieee802154.h)
