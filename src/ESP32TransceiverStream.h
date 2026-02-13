@@ -123,6 +123,15 @@ class ESP32TransceiverStream : public Stream {
     tx_buffer.clear();
   }
 
+  /**
+   * @brief Set the size of the receive buffer.
+   * @param size New size of the receive buffer in bytes.
+   * @note This will resize the internal buffer used for storing received
+   * frames. Be cautious when setting this value, as it may lead to increased
+   * memory usage.
+   */
+  void setReadBufferSize(size_t size) { rx_buffer.resize(size); }
+
  protected:
   static constexpr int MTU = 116;
   ESP32TransceiverIEEE802_15_4& transceiver;

@@ -100,6 +100,9 @@ class BufferRTOS {
 
   // reads multiple values
   int readArray(T data[], int len) {
+    // do not block if there is no data available
+    if (isEmpty()) return 0;
+
     if (read_from_isr) {
       xHigherPriorityTaskWoken = pdFALSE;
       int result = xStreamBufferReceiveFromISR(xStreamBuffer, (void*)data,
