@@ -81,7 +81,6 @@ void setup() {
 
   // Set the receive callback
   transceiver.setRxCallback(rx_callback, NULL);
-  transceiver.setPromiscuousModeActive(true);
 
   // Initialize the IEEE 802.15.4 transceiver
   if (!transceiver.begin()) {
