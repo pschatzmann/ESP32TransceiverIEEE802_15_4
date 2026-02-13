@@ -26,9 +26,14 @@ ESP32TransceiverIEEE802_15_4* pt_transceiver = nullptr;
 // Forward declarations
 void receive_packet_task(void* pvParameters);
 
-
 bool ESP32TransceiverIEEE802_15_4::begin() {
   esp_err_t ret;
+
+  if (is_active) {
+    ESP_LOGW(TAG, "Transceiver is already active");
+    return true;
+  }
+
   // Initialize NVS flash
   ret = nvs_flash_init();
   if (ret == ESP_ERR_NVS_NO_FREE_PAGES ||
@@ -58,6 +63,7 @@ bool ESP32TransceiverIEEE802_15_4::begin() {
 
   // Initialize IEEE 802.15.4 radio
   ret = esp_ieee802154_enable();
+  ESP_LOGI(TAG, "Enabling IEEE 802.15.4 radio");
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to enable IEEE 802.15.4 radio: %d", ret);
     end();
@@ -66,6 +72,8 @@ bool ESP32TransceiverIEEE802_15_4::begin() {
   radio_enabled = true;
 
   ret = esp_ieee802154_set_coordinator(is_coordinator);
+  ESP_LOGI(TAG, "Setting coordinator mode to %s",
+           is_coordinator ? "true" : "false");
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to set coordinator mode to false: %d", ret);
     end();
@@ -73,6 +81,8 @@ bool ESP32TransceiverIEEE802_15_4::begin() {
   }
 
   ret = esp_ieee802154_set_promiscuous(is_promiscuous_mode);
+  ESP_LOGI(TAG, "Setting promiscuous mode to %s",
+           is_promiscuous_mode ? "true" : "false");
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to enable promiscuous mode: %d", ret);
     end();
@@ -80,6 +90,8 @@ bool ESP32TransceiverIEEE802_15_4::begin() {
   }
 
   ret = esp_ieee802154_set_rx_when_idle(is_rx_when_idle);
+  ESP_LOGI(TAG, "Setting rx when idle to %s",
+           is_rx_when_idle ? "true" : "false");
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to set rx when idle: %d", ret);
     end();
@@ -87,6 +99,7 @@ bool ESP32TransceiverIEEE802_15_4::begin() {
   }
 
   ret = esp_ieee802154_set_channel(static_cast<uint8_t>(channel));
+  ESP_LOGI(TAG, "Setting channel to %d", (int) channel);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to set channel %d: %d", channel, ret);
     end();
@@ -94,12 +107,14 @@ bool ESP32TransceiverIEEE802_15_4::begin() {
   }
 
   ret = esp_ieee802154_set_panid(panID);
+  ESP_LOGI(TAG, "Setting PAN ID to 0x%04X", panID);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to set PAN ID: %d", ret);
     end();
     return false;
   }
 
+  ESP_LOGI(TAG, "Setting local address: %s", local_address.to_str());
   if (local_address.mode() == addr_mode_t::SHORT) {
     ret = esp_ieee802154_set_short_address(*(uint16_t*)local_address.data());
   } else if (local_address.mode() == addr_mode_t::EXTENDED) {
@@ -130,7 +145,6 @@ bool ESP32TransceiverIEEE802_15_4::begin() {
   return true;
 }
 
-
 bool ESP32TransceiverIEEE802_15_4::end(void) {
   esp_err_t ret;
 
@@ -160,7 +174,6 @@ bool ESP32TransceiverIEEE802_15_4::end(void) {
   return true;
 }
 
-
 bool ESP32TransceiverIEEE802_15_4::setRxCallback(
     ieee802154_transceiver_rx_callback_t callback, void* user_data) {
   rx_callback_ = callback;
@@ -173,6 +186,11 @@ bool ESP32TransceiverIEEE802_15_4::setRxCallback(
 esp_err_t ESP32TransceiverIEEE802_15_4::transmit_channel(Frame* frame,
                                                          int8_t channel,
                                                          bool change_channel) {
+  if (!is_active) {
+    ESP_LOGE(TAG, "Transceiver is not active");
+    return ESP_ERR_INVALID_STATE;
+  }
+
   bool verbose = false;
   esp_err_t ret;
 
@@ -228,20 +246,23 @@ esp_err_t ESP32TransceiverIEEE802_15_4::transmit_channel(Frame* frame,
   return ESP_OK;
 }
 
-  bool ESP32TransceiverIEEE802_15_4::send(uint8_t* data, size_t len) {
-    return send(channel, data, len);
-  }
-
-
-bool ESP32TransceiverIEEE802_15_4::send(channel_t toChannel, uint8_t* data, size_t len) {
-  frame.fcf = frame_control_field;
-  frame.setPAN(panID);  // Ensure PAN ID is set and compressed
-  frame.setSourceAddress(local_address);  // Ensure source address is set
-  frame.setDestinationAddress(destination_address);  // Ensure destination address is set
-  frame.setPayload(data, len);
-  return transmit_channel(&frame, static_cast<int8_t>(toChannel), true) == ESP_OK;
+bool ESP32TransceiverIEEE802_15_4::send(uint8_t* data, size_t len) {
+  return send(channel, data, len);
 }
 
+bool ESP32TransceiverIEEE802_15_4::send(channel_t toChannel, uint8_t* data,
+                                        size_t len) {
+
+  ESP_LOGI(TAG, "Sending frame on channel %d to address %s, len: %d", toChannel, destination_address.to_str(), len);
+  frame.fcf = frame_control_field;
+  frame.setPAN(panID);                    // Ensure PAN ID is set and compressed
+  frame.setSourceAddress(local_address);  // Ensure source address is set
+  frame.setDestinationAddress(
+      destination_address);  // Ensure destination address is set
+  frame.setPayload(data, len);
+  return transmit_channel(&frame, static_cast<int8_t>(toChannel), true) ==
+         ESP_OK;
+}
 
 bool ESP32TransceiverIEEE802_15_4::setChannel(channel_t channel) {
   if (static_cast<uint8_t>(channel) < 11 ||
@@ -269,7 +290,6 @@ bool ESP32TransceiverIEEE802_15_4::setChannel(channel_t channel) {
   // ESP_LOGI(TAG, "Channel set to %d", channel);
   return true;
 }
-
 
 void ESP32TransceiverIEEE802_15_4::onRxDone(
     uint8_t* frame, esp_ieee802154_frame_info_t* frame_info) {
@@ -299,7 +319,6 @@ void ESP32TransceiverIEEE802_15_4::onRxDone(
     portYIELD_FROM_ISR(higher_priority_task_woken);
   }
 }
-
 
 bool ESP32TransceiverIEEE802_15_4::setTxDoneCallback(
     ieee802154_transceiver_tx_done_callback_t callback, void* user_data) {
@@ -356,7 +375,6 @@ void ESP32TransceiverIEEE802_15_4::onStartFrameDelimiterTransmitDone(
     sfd_tx_callback_(frame, sfd_tx_callback_user_data_);
   }
 }
-
 
 void receive_packet_task(void* pvParameters) {
   frame_data_t packet;
@@ -426,11 +444,11 @@ bool ESP32TransceiverIEEE802_15_4::setRxWhenIdleActive(bool rx_when_idle) {
 }
 
 bool ESP32TransceiverIEEE802_15_4::setTxPower(int power) {
-    if (::esp_ieee802154_set_txpower(power) != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to set transmit power to %d", power);
-        return false;
-    }
-    return true;
+  if (::esp_ieee802154_set_txpower(power) != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to set transmit power to %d", power);
+    return false;
+  }
+  return true;
 }
 
 }  // namespace ieee802154

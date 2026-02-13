@@ -1,4 +1,8 @@
 #pragma once
+// make sure that logging works in Arduino environment
+#ifdef ARDUINO
+#include "Arduino.h"
+#endif
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -128,6 +132,7 @@ class ESP32TransceiverIEEE802_15_4 {
     this->channel = channel;
     this->panID = panID;
     this->local_address = localAddress;
+    pt_transceiver = this;
   }
 
   /**
@@ -315,9 +320,9 @@ class ESP32TransceiverIEEE802_15_4 {
    */
   Frame& getFrame() { return frame; }
 
- private:
+ protected:
   bool is_promiscuous_mode = false;
-  bool is_coordinator = true;
+  bool is_coordinator = false;
   bool is_rx_when_idle = true;
   bool is_active = false;
   // current frame

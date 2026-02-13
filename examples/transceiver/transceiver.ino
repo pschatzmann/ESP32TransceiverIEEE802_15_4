@@ -21,8 +21,9 @@
 
 #define TAG "SIMPLE_TRANSCEIVER"
 
-Address local({0xAB, 0xCD});
-ESP32TransceiverIEEE802_15_4 transceiver(channel_t::CHANNEL_11, 0x1234, local);
+Address local({0xAB, 0xCE});
+const channel_t channel = channel_t::CHANNEL_11;
+ESP32TransceiverIEEE802_15_4 transceiver(channel, 0x1234, local);
 uint8_t payloadData[] = "Hello, IEEE 802.15.4!";
 
 // Callback function for received frames (reference-based)
@@ -45,7 +46,7 @@ void rx_callback(Frame& frame,
   // Frame Control Field (FCF)
   ESP_LOGI(TAG, "Frame Control Field:");
   ESP_LOGI(TAG, "  Frame Type: %d (%s)", frame.fcf.frameType,
-           to_str(frame.fcf.frameType));
+           frame.to_str(frame.fcf.frameType));
   ESP_LOGI(TAG, "  Security Enabled: %d", frame.fcf.securityEnabled);
   ESP_LOGI(TAG, "  Frame Pending: %d", frame.fcf.framePending);
   ESP_LOGI(TAG, "  ACK Request: %d", frame.fcf.ackRequest);
@@ -65,22 +66,22 @@ void rx_callback(Frame& frame,
   // Address Information
   ESP_LOGI(TAG, "Address Information:");
   ESP_LOGI(TAG, "  Destination PAN ID: 0x%04x", frame.destPanId);
-  ESP_LOGI(TAG, "  Destination Address (len=%d):", frame.destAddrLen);
-  ESP_LOG_BUFFER_HEX(TAG, frame.destAddress, frame.destAddrLen);
+  ESP_LOGI(TAG, "  Destination Address (len=%d): 0x%x 0x%x", frame.destAddrLen, frame.destAddress[0], frame.destAddress[1]  );
   ESP_LOGI(TAG, "  Source PAN ID: 0x%04x", frame.srcPanId);
-  ESP_LOGI(TAG, "  Source Address (len=%d):", frame.srcAddrLen);
-  ESP_LOG_BUFFER_HEX(TAG, frame.srcAddress, frame.srcAddrLen);
+  ESP_LOGI(TAG, "  Source Address (len=%d):  0x%x 0x%x", frame.srcAddrLen, frame.srcAddress[0], frame.srcAddress[1]);
 
   // Payload
-  ESP_LOGI(TAG, "Payload:");
-  ESP_LOG_BUFFER_HEX(TAG, frame.payload, frame.payloadLen);
+  ESP_LOGI(TAG, "Payload: %s", frame.payload);
 }
 
 void setup() {
   Serial.begin(115200);
+  while(!Serial);
+  ESP_LOGI(TAG, "Starting...");
 
   // Set the receive callback
   transceiver.setRxCallback(rx_callback, NULL);
+  transceiver.setPromiscuousModeActive(true);
 
   // Initialize the IEEE 802.15.4 transceiver
   if (!transceiver.begin()) {
@@ -88,7 +89,7 @@ void setup() {
     return;
   }
 
-  ESP_LOGI(TAG, "Simple transceiver started on channel %d", CHANNEL);
+  ESP_LOGI(TAG, "Simple transceiver started on channel %d", (int)channel);
 }
 
 void loop() {

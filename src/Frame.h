@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
-
+#include <cstdio>
 #include <cstring>
 #include <vector>
 
@@ -43,7 +43,7 @@ enum class frame_version_t : uint8_t {
 // IEEE 802.15.4 Frame Control Field (FCF) structure
 // Bit fields are ordered LSB to MSB to match IEEE 802.15.4 specification
 struct FrameControlField {
-  uint8_t frameType : 3;
+  uint8_t frameType : 3 = 0x1;
   uint8_t securityEnabled : 1 = 0;   // Security Enabled (bit 3)
   uint8_t framePending : 1 = 0;      // Frame Pending (bit 4)
   uint8_t ackRequest : 1 = 0;        // Acknowledgment Request (bit 5)
@@ -93,6 +93,23 @@ class Address {
 
   uint8_t* data() { return local_address; }
   addr_mode_t mode() { return local_addr_mode; }
+
+  const char* to_str() const {
+    static char str[25];  // Enough for "XX:XX" or "XX:XX:...:XX"
+    if (local_addr_mode == addr_mode_t::SHORT) {
+      snprintf(str, sizeof(str), "%02X:%02X", local_address[0],
+               local_address[1]);
+    } else if (local_addr_mode == addr_mode_t::EXTENDED) {
+      snprintf(str, sizeof(str),
+               "%02X:%02X:%02X:%02X:%02X:%02X:%02X:%02X", local_address[0],
+               local_address[1], local_address[2], local_address[3],
+               local_address[4], local_address[5], local_address[6],
+               local_address[7]);
+    } else {
+      snprintf(str, sizeof(str), "None");
+    }
+    return str;
+  }
 
  private:
   addr_mode_t local_addr_mode = addr_mode_t::NONE;  // Local address mode
