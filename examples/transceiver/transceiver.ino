@@ -12,9 +12,10 @@
  * - Logs transmission status and received frame details via ESP_LOG
  *
  * Usage:
- * - Connect ESP32 to serial monitor at 115200 baud
+ * - Connect 2 supported ESP32 to serial monitor at 115200 baud
  * - Observe logs for transmitted and received frames
  * - Modify payload or frame parameters as needed for your application
+ * - Make sure that both have different local addresses
  */
 
 #include "ESP32TransceiverIEEE802_15_4.h"
