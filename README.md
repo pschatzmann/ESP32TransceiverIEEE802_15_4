@@ -3,8 +3,6 @@
 [![Arduino Library](https://img.shields.io/badge/Arduino-Library-blue.svg)](https://www.arduino.cc/reference/en/libraries/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-
-
 This library provides an high level API for [IEEE 802.15.4 ](https://en.wikipedia.org/wiki/IEEE_802.15.4)communication using the ESP32's built-in radio. It supports initializing the transceiver, transmitting and receiving frames, setting receive callbacks, and dynamically switching channels (11-26) in promiscuous mode.
 
 This library was inspired by shoderico's [esp_ieee802154-transceiver](https://components.espressif.com/components/shoderico/ieee802154_transceiver/versions/1.0.0/readme) ESP-IDF component, extended and refactured for C++.
