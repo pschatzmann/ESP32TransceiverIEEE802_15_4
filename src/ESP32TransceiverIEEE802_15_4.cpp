@@ -14,16 +14,16 @@
 
 namespace ieee802154 {
 
-// Structure to hold frame data and frame info
+/// Structure to hold frame data and frame info
 struct frame_data_t {
   uint8_t frame[MAX_FRAME_LEN];            // Raw frame data
   esp_ieee802154_frame_info_t frame_info;  // Frame info (RSSI, LQI, etc.)
 };
 
-// accessible by global callback functions
+/// accessible by global callback functions
 ESP32TransceiverIEEE802_15_4* pt_transceiver = nullptr;
 
-// Forward declarations
+/// Forward declarations
 void receive_packet_task(void* pvParameters);
 
 bool ESP32TransceiverIEEE802_15_4::begin() {

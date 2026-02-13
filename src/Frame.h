@@ -43,8 +43,10 @@ enum class frame_version_t : uint8_t {
   V_RESERVED2 = 0x3,  // Reserved
 };
 
-/// IEEE 802.15.4 Frame Control Field (FCF) structure
-/// Bit fields are ordered LSB to MSB to match IEEE 802.15.4 specification
+/**
+ * @brief IEEE 802.15.4 Frame Control Field (FCF) structure
+ * Bit fields are ordered LSB to MSB to match IEEE 802.15.4 specification
+ */
 struct FrameControlField {
   uint8_t frameType : 3 = 0x1;
   uint8_t securityEnabled : 1 = 0;   // Security Enabled (bit 3)
