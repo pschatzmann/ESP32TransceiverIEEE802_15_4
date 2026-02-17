@@ -405,6 +405,7 @@ void receive_packet_task(void* pvParameters) {
     // Invoke callback if set
     ESP32TransceiverIEEE802_15_4* self = pt_transceiver;
     if (self && self->rx_callback_) {
+      //self->frame = frame;  // Update frame info for callback
       self->rx_callback_(frame, packet.frame_info,
                          self->rx_callback_user_data_);
     }

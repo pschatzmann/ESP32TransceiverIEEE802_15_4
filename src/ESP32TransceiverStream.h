@@ -33,6 +33,14 @@ class ESP32TransceiverStream : public Stream {
   }
 
   /**
+   * @brief Initialize the stream and underlying transceiver.
+   * @return True on success, false otherwise.
+   */
+  bool begin(FrameControlField fcf) {
+    return begin(fcf);
+  } 
+
+  /**
    * @brief Deinitialize the stream and underlying transceiver.
    */
   void end() { transceiver.end(); }
@@ -148,6 +156,15 @@ class ESP32TransceiverStream : public Stream {
                         void* user_data) {
     ESP32TransceiverStream* stream =
         static_cast<ESP32TransceiverStream*>(user_data);
+    static uint8_t lastSeq = 0xFF; // 0xFF means uninitialized
+    uint8_t seq = frame.sequenceNumber;
+    if (lastSeq != 0xFF) {
+      uint8_t expected = (lastSeq + 1) & 0xFF;
+      if (seq != expected) {
+        ESP_LOGE(TAG, "Frame out of sequence: expected %u, got %u", expected, seq);
+      }
+    }
+    lastSeq = seq;
     if (stream->rx_buffer.writeArray(frame.payload, frame.payloadLen) !=
         frame.payloadLen) {
       ESP_LOGE(

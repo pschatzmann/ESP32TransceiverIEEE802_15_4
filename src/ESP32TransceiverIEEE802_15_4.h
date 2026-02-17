@@ -143,6 +143,18 @@ class ESP32TransceiverIEEE802_15_4 {
   bool begin();
 
   /**
+   * @brief Initialize the IEEE 802.15.4 transceiver with a specified channel.
+   * @param fcf The Frame Control Field to use for the transceiver.
+   * transceiver.
+   *
+   * @return ESP_OK on success, or an error code on failure.
+   */
+  bool begin(FrameControlField fcf) {
+    setFrameControlField(fcf);
+    return begin();
+  }
+
+  /**
    * @brief Deinitialize the IEEE 802.15.4 transceiver.
    *
    * @return ESP_OK on success, or an error code on failure.
