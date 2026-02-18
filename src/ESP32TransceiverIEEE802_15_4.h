@@ -362,6 +362,16 @@ class ESP32TransceiverIEEE802_15_4 {
    */
   void incrementSequenceNumber(int n = 1) { frame.sequenceNumber += n; }
 
+  /**
+   * @brief  Set the time in us to wait for the ack frame.
+   *
+   * @param[in]  timeout  The time to wait for the ack frame, in us.
+   *                      It Should be a multiple of 16. 
+   */
+  void setAckTimeout(uint32_t timeout_us) {
+    ack_timeout_us = timeout_us / 16 * 16;  // Round to nearest multiple of 16
+  }
+
  protected:
   bool is_promiscuous_mode = false;
   bool is_coordinator = false;
@@ -391,7 +401,7 @@ class ESP32TransceiverIEEE802_15_4 {
   static void default_receive_packet_task(void* pvParameters);
   void (*receive_packet_task)(void* pvParameters) = default_receive_packet_task;
   int receive_msg_buffer_size = sizeof(frame_data_t) + 4;
-
+  uint32_t ack_timeout_us = (2016 * 16);
   esp_err_t transmit_frame(Frame* frame);
 
   void onRxDone(uint8_t* frame, esp_ieee802154_frame_info_t* frame_info);

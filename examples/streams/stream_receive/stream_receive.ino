@@ -10,7 +10,7 @@
 
 #define TAG "STREAM_RECEIVE"
 const channel_t channel = channel_t::CHANNEL_11;
-Address local({0xAB, 0xCF});  // Different from sender
+Address local({0xAB, 0xCD});  // Different from sender
 ESP32TransceiverIEEE802_15_4 transceiver(channel, 0x1234, local);
 ieee802154::ESP32TransceiverStream stream(transceiver);
 

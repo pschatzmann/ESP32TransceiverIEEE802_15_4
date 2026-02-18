@@ -47,7 +47,8 @@ bool ESP32TransceiverIEEE802_15_4::begin() {
   }
 
   // Create message buffer
-  ESP_LOGI(TAG, "Creating message buffer of size %d bytes", receive_msg_buffer_size);
+  ESP_LOGI(TAG, "Creating message buffer of size %d bytes",
+           receive_msg_buffer_size);
   message_buffer = xMessageBufferCreate(receive_msg_buffer_size);
   if (!message_buffer) {
     ESP_LOGE(TAG, "Failed to create message buffer");
@@ -127,6 +128,10 @@ bool ESP32TransceiverIEEE802_15_4::begin() {
     return false;
   }
 
+  if (esp_ieee802154_set_ack_timeout(ack_timeout_us) != ESP_OK) {
+    ESP_LOGW(TAG, "Failed to set ACK timeout: %d", ack_timeout_us);
+  }
+
   // Start receive task
   if (receive_packet_task != nullptr) {
     if (xTaskCreate(receive_packet_task, "RX", 1024 * 5, this, 5,
@@ -136,8 +141,12 @@ bool ESP32TransceiverIEEE802_15_4::begin() {
       return false;
     }
   }
+  ESP_LOGI(TAG,
+           "IEEE 802.15.4 transceiver initialized on channel %d with PAN ID "
+           "0x%04X and address %s",
+           channel, panID, local_address.to_str());
+
   is_active = true;
-  ESP_LOGI(TAG, "IEEE 802.15.4 transceiver initialized on channel %d", channel);
   return true;
 }
 
@@ -204,7 +213,8 @@ esp_err_t ESP32TransceiverIEEE802_15_4::transmit_frame(Frame* frame) {
   // Transmit frame
   ret = esp_ieee802154_transmit(transmit_buffer, false);
   if (ret != ESP_OK) {
-    ESP_LOGE(TAG, "Failed to transmit %d frame: %d", frame->sequenceNumber, ret);
+    ESP_LOGE(TAG, "Failed to transmit %d frame: %d", frame->sequenceNumber,
+             ret);
     return ret;
   }
 
@@ -214,8 +224,8 @@ esp_err_t ESP32TransceiverIEEE802_15_4::transmit_frame(Frame* frame) {
 }
 
 bool ESP32TransceiverIEEE802_15_4::send(uint8_t* data, size_t len) {
-  ESP_LOGI(TAG, "Sending frame %d on channel %d to address %s, len: %d", frame.sequenceNumber, channel,
-           destination_address.to_str(), len);
+  ESP_LOGI(TAG, "Sending frame %d on channel %d to address %s, len: %d",
+           frame.sequenceNumber, channel, destination_address.to_str(), len);
   frame.fcf = frame_control_field;
   frame.setPAN(panID);                    // Ensure PAN ID is set and compressed
   frame.setSourceAddress(local_address);  // Ensure source address is set
@@ -226,8 +236,9 @@ bool ESP32TransceiverIEEE802_15_4::send(uint8_t* data, size_t len) {
 }
 
 bool ESP32TransceiverIEEE802_15_4::send(Frame& frame) {
-  ESP_LOGI(TAG, "Sending frame %d on channel %d to address %s, len: %d", frame.sequenceNumber, channel,
-           destination_address.to_str(), frame.payloadLen);
+  ESP_LOGI(TAG, "Sending frame %d on channel %d to address %s, len: %d",
+           frame.sequenceNumber, channel, destination_address.to_str(),
+           frame.payloadLen);
   // Ensure PAN ID, source, and destination addresses are set
   if (frame.destPanId == 0) {
     frame.setPAN(panID);
@@ -286,9 +297,9 @@ void ESP32TransceiverIEEE802_15_4::setReceiveBufferSize(int size) {
 
 void ESP32TransceiverIEEE802_15_4::onRxDone(
     uint8_t* frame, esp_ieee802154_frame_info_t* frame_info) {
-    ESP_LOGD(TAG, "Received frame with length %d, RSSI: %d, LQI: %d", frame[0],
-             frame_info->rssi, frame_info->lqi);
-      if (!message_buffer) {
+  ESP_LOGD(TAG, "Received frame with length %d, RSSI: %d, LQI: %d", frame[0],
+           frame_info->rssi, frame_info->lqi);
+  if (!message_buffer) {
     ESP_LOGE(TAG, "Message buffer not initialized, dropping packet");
     esp_ieee802154_receive_handle_done(frame);
     return;
@@ -309,14 +320,13 @@ void ESP32TransceiverIEEE802_15_4::onRxDone(
     ESP_LOGW(TAG, "Message buffer full, packet discarded");
   }
 
-  if (esp_ieee802154_receive_handle_done(frame)!=ESP_OK) {
+  if (esp_ieee802154_receive_handle_done(frame) != ESP_OK) {
     ESP_LOGE(TAG, "Failed to handle receive done");
   }
 
   if (higher_priority_task_woken) {
     portYIELD_FROM_ISR(higher_priority_task_woken);
   }
-
 }
 
 bool ESP32TransceiverIEEE802_15_4::setTxDoneCallback(

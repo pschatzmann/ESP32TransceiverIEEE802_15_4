@@ -9,7 +9,7 @@
 
 #define TAG "STREAM_SEND"
 const channel_t channel = channel_t::CHANNEL_11;
-Address local({0xAB, 0xCE});
+Address local({0xAB, 0xCF});
 ESP32TransceiverIEEE802_15_4 transceiver(channel, 0x1234, local);
 ieee802154::ESP32TransceiverStream stream(transceiver);
 
@@ -32,7 +32,9 @@ void setup() {
 
   FrameControlField fcf;
   fcf.ackRequest = true;
-  stream.begin(fcf);
+  stream.setFrameControlField(fcf);
+  stream.setDestinationAddress(Address({0xAB, 0xCD}));  // Different from sender
+  stream.begin();
 
   startTime = millis();
   Serial.println("Started");

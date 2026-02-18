@@ -24,6 +24,23 @@ class ESP32TransceiverStream : public Stream {
   }
 
   /**
+   * @brief Set the Frame Control Field (FCF) for outgoing frames.
+   * @param fcf The frame control field structure to use.
+   * @note This method must be called before begin() to take effect!
+   */
+  void setFrameControlField(const FrameControlField& fcf) {
+    transceiver.setFrameControlField(fcf);
+  }
+
+  /**
+   * @brief Set the destination address for the stream.
+   * @param address The destination address.
+   */
+  void setDestinationAddress(const Address& address) {
+    transceiver.setDestinationAddress(address);
+  }
+
+  /**
    * @brief Initialize the stream and underlying transceiver.
    * @return True on success, false otherwise.
    */
@@ -33,7 +50,7 @@ class ESP32TransceiverStream : public Stream {
     transceiver.setReceiveTask(nullptr);
     transceiver.setReceiveBufferSize(
         receive_msg_buffer_size);  // Set default message buffer size
-    setRxBufferSize(1024);    
+    setRxBufferSize(1024);
     transceiver.setTxDoneCallback(ieee802154_transceiver_tx_done_callback,
                                   this);
     transceiver.setTxFailedCallback(ieee802154_transceiver_tx_failed_callback,
