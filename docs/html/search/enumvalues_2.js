@@ -15,5 +15,7 @@ var searchData=
   ['channel_5f23_12',['CHANNEL_23',['../namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea0137c9d054402b7aceaaa3636c5f0abb',1,'ieee802154']]],
   ['channel_5f24_13',['CHANNEL_24',['../namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea017f2002d374f64bc3969b7d75584fc2',1,'ieee802154']]],
   ['channel_5f25_14',['CHANNEL_25',['../namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2eafd15adcc1184a4ec694419461938a0f0',1,'ieee802154']]],
-  ['channel_5f26_15',['CHANNEL_26',['../namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea7a22694f681746c5e514afac2616d733',1,'ieee802154']]]
+  ['channel_5f26_15',['CHANNEL_26',['../namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea7a22694f681746c5e514afac2616d733',1,'ieee802154']]],
+  ['confirmation_5ferror_16',['CONFIRMATION_ERROR',['../classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259caf4ab8df7a976ec56f8832db428c9effd',1,'ieee802154::ESP32TransceiverStream']]],
+  ['confirmation_5freceived_17',['CONFIRMATION_RECEIVED',['../classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259cab7360af1fbce59907d04186d5c9d368a',1,'ieee802154::ESP32TransceiverStream']]]
 ];

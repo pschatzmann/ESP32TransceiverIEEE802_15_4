@@ -84,12 +84,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1Address.html">Address</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">IEEE 802.15.4 <a class="el" href="classieee802154_1_1Address.html" title="IEEE 802.15.4 Address abstraction.">Address</a> abstraction.  <a href="classieee802154_1_1Address.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1Buffer.html">Buffer</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple byte buffer for storing frame data.  <a href="classieee802154_1_1Buffer.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1BufferRTOS.html">BufferRTOS</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classieee802154_1_1Buffer.html" title="Simple byte buffer for storing frame data.">Buffer</a> implementation which is using a FreeRTOS StreamBuffer.  <a href="classieee802154_1_1BufferRTOS.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html">ESP32TransceiverIEEE802_15_4</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class to manage an IEEE 802.15.4 transceiver using the ESP-IDF API. On the sending side we support broadcast and direct addressing. On the receiving side we support promiscuous mode, and reveiving only frames that are destinated to the device or broadcast frames.  <a href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -104,6 +98,9 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1FrameControlField.html">FrameControlField</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">IEEE 802.15.4 <a class="el" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure.">Frame</a> Control Field (FCF) structure Bit fields are ordered LSB to MSB to match IEEE 802.15.4 specification.  <a href="structieee802154_1_1FrameControlField.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1RingBuffer.html">RingBuffer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Efficient ring buffer for storing frame data.  <a href="classieee802154_1_1RingBuffer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -127,25 +124,27 @@ Typedefs</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:a3ad96a1cb3e35bcf3516f74897a78f2e" id="r_a3ad96a1cb3e35bcf3516f74897a78f2e"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2e">channel_t</a> : uint8_t { <br />
-&#160;&#160;<a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea76d6f728b7cd3ca36ac680495274a1fc">CHANNEL_11</a> = 11
+&#160;&#160;<a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea0db45d2a4141101bdfe48e3314cfbca3">UNDEFINED</a> = 0
+, <a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea76d6f728b7cd3ca36ac680495274a1fc">CHANNEL_11</a> = 11
 , <a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea646d1ebe4695af06f92a77fa5438909a">CHANNEL_12</a> = 12
 , <a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea3f448d314f1e24aa08eb32d32f0dd3f8">CHANNEL_13</a> = 13
-, <a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea1ed2117a2856bc47508f8083946b1962">CHANNEL_14</a> = 14
 , <br />
-&#160;&#160;<a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea0cf26229b7ef6396afa89f1044cefcff">CHANNEL_15</a> = 15
+&#160;&#160;<a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea1ed2117a2856bc47508f8083946b1962">CHANNEL_14</a> = 14
+, <a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea0cf26229b7ef6396afa89f1044cefcff">CHANNEL_15</a> = 15
 , <a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea6cb5256ae7ffb14bd14207d6a33e7a51">CHANNEL_16</a> = 16
 , <a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea8a6c450233ffbcae47c9300db9d64d26">CHANNEL_17</a> = 17
-, <a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea178a2500739f36d17c3fc36b21407aef">CHANNEL_18</a> = 18
 , <br />
-&#160;&#160;<a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea9893c44288b8ea48de879012486145e6">CHANNEL_19</a> = 19
+&#160;&#160;<a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea178a2500739f36d17c3fc36b21407aef">CHANNEL_18</a> = 18
+, <a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea9893c44288b8ea48de879012486145e6">CHANNEL_19</a> = 19
 , <a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2eabc3bdc5bc53b61c4f2378cebedc935f0">CHANNEL_20</a> = 20
 , <a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea97a37459a0b444540a9abdae56607f2e">CHANNEL_21</a> = 21
-, <a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2eabf1d7a0c388f456c16679adc32759d19">CHANNEL_22</a> = 22
 , <br />
-&#160;&#160;<a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea0137c9d054402b7aceaaa3636c5f0abb">CHANNEL_23</a> = 23
+&#160;&#160;<a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2eabf1d7a0c388f456c16679adc32759d19">CHANNEL_22</a> = 22
+, <a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea0137c9d054402b7aceaaa3636c5f0abb">CHANNEL_23</a> = 23
 , <a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea017f2002d374f64bc3969b7d75584fc2">CHANNEL_24</a> = 24
 , <a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2eafd15adcc1184a4ec694419461938a0f0">CHANNEL_25</a> = 25
-, <a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea7a22694f681746c5e514afac2616d733">CHANNEL_26</a> = 26
+, <br />
+&#160;&#160;<a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea7a22694f681746c5e514afac2616d733">CHANNEL_26</a> = 26
 <br />
  }</td></tr>
 <tr class="memdesc:a3ad96a1cb3e35bcf3516f74897a78f2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum for IEEE 802.15.4 channel numbers (11-26).  <a href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2e">More...</a><br /></td></tr>
@@ -361,7 +360,8 @@ Variables</h2></td></tr>
 
 <p>Enum for IEEE 802.15.4 channel numbers (11-26). </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a3ad96a1cb3e35bcf3516f74897a78f2ea76d6f728b7cd3ca36ac680495274a1fc" name="a3ad96a1cb3e35bcf3516f74897a78f2ea76d6f728b7cd3ca36ac680495274a1fc"></a>CHANNEL_11&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a3ad96a1cb3e35bcf3516f74897a78f2ea0db45d2a4141101bdfe48e3314cfbca3" name="a3ad96a1cb3e35bcf3516f74897a78f2ea0db45d2a4141101bdfe48e3314cfbca3"></a>UNDEFINED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3ad96a1cb3e35bcf3516f74897a78f2ea76d6f728b7cd3ca36ac680495274a1fc" name="a3ad96a1cb3e35bcf3516f74897a78f2ea76d6f728b7cd3ca36ac680495274a1fc"></a>CHANNEL_11&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a3ad96a1cb3e35bcf3516f74897a78f2ea646d1ebe4695af06f92a77fa5438909a" name="a3ad96a1cb3e35bcf3516f74897a78f2ea646d1ebe4695af06f92a77fa5438909a"></a>CHANNEL_12&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a3ad96a1cb3e35bcf3516f74897a78f2ea3f448d314f1e24aa08eb32d32f0dd3f8" name="a3ad96a1cb3e35bcf3516f74897a78f2ea3f448d314f1e24aa08eb32d32f0dd3f8"></a>CHANNEL_13&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a3ad96a1cb3e35bcf3516f74897a78f2ea1ed2117a2856bc47508f8083946b1962" name="a3ad96a1cb3e35bcf3516f74897a78f2ea1ed2117a2856bc47508f8083946b1962"></a>CHANNEL_14&#160;</td><td class="fielddoc"></td></tr>

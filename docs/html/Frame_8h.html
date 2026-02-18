@@ -89,26 +89,29 @@ $(function() {
 <code>#include &lt;cstring&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;esp_assert.h&quot;</code><br />
+<code>#include &quot;esp_ieee802154.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Frame.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="Frame_8h__incl.png" border="0" usemap="#asrc_2Frame_8h" alt=""/></div>
 <map name="asrc_2Frame_8h" id="asrc_2Frame_8h">
-<area shape="rect" title=" " alt="" coords="288,5,387,31"/>
+<area shape="rect" title=" " alt="" coords="332,5,431,31"/>
 <area shape="rect" title=" " alt="" coords="5,79,88,104"/>
-<area shape="poly" title=" " alt="" coords="291,33,102,79,101,74,290,28"/>
+<area shape="poly" title=" " alt="" coords="332,32,102,81,101,76,331,27"/>
 <area shape="rect" title=" " alt="" coords="112,79,187,104"/>
-<area shape="poly" title=" " alt="" coords="308,33,194,76,192,71,306,28"/>
+<area shape="poly" title=" " alt="" coords="345,33,201,77,199,72,343,28"/>
 <area shape="rect" title=" " alt="" coords="211,79,282,104"/>
-<area shape="poly" title=" " alt="" coords="324,33,274,72,271,68,321,29"/>
+<area shape="poly" title=" " alt="" coords="361,33,282,74,280,70,358,28"/>
 <area shape="rect" title=" " alt="" coords="307,79,368,104"/>
-<area shape="poly" title=" " alt="" coords="340,31,340,65,335,65,335,31"/>
+<area shape="poly" title=" " alt="" coords="376,32,354,68,349,66,372,30"/>
 <area shape="rect" title=" " alt="" coords="392,79,459,104"/>
-<area shape="poly" title=" " alt="" coords="353,29,402,68,399,72,350,33"/>
+<area shape="poly" title=" " alt="" coords="391,30,413,66,409,68,386,32"/>
 <area shape="rect" title=" " alt="" coords="483,79,546,104"/>
-<area shape="poly" title=" " alt="" coords="367,28,474,71,472,76,365,33"/>
+<area shape="poly" title=" " alt="" coords="404,28,482,70,480,74,402,33"/>
 <area shape="rect" title=" " alt="" coords="571,79,675,104"/>
-<area shape="poly" title=" " alt="" coords="384,28,564,73,563,78,383,33"/>
+<area shape="poly" title=" " alt="" coords="421,28,571,72,569,77,419,33"/>
+<area shape="rect" title=" " alt="" coords="699,79,839,104"/>
+<area shape="poly" title=" " alt="" coords="431,26,694,73,693,79,430,31"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -141,6 +144,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html">ieee802154::Frame</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">IEEE 802.15.4 MAC frame structure.  <a href="structieee802154_1_1Frame.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1frame__data__t.html">ieee802154::frame_data_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure to hold frame data and frame info.  <a href="structieee802154_1_1frame__data__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -157,6 +163,8 @@ Macros</h2></td></tr>
 <tr class="separator:ae8444bdafb1cf81f2a5d9ef564ba9b58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b88652a7a46d34ecac46b673d6b8d57" id="r_a5b88652a7a46d34ecac46b673d6b8d57"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Frame_8h.html#a5b88652a7a46d34ecac46b673d6b8d57">IEEE802154_RSSI_LQI_SIZE</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:a5b88652a7a46d34ecac46b673d6b8d57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae480dcd4682b4ad7442fdd1db297083e" id="r_ae480dcd4682b4ad7442fdd1db297083e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Frame_8h.html#ae480dcd4682b4ad7442fdd1db297083e">MAX_FRAME_LEN</a>&#160;&#160;&#160;128</td></tr>
+<tr class="separator:ae480dcd4682b4ad7442fdd1db297083e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -238,6 +246,20 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define IEEE802154_RSSI_LQI_SIZE&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae480dcd4682b4ad7442fdd1db297083e" name="ae480dcd4682b4ad7442fdd1db297083e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae480dcd4682b4ad7442fdd1db297083e">&#9670;&#160;</a></span>MAX_FRAME_LEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_FRAME_LEN&#160;&#160;&#160;128</td>
         </tr>
       </table>
 </div><div class="memdoc">

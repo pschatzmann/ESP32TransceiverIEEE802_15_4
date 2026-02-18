@@ -18,6 +18,7 @@ var searchData=
   ['channel_5f25_15',['CHANNEL_25',['../namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2eafd15adcc1184a4ec694419461938a0f0',1,'ieee802154']]],
   ['channel_5f26_16',['CHANNEL_26',['../namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea7a22694f681746c5e514afac2616d733',1,'ieee802154']]],
   ['channel_5ft_17',['channel_t',['../namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2e',1,'ieee802154']]],
-  ['clear_18',['clear',['../classieee802154_1_1Buffer.html#a9d4167ebfeb198f3239836b8dec1b286',1,'ieee802154::Buffer::clear()'],['../classieee802154_1_1Buffer.html#a430434af9f96ac10186df01f48f3e350',1,'ieee802154::Buffer::clear(int n)']]],
-  ['current_5fsize_5fbytes_19',['current_size_bytes',['../classieee802154_1_1BufferRTOS.html#acd890ee62aea5466bd23c587d74c08c0',1,'ieee802154::BufferRTOS']]]
+  ['clear_18',['clear',['../classieee802154_1_1RingBuffer.html#a8ad0524ac34b9a4606876ca6a4e7546a',1,'ieee802154::RingBuffer']]],
+  ['confirmation_5ferror_19',['CONFIRMATION_ERROR',['../classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259caf4ab8df7a976ec56f8832db428c9effd',1,'ieee802154::ESP32TransceiverStream']]],
+  ['confirmation_5freceived_20',['CONFIRMATION_RECEIVED',['../classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259cab7360af1fbce59907d04186d5c9d368a',1,'ieee802154::ESP32TransceiverStream']]]
 ];

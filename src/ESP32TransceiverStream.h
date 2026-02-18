@@ -41,6 +41,38 @@ class ESP32TransceiverStream : public Stream {
   }
 
   /**
+   * @brief  Set the time in us to wait for the ack frame.
+   *
+   * @param[in]  timeout  The time to wait for the ack frame, in us.
+   *                      It Should be a multiple of 16.
+   */
+  void setAckTimeout(uint32_t timeout_us) {
+    transceiver.setAckTimeout(timeout_us);
+  }
+  /**
+   * @brief Set the size of the receive buffer. This defines how many bytes
+   * we can get by calling readBytes();
+   * @param size New size of the receive buffer.
+   */
+  void setRxBufferSize(size_t size) { rx_buffer.resize(size); }
+
+  /**
+   * @brief Set the size of the message buffer used for receiving frames.
+   * @param size New size of the message buffer in bytes.
+   * @note This method must be called before begin() to take effect.
+   */
+  void setRxMessageBufferSize(int size) {
+    receive_msg_buffer_size = size;
+    transceiver.setReceiveBufferSize(size);
+  }
+
+  /**
+   * @brief Set the delay between send retries.
+   * @param delay_ms Delay in milliseconds.
+   */
+  void setSendRetryDelay(int delay_ms) { send_retry_delay_ms = delay_ms; }
+
+  /**
    * @brief Initialize the stream and underlying transceiver.
    * @return True on success, false otherwise.
    */
@@ -178,7 +210,7 @@ class ESP32TransceiverStream : public Stream {
 
       // on error retry sending the same frame
       if (send_confirmation_state == CONFIRMATION_ERROR) {
-        ESP_LOGI(TAG, "Send failed, retrying..." );
+        ESP_LOGI(TAG, "Send failed, retrying...");
         delay(send_retry_delay_ms);  // Short delay before retrying if needed
       } else {
         transceiver.incrementSequenceNumber(1);
@@ -186,29 +218,6 @@ class ESP32TransceiverStream : public Stream {
       ++attempt;
     } while (send_confirmation_state == CONFIRMATION_ERROR);
   }
-
-  /**
-   * @brief Set the size of the receive buffer. This defines how many bytes
-   * we can get by calling readBytes();
-   * @param size New size of the receive buffer.
-   */
-  void setRxBufferSize(size_t size) { rx_buffer.resize(size); }
-
-  /**
-   * @brief Set the size of the message buffer used for receiving frames.
-   * @param size New size of the message buffer in bytes.
-   * @note This method must be called before begin() to take effect.
-   */
-  void setRxMessageBufferSize(int size) {
-    receive_msg_buffer_size = size;
-    transceiver.setReceiveBufferSize(size);
-  }
-
-  /**
-   * @brief Set the delay between send retries.
-   * @param delay_ms Delay in milliseconds.
-   */
-  void setSendRetryDelay(int delay_ms) { send_retry_delay_ms = delay_ms; }
 
  protected:
   static constexpr const char* TAG = "ESP32TransceiverStream";
