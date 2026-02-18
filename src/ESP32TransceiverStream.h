@@ -191,34 +191,18 @@ class ESP32TransceiverStream : public Stream {
    */
   void flush() override {
     // get data from buffer
-    uint8_t tmp[tx_buffer.available()];
-    int len = tx_buffer.readArray(tmp, tx_buffer.available());
-
-    // send frame
-    int attempt = 0;
-    do {
-      send_confirmation_state = isSendConfirmations() ? WAITING_FOR_CONFIRMATION
-                                                      : CONFIRMATION_RECEIVED;
-      ESP_LOGD(TAG, "Attempt %d: Sending frame, len: %d", attempt, len);
-      if (!transceiver.send(tmp, len)) {
-        ESP_LOGE(TAG, "Failed to send frame: size %d", len);
-        send_confirmation_state = CONFIRMATION_ERROR;
-      }
-      // wait for confirmations
-      while (send_confirmation_state == WAITING_FOR_CONFIRMATION) {
-        delay(10);
-      }
-
-      // on error retry sending the same frame
-      if (send_confirmation_state == CONFIRMATION_ERROR) {
-        ESP_LOGI(TAG, "Send failed, retrying...");
-        delay(send_retry_delay_ms);  // Short delay before retrying if needed
-      } else {
-        transceiver.incrementSequenceNumber(1);
-      }
-      ++attempt;
-    } while (send_confirmation_state == CONFIRMATION_ERROR);
+    if (isSendConfirmations()) {
+      sendWithConfirmations();
+    } else {
+      sendWithoutConfirmations();
+    }
   }
+
+  /**
+   * @brief Set the delay after sending a frame when confirmations are not used.
+   * @param delay_ms Delay in milliseconds.
+   */
+  void setSendDelayOnNoConfirmations(int delay_ms) { send_delay_ms = delay_ms; }
 
  protected:
   static constexpr const char* TAG = "ESP32TransceiverStream";
@@ -241,6 +225,8 @@ class ESP32TransceiverStream : public Stream {
   bool is_send_confirations_enabled = false;
   int send_retry_delay_ms = 50;  // Delay between retries in milliseconds
   int last_seq = -1;
+  int send_delay_ms =
+      500;  // Delay after sending a frame when confirmations are not used
 
   bool isSendConfirmations() { return fcf.ackRequest == 1; }
 
@@ -310,6 +296,53 @@ class ESP32TransceiverStream : public Stream {
     delay(5);
 
     return true;
+  }
+
+  /**
+   * @brief Internal method to send a frame with confirmation handling.
+   * Retries sending the frame if confirmation fails, with a delay between attempts.
+   */
+  void sendWithConfirmations() {
+    uint8_t tmp[tx_buffer.available()];
+    int len = tx_buffer.readArray(tmp, tx_buffer.available());
+    // send frame
+    int attempt = 0;
+    do {
+      send_confirmation_state = isSendConfirmations() ? WAITING_FOR_CONFIRMATION
+                                                      : CONFIRMATION_RECEIVED;
+      ESP_LOGD(TAG, "Attempt %d: Sending frame, len: %d", attempt, len);
+      if (!transceiver.send(tmp, len)) {
+        ESP_LOGE(TAG, "Failed to send frame: size %d", len);
+        send_confirmation_state = CONFIRMATION_ERROR;
+      }
+      // wait for confirmations
+      while (send_confirmation_state == WAITING_FOR_CONFIRMATION) {
+        delay(10);
+      }
+
+      // on error retry sending the same frame
+      if (send_confirmation_state == CONFIRMATION_ERROR) {
+        ESP_LOGI(TAG, "Send failed, retrying...");
+        delay(send_retry_delay_ms);  // Short delay before retrying if needed
+      } else {
+        transceiver.incrementSequenceNumber(1);
+      }
+      ++attempt;
+    } while (send_confirmation_state == CONFIRMATION_ERROR);
+  }
+
+  /**
+   * @brief Internal method to send a frame without waiting for confirmations.
+   * Adds a delay after sending to allow the transceiver to process the frame.
+   */
+  void sendWithoutConfirmations() {
+    uint8_t tmp[tx_buffer.available()];
+    int len = tx_buffer.readArray(tmp, tx_buffer.available());
+    ESP_LOGD(TAG, "Sending frame, len: %d", len);
+    if (!transceiver.send(tmp, len)) {
+      ESP_LOGE(TAG, "Failed to send frame: size %d", len);
+    }
+    delay(send_delay_ms);
   }
 
   /**

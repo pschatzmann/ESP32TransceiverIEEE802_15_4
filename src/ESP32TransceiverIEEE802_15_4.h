@@ -363,7 +363,7 @@ class ESP32TransceiverIEEE802_15_4 {
   void incrementSequenceNumber(int n = 1) {
     frame.sequenceNumber += n;
     // Ensure the sequence number wraps around at 255
-    frame.sequenceNumber = frame.sequenceNumber % 256
+    frame.sequenceNumber = frame.sequenceNumber % 256;
   }
 
   /**
