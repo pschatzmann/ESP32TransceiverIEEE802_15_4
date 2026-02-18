@@ -34,6 +34,12 @@ bool ESP32TransceiverIEEE802_15_4::begin() {
     return true;
   }
 
+  if (static_cast<uint8_t>(channel) < 11 ||
+      static_cast<uint8_t>(channel) > 26) {
+    ESP_LOGE(TAG, "Invalid channel: %d", channel);
+    return false;
+  }
+
   // Initialize NVS flash
   ret = nvs_flash_init();
   if (ret == ESP_ERR_NVS_NO_FREE_PAGES ||
@@ -99,7 +105,7 @@ bool ESP32TransceiverIEEE802_15_4::begin() {
   }
 
   ret = esp_ieee802154_set_channel(static_cast<uint8_t>(channel));
-  ESP_LOGI(TAG, "Setting channel to %d", (int) channel);
+  ESP_LOGI(TAG, "Setting channel to %d", (int)channel);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to set channel %d: %d", channel, ret);
     end();
@@ -183,48 +189,26 @@ bool ESP32TransceiverIEEE802_15_4::setRxCallback(
 }
 
 // Internal: Transmit an IEEE 802.15.4 frame
-esp_err_t ESP32TransceiverIEEE802_15_4::transmit_channel(Frame* frame,
-                                                         int8_t channel,
-                                                         bool change_channel) {
+esp_err_t ESP32TransceiverIEEE802_15_4::transmit_frame(Frame* frame) {
+  esp_err_t ret;
+
   if (!is_active) {
     ESP_LOGE(TAG, "Transceiver is not active");
     return ESP_ERR_INVALID_STATE;
   }
-
-  bool verbose = false;
-  esp_err_t ret;
 
   if (!frame) {
     ESP_LOGE(TAG, "Invalid frame pointer");
     return ESP_ERR_INVALID_ARG;
   }
 
-  if (change_channel) {
-    if (channel < 11 || channel > 26) {
-      ESP_LOGE(TAG, "Invalid channel: %d", channel);
-      return ESP_ERR_INVALID_ARG;
-    }
-  }
-
   // Prepare buffer
   memset(transmit_buffer, 0, MAX_FRAME_LEN);  // Clear
-
   // Build frame into a byte array
   size_t len = frame->build(transmit_buffer, false);
   if (len == 0) {
     ESP_LOGE(TAG, "Failed to build frame");
     return ESP_FAIL;
-  }
-  // ESP_LOGI(TAG, "len: %d, buffer[0]: %d", len, buffer[0]);
-  // ESP_LOG_BUFFER_HEX(TAG, buffer, buffer[0]);
-
-  if (change_channel) {
-    // Set channel
-    ret = esp_ieee802154_set_channel(channel);
-    if (ret != ESP_OK) {
-      ESP_LOGE(TAG, "Failed to set channel %d: %d", channel, ret);
-      return ret;
-    }
   }
 
   // Transmit frame
@@ -234,35 +218,39 @@ esp_err_t ESP32TransceiverIEEE802_15_4::transmit_channel(Frame* frame,
     return ret;
   }
 
-  if (verbose) {
-    if (change_channel)
-      ESP_LOGI(TAG, "Transmitted frame of %zu bytes on channel %d", len,
-               channel);
-    else
-      ESP_LOGI(TAG, "Transmitted frame of %zu bytes", len);
-  }
   // Increment sequence number for next transmission
   frame->sequenceNumber++;
   return ESP_OK;
 }
 
 bool ESP32TransceiverIEEE802_15_4::send(uint8_t* data, size_t len) {
-  return send(channel, data, len);
-}
-
-bool ESP32TransceiverIEEE802_15_4::send(channel_t toChannel, uint8_t* data,
-                                        size_t len) {
-
-  ESP_LOGI(TAG, "Sending frame on channel %d to address %s, len: %d", toChannel, destination_address.to_str(), len);
+  ESP_LOGI(TAG, "Sending frame on channel %d to address %s, len: %d", toChannel,
+           destination_address.to_str(), len);
   frame.fcf = frame_control_field;
   frame.setPAN(panID);                    // Ensure PAN ID is set and compressed
   frame.setSourceAddress(local_address);  // Ensure source address is set
   frame.setDestinationAddress(
       destination_address);  // Ensure destination address is set
   frame.setPayload(data, len);
-  return transmit_channel(&frame, static_cast<int8_t>(toChannel), true) ==
-         ESP_OK;
+  return transmit_frame(&frame) == ESP_OK;
 }
+
+bool ESP32TransceiverIEEE802_15_4::send(Frame& frame) {
+  ESP_LOGI(TAG, "Sending frame on channel %d to address %s, len: %d", toChannel,
+           destination_address.to_str(), frame.payloadLen);
+  // Ensure PAN ID, source, and destination addresses are set
+  if (frame.destPanId == 0) {
+    frame.setPAN(panID);
+  }
+  if (frame.srcAddrLen == 0) {
+    frame.setSourceAddress(local_address);
+  }
+  if (frame.destAddrLen == 0) {
+    frame.setDestinationAddress(destination_address);
+  }
+  return transmit_frame(&frame) == ESP_OK;
+}
+
 
 bool ESP32TransceiverIEEE802_15_4::setChannel(channel_t channel) {
   if (static_cast<uint8_t>(channel) < 11 ||
@@ -271,20 +259,25 @@ bool ESP32TransceiverIEEE802_15_4::setChannel(channel_t channel) {
     return ESP_ERR_INVALID_ARG;
   }
 
-  esp_err_t ret;
+  this->channel = channel;
 
-  // Set channel
-  ret = esp_ieee802154_set_channel(static_cast<uint8_t>(channel));
-  if (ret != ESP_OK) {
-    ESP_LOGE(TAG, "Failed to set channel %d: %d", channel, ret);
-    return false;
-  }
+  // If radio is active, change channel immediately
+  if (radio_enabled) {
+    esp_err_t ret;
 
-  // Start receiving
-  ret = esp_ieee802154_receive();
-  if (ret != ESP_OK) {
-    ESP_LOGE(TAG, "Failed to start receiving: %d", ret);
-    return false;
+    // Set channel
+    ret = esp_ieee802154_set_channel(static_cast<uint8_t>(channel));
+    if (ret != ESP_OK) {
+      ESP_LOGE(TAG, "Failed to set channel %d: %d", channel, ret);
+      return false;
+    }
+
+    // Start receiving
+    ret = esp_ieee802154_receive();
+    if (ret != ESP_OK) {
+      ESP_LOGE(TAG, "Failed to start receiving: %d", ret);
+      return false;
+    }
   }
 
   // ESP_LOGI(TAG, "Channel set to %d", channel);
@@ -405,7 +398,7 @@ void receive_packet_task(void* pvParameters) {
     // Invoke callback if set
     ESP32TransceiverIEEE802_15_4* self = pt_transceiver;
     if (self && self->rx_callback_) {
-      //self->frame = frame;  // Update frame info for callback
+      // self->frame = frame;  // Update frame info for callback
       self->rx_callback_(frame, packet.frame_info,
                          self->rx_callback_user_data_);
     }

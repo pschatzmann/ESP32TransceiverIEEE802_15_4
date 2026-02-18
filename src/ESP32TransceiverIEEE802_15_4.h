@@ -4,8 +4,6 @@
 #include "Arduino.h"
 #endif
 
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 #include <esp_ieee802154.h>
 #include <esp_log.h>
 #include <stdint.h>
@@ -13,6 +11,8 @@
 #include "Frame.h"  // From shoderico/ieee802154_frame
 #include "esp_err.h"
 #include "esp_ieee802154.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 #include "nvs_flash.h"
 
 #define MAX_FRAME_LEN 128
@@ -27,6 +27,7 @@ extern ESP32TransceiverIEEE802_15_4* pt_transceiver;
  * @brief Enum for IEEE 802.15.4 channel numbers (11-26).
  */
 enum class channel_t : uint8_t {
+  UNDEFINED = 0,
   CHANNEL_11 = 11,
   CHANNEL_12 = 12,
   CHANNEL_13 = 13,
@@ -223,20 +224,23 @@ class ESP32TransceiverIEEE802_15_4 {
   bool send(uint8_t* data, size_t len);
 
   /**
-   * @brief Transmit an IEEE 802.15.4 frame on a specified channel.
+   * @brief Transmit an IEEE 802.15.4 frame. You need to setup up
+   * all values in the frame object before calling this method. The channel and
+   * destination address will be used from the frame object.
    *
-   * @param channel Channel number (11-26) to use for transmission.
-   * @param data Pointer to payload data to transmit.
-   * @param len Length of the payload data.
+   * @param frame Pointer to the frame to transmit.
    * @return True on success, false on failure.
+   * @note if the the frame frame does not have a PAN, source or destination
+   * address, we will use the information defined in the transceiver object.
    */
-  bool send(channel_t channel, uint8_t* data, size_t len);
+  bool send(Frame& frame);
 
   /**
-   * @brief Set the IEEE 802.15.4 channel.
-   *
+   * @brief Change the IEEE 802.15.4 channel.
    * @param channel Channel number (11-26).
    * @return ESP_OK on success, or an error code on failure.
+   * @note This method can be called at any time to change the channel of the
+   * transceiver.
    */
   bool setChannel(channel_t channel);
 
@@ -257,10 +261,6 @@ class ESP32TransceiverIEEE802_15_4 {
   /**
    * @brief Set the transmit power of the transceiver.
    * @param power Transmit power value to set (in dBm). -24 dBm  to  +20 dBm
-   */
-  /**
-   * @brief Set the transmit power of the transceiver.
-   * @param power Transmit power value to set (in dBm). -24 dBm  to  +20 dBm
    * @return True if the power was set successfully, false otherwise.
    */
   bool setTxPower(int power);
@@ -275,6 +275,7 @@ class ESP32TransceiverIEEE802_15_4 {
    * @brief Set the coordinator mode for the transceiver.
    * @param coordinator True to enable coordinator mode, false to disable.
    * @return True if the mode was set successfully, false otherwise.
+   * @note This method must be called before begin() to take effect!
    */
   bool setCoordinatorActive(bool coordinator);
 
@@ -288,6 +289,7 @@ class ESP32TransceiverIEEE802_15_4 {
    * @brief Set promiscuous mode for the transceiver.
    * @param promiscuous True to enable promiscuous mode, false to disable.
    * @return True if the mode was set successfully, false otherwise.
+   * @note This method must be called before begin() to take effect!
    */
   bool setPromiscuousModeActive(bool promiscuous);
 
@@ -320,6 +322,7 @@ class ESP32TransceiverIEEE802_15_4 {
   /**
    * @brief Set the Frame Control Field (FCF) for outgoing frames.
    * @param fcf The frame control field structure to use.
+   * @note This method must be called before begin() to take effect!
    */
   void setFrameControlField(const FrameControlField& fcf) {
     frame_control_field = fcf;
@@ -339,7 +342,7 @@ class ESP32TransceiverIEEE802_15_4 {
   bool is_active = false;
   // current frame
   Frame frame;
-  channel_t channel = channel_t::CHANNEL_11;
+  channel_t channel = channel_t::UNDEFINED;
   int16_t panID;          // Personal Area Network Identifier
   Address local_address;  // Local address for filtering (0, 2, or 8 bytes)
   Address destination_address = BROADCAST_ADDRESS;
@@ -359,7 +362,7 @@ class ESP32TransceiverIEEE802_15_4 {
   ieee802154_transceiver_sfd_tx_callback_t sfd_tx_callback_ = nullptr;
   void* sfd_tx_callback_user_data_ = nullptr;
 
-  esp_err_t transmit_channel(Frame* frame, int8_t channel, bool change_channel);
+  esp_err_t transmit_frame(Frame* frame);
 
   void onRxDone(uint8_t* frame, esp_ieee802154_frame_info_t* frame_info);
   void onTransmitDone(const uint8_t* frame, const uint8_t* ack,
