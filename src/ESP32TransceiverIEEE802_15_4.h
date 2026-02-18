@@ -15,8 +15,6 @@
 #include "freertos/task.h"
 #include "nvs_flash.h"
 
-#define MAX_FRAME_LEN 128
-
 namespace ieee802154 {
 
 // forward declaration
@@ -335,6 +333,35 @@ class ESP32TransceiverIEEE802_15_4 {
    */
   Frame& getFrame() { return frame; }
 
+  /**
+   * @brief Set a custom FreeRTOS task function for processing received packets.
+   * @param task Pointer to the task function to use for processing received
+   */
+  void setReceiveTask(void (*task)(void* pvParameters)) {
+    receive_packet_task = task;
+  }
+
+  /***
+   * @brief Defines the receive buffer size for incoming frames.
+   * @param size The size of the receive buffer in bytes.
+   * @note This method must be called before begin() to take effect!
+   */
+  void setReceiveBufferSize(int size);
+  /**
+   * @brief Get the FreeRTOS message buffer handle for received frames.
+   * @return StreamBufferHandle_t for the RX message buffer.
+   */
+  StreamBufferHandle_t getMessageBuffer() const { return message_buffer; }
+
+  /**
+   * @brief Increment the sequence number in the current frame by a specified
+   * value.
+   * @param n The value to add to the current sequence number.
+   * @note this is automatically called after each successful transmission, but
+   * you can call it
+   */
+  void incrementSequenceNumber(int n = 1) { frame.sequenceNumber += n; }
+
  protected:
   bool is_promiscuous_mode = false;
   bool is_coordinator = false;
@@ -348,8 +375,8 @@ class ESP32TransceiverIEEE802_15_4 {
   Address destination_address = BROADCAST_ADDRESS;
   FrameControlField frame_control_field{};
   uint8_t transmit_buffer[MAX_FRAME_LEN] = {0};
-  StreamBufferHandle_t message_buffer = NULL;
-  TaskHandle_t rx_task_handle = NULL;
+  StreamBufferHandle_t message_buffer = nullptr;
+  TaskHandle_t rx_task_handle = nullptr;
   bool radio_enabled = false;
   ieee802154_transceiver_rx_callback_t rx_callback_ = nullptr;
   void* rx_callback_user_data_ = nullptr;
@@ -361,6 +388,9 @@ class ESP32TransceiverIEEE802_15_4 {
   void* sfd_callback_user_data_ = nullptr;
   ieee802154_transceiver_sfd_tx_callback_t sfd_tx_callback_ = nullptr;
   void* sfd_tx_callback_user_data_ = nullptr;
+  static void default_receive_packet_task(void* pvParameters);
+  void (*receive_packet_task)(void* pvParameters) = default_receive_packet_task;
+  int receive_msg_buffer_size = sizeof(frame_data_t) + 4;
 
   esp_err_t transmit_frame(Frame* frame);
 

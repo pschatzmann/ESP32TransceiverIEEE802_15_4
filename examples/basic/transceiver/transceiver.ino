@@ -12,6 +12,7 @@
  * - Logs transmission status and received frame details via ESP_LOG
  *
  * Usage:
+ * - Compile with Debug Level Info for detailed logs
  * - Connect 2 supported ESP32 to serial monitor at 115200 baud
  * - Observe logs for transmitted and received frames
  * - Modify payload or frame parameters as needed for your application
@@ -77,7 +78,9 @@ void rx_callback(Frame& frame,
 
 void setup() {
   Serial.begin(115200);
-  while(!Serial);
+  // Short delay to allow serial monitor to connect
+  delay(3000);
+
   ESP_LOGI(TAG, "Starting...");
 
   // Set the receive callback

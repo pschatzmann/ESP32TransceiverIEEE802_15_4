@@ -9,12 +9,15 @@
 #include <vector>
 
 #include "esp_assert.h"
+#include "esp_ieee802154.h"
 
 // Constants
 #define IEEE802154_FCF_SIZE 2
 #define IEEE802154_MAX_ADDR_LEN 8
 #define IEEE802154_PAN_ID_LEN 2
 #define IEEE802154_RSSI_LQI_SIZE 1  // 1 byte for combined RSSI and LQI
+
+#define MAX_FRAME_LEN 128
 
 namespace ieee802154 {
 
@@ -235,6 +238,13 @@ struct Frame {
  protected:
   std::vector<uint8_t> buffer;  // Buffer for building frames
 };
+
+/// Structure to hold frame data and frame info
+struct frame_data_t {
+  uint8_t frame[MAX_FRAME_LEN];            // Raw frame data
+  esp_ieee802154_frame_info_t frame_info;  // Frame info (RSSI, LQI, etc.)
+};
+
 
 // Ensure FCF structure is exactly 2 bytes
 ESP_STATIC_ASSERT(sizeof(FrameControlField) == IEEE802154_FCF_SIZE,
