@@ -219,7 +219,7 @@ esp_err_t ESP32TransceiverIEEE802_15_4::transmit_frame(Frame* frame) {
   }
 
   // Increment sequence number for next transmission
-  incrementSequenceNumber();
+  if (auto_increment_sequence_number) incrementSequenceNumber();
   return ESP_OK;
 }
 

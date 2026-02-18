@@ -363,10 +363,19 @@ class ESP32TransceiverIEEE802_15_4 {
   void incrementSequenceNumber(int n = 1) { frame.sequenceNumber += n; }
 
   /**
+   * @brief Enable or disable automatic incrementing of the sequence number
+   * after each successful transmission.
+   * @param auto_increment True to enable automatic incrementing, false to
+   */
+  void setAutoIncrementSequenceNumber(bool auto_increment) {
+    auto_increment_sequence_number = auto_increment;
+  }
+
+  /**
    * @brief  Set the time in us to wait for the ack frame.
    *
    * @param[in]  timeout  The time to wait for the ack frame, in us.
-   *                      It Should be a multiple of 16. 
+   *                      It Should be a multiple of 16.
    */
   void setAckTimeout(uint32_t timeout_us) {
     ack_timeout_us = timeout_us / 16 * 16;  // Round to nearest multiple of 16
@@ -402,8 +411,9 @@ class ESP32TransceiverIEEE802_15_4 {
   void (*receive_packet_task)(void* pvParameters) = default_receive_packet_task;
   int receive_msg_buffer_size = sizeof(frame_data_t) + 4;
   uint32_t ack_timeout_us = (2016 * 16);
-  esp_err_t transmit_frame(Frame* frame);
+  bool auto_increment_sequence_number = true;
 
+  esp_err_t transmit_frame(Frame* frame);
   void onRxDone(uint8_t* frame, esp_ieee802154_frame_info_t* frame_info);
   void onTransmitDone(const uint8_t* frame, const uint8_t* ack,
                       esp_ieee802154_frame_info_t* ack_frame_info);

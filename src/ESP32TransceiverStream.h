@@ -47,6 +47,7 @@ class ESP32TransceiverStream : public Stream {
   bool begin() {
     is_open_frame = false;
     // use no separate task!
+    transceiver.setAutoIncrementSequenceNumber(false);
     transceiver.setReceiveTask(nullptr);
     transceiver.setReceiveBufferSize(
         receive_msg_buffer_size);  // Set default message buffer size
@@ -177,10 +178,10 @@ class ESP32TransceiverStream : public Stream {
 
       // on error retry sending the same frame
       if (send_confirmation_state == CONFIRMATION_ERROR) {
-        ESP_LOGI(TAG, "Send failed, retrying...");
+        ESP_LOGI(TAG, "Send failed, retrying..." );
         delay(send_retry_delay_ms);  // Short delay before retrying if needed
-        // Decrement sequence number for retry
-        transceiver.incrementSequenceNumber(-1);
+      } else {
+        transceiver.incrementSequenceNumber(1);
       }
       ++attempt;
     } while (send_confirmation_state == CONFIRMATION_ERROR);
