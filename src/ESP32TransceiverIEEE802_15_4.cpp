@@ -421,7 +421,7 @@ void ESP32TransceiverIEEE802_15_4::default_receive_packet_task(
     }
 
     // Short delay to yield CPU
-    vTaskDelay(1 / portTICK_PERIOD_MS);
+    delay(1);
   }
 }
 

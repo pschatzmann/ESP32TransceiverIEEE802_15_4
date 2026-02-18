@@ -78,6 +78,7 @@ class ESP32TransceiverStream : public Stream {
    */
   bool begin() {
     is_open_frame = false;
+    last_seq = -1;
     // use no separate task!
     transceiver.setAutoIncrementSequenceNumber(false);
     transceiver.setReceiveTask(nullptr);
@@ -192,8 +193,8 @@ class ESP32TransceiverStream : public Stream {
     // get data from buffer
     uint8_t tmp[tx_buffer.available()];
     int len = tx_buffer.readArray(tmp, tx_buffer.available());
-    // send frame
 
+    // send frame
     int attempt = 0;
     do {
       send_confirmation_state = isSendConfirmations() ? WAITING_FOR_CONFIRMATION
@@ -239,6 +240,7 @@ class ESP32TransceiverStream : public Stream {
       WAITING_FOR_CONFIRMATION;
   bool is_send_confirations_enabled = false;
   int send_retry_delay_ms = 50;  // Delay between retries in milliseconds
+  int last_seq = -1;
 
   bool isSendConfirmations() { return fcf.ackRequest == 1; }
 
@@ -249,7 +251,6 @@ class ESP32TransceiverStream : public Stream {
    * @return True if a frame was received and processed, false otherwise.
    */
   bool receive() {
-    static int last_seq = -1;
     frame_data_t packet;  // Temporary storage for received frame data
     if (is_open_frame) {
       // We have a pending frame that we haven't processed yet
@@ -266,7 +267,7 @@ class ESP32TransceiverStream : public Stream {
     // get next frame
     size_t read_bytes = 0;
     read_bytes = xMessageBufferReceive(transceiver.getMessageBuffer(), &packet,
-                                       sizeof(frame_data_t), pdMS_TO_TICKS(10));
+                                       sizeof(frame_data_t), pdMS_TO_TICKS(20));
     if (read_bytes != sizeof(frame_data_t)) {
       if (read_bytes != 0) {
         ESP_LOGE(TAG, "Invalid packet size received: %d", read_bytes);

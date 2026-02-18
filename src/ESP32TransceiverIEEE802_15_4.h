@@ -354,13 +354,17 @@ class ESP32TransceiverIEEE802_15_4 {
   StreamBufferHandle_t getMessageBuffer() const { return message_buffer; }
 
   /**
-   * @brief Increment the sequence number in the current frame by a specified
-   * value.
+   * @brief Increment the sequence number in the current frame by a
+   * specified value.
    * @param n The value to add to the current sequence number.
    * @note this is automatically called after each successful transmission, but
    * you can call it
    */
-  void incrementSequenceNumber(int n = 1) { frame.sequenceNumber += n; }
+  void incrementSequenceNumber(int n = 1) {
+    frame.sequenceNumber += n;
+    // Ensure the sequence number wraps around at 255
+    frame.sequenceNumber = frame.sequenceNumber % 256
+  }
 
   /**
    * @brief Enable or disable automatic incrementing of the sequence number
