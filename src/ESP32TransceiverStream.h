@@ -24,6 +24,15 @@ class ESP32TransceiverStream : public Stream {
   }
 
   /**
+   * @brief Set RX when idle mode for the transceiver.
+   * @param rx_when_idle True to enable RX when idle, false to disable.
+   * @return True if the mode was set successfully, false otherwise.
+   */
+  bool setRxWhenIdleActive(bool rx_when_idle){ 
+    return transceiver.setRxWhenIdleActive(rx_when_idle);
+  }
+
+  /**
    * @brief Set the Frame Control Field (FCF) for outgoing frames.
    * @param fcf The frame control field structure to use.
    * @note This method must be called before begin() to take effect!
@@ -59,7 +68,7 @@ class ESP32TransceiverStream : public Stream {
    * @return The acknowledgment timeout in microseconds.
    */
   uint32_t ackTimeoutUs() const { return transceiver.ackTimeoutUs(); }
-  
+
   /**
    * @brief Set the size of the receive buffer. This defines how many bytes
    * we can get by calling readBytes();
@@ -88,6 +97,18 @@ class ESP32TransceiverStream : public Stream {
    * @param count Number of retries.
    */
   void setSendRetryCount(int count) { send_retry_count = count; }
+
+  /**
+   * @brief Enable or disable CCA (Clear Channel Assessment).
+   * @param cca_enabled True to enable CCA (Clear Channel Assessment), false to disable.
+   */
+  void setCCAActive(bool cca_enabled) { transceiver.setCCAActive(cca_enabled); }
+
+  /**
+   * @brief Check if CCA (Clear Channel Assessment) is enabled.
+   * @return True if CCA is enabled, false otherwise.
+   */
+  bool isCCAActive() const { return transceiver.isCCAActive(); }
 
   /**
    * @brief Initialize the stream and underlying transceiver.
@@ -239,6 +260,7 @@ class ESP32TransceiverStream : public Stream {
   int send_delay_ms = 10;
   int last_seq = -1;
   int send_retry_count = 2;
+  esp_ieee802154_tx_error_t last_tx_error = ESP_IEEE802154_TX_ERR_NONE;
 
   bool isSendConfirmations() { return frameControlField().ackRequest == 1; }
 
@@ -345,7 +367,7 @@ class ESP32TransceiverStream : public Stream {
       // on error retry sending the same frame
       switch (send_confirmation_state) {
         case CONFIRMATION_ERROR: {
-          ESP_LOGI(TAG, "Send failed, retrying...");
+          ESP_LOGI(TAG, "Send failed with rc=%d, retrying...", last_tx_error);
           retry--;
           if (retry <= 0) {
             transceiver.incrementSequenceNumber(1);
@@ -365,6 +387,7 @@ class ESP32TransceiverStream : public Stream {
       }
       ++attempt;
     } while (send_confirmation_state == CONFIRMATION_ERROR);
+    delay(send_delay_ms);  // Short delay before retrying if needed
   }
 
   /**
@@ -392,6 +415,7 @@ class ESP32TransceiverStream : public Stream {
     ESP32TransceiverStream& self =
         *static_cast<ESP32TransceiverStream*>(user_data);
     self.send_confirmation_state = CONFIRMATION_RECEIVED;
+    self.last_tx_error = ESP_IEEE802154_TX_ERR_NONE;
   }
 
   /**
@@ -402,6 +426,7 @@ class ESP32TransceiverStream : public Stream {
     ESP32TransceiverStream& self =
         *static_cast<ESP32TransceiverStream*>(user_data);
     self.send_confirmation_state = CONFIRMATION_ERROR;
+    self.last_tx_error = error;
   }
 };
 

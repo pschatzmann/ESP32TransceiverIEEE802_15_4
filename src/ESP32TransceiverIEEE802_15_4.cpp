@@ -211,7 +211,7 @@ esp_err_t ESP32TransceiverIEEE802_15_4::transmit_frame(Frame* frame) {
   }
 
   // Transmit frame
-  ret = esp_ieee802154_transmit(transmit_buffer, false);
+  ret = esp_ieee802154_transmit(transmit_buffer, cca_enabled);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to transmit %d frame: %d", frame->sequenceNumber,
              ret);

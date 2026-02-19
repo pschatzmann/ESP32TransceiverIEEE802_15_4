@@ -327,11 +327,12 @@ class ESP32TransceiverIEEE802_15_4 {
   }
 
   /**
-   * @brief Get a reference to the Frame Control Field (FCF) for outgoing frames.
+   * @brief Get a reference to the Frame Control Field (FCF) for outgoing
+   * frames.
    * @return Reference to the current Frame Control Field structure.
    */
 
-  FrameControlField& frameControlField() { return frame_control_field; }  
+  FrameControlField& frameControlField() { return frame_control_field; }
 
   /***
    * @brief Get a reference to the actual frame object that is used for
@@ -398,6 +399,19 @@ class ESP32TransceiverIEEE802_15_4 {
    */
   uint32_t ackTimeoutUs() const { return ack_timeout_us; }
 
+  /**
+   * @brief Enable or disable CCA (Clear Channel Assessment).
+   * @param cca_enabled True to enable CCA (Clear Channel Assessment), false to
+   * disable.
+   */
+  void setCCAActive(bool cca_enabled) { this->cca_enabled = cca_enabled; }
+
+  /**
+   * @brief Check if CCA (Clear Channel Assessment) is enabled.
+   * @return True if CCA is enabled, false otherwise.
+   */
+  bool isCCAActive() const { return cca_enabled; }
+
  protected:
   bool is_promiscuous_mode = false;
   bool is_coordinator = false;
@@ -429,6 +443,7 @@ class ESP32TransceiverIEEE802_15_4 {
   int receive_msg_buffer_size = sizeof(frame_data_t) + 4;
   uint32_t ack_timeout_us = (2016 * 16);
   bool auto_increment_sequence_number = true;
+  bool cca_enabled = false;
 
   esp_err_t transmit_frame(Frame* frame);
   void onRxDone(uint8_t* frame, esp_ieee802154_frame_info_t* frame_info);
