@@ -332,7 +332,7 @@ class ESP32TransceiverIEEE802_15_4 {
    * @return Reference to the current Frame Control Field structure.
    */
 
-  FrameControlField& frameControlField() { return frame_control_field; }
+  FrameControlField& getFrameControlField() { return frame_control_field; }
 
   /***
    * @brief Get a reference to the actual frame object that is used for
@@ -397,7 +397,7 @@ class ESP32TransceiverIEEE802_15_4 {
    * @brief Get the current acknowledgment timeout in microseconds.
    * @return The acknowledgment timeout in microseconds.
    */
-  uint32_t ackTimeoutUs() const { return ack_timeout_us; }
+  uint32_t getAckTimeoutUs() const { return ack_timeout_us; }
 
   /**
    * @brief Enable or disable CCA (Clear Channel Assessment).

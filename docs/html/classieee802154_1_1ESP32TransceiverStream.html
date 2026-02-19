@@ -128,6 +128,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abb1b53f3c34391d26c690f1d836c53c0" id="r_abb1b53f3c34391d26c690f1d836c53c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#abb1b53f3c34391d26c690f1d836c53c0">ESP32TransceiverStream</a> (<a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html">ESP32TransceiverIEEE802_15_4</a> &amp;<a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#ab9cdff5d865a6b0881f1dafa1f306023">transceiver</a>)</td></tr>
 <tr class="memdesc:abb1b53f3c34391d26c690f1d836c53c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classieee802154_1_1ESP32TransceiverStream.html" title="Arduino Stream interface for IEEE 802.15.4 transceiver.">ESP32TransceiverStream</a> object.  <br /></td></tr>
 <tr class="separator:abb1b53f3c34391d26c690f1d836c53c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a182e157a88e30828028c9a630247c9b4" id="r_a182e157a88e30828028c9a630247c9b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structieee802154_1_1FrameControlField.html">FrameControlField</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a182e157a88e30828028c9a630247c9b4">getFrameControlField</a> ()</td></tr>
+<tr class="memdesc:a182e157a88e30828028c9a630247c9b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current <a class="el" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure.">Frame</a> Control Field (FCF) in use.  <br /></td></tr>
+<tr class="separator:a182e157a88e30828028c9a630247c9b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa34ef8a07af05b56f59f37129498ebec" id="r_aa34ef8a07af05b56f59f37129498ebec"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#aa34ef8a07af05b56f59f37129498ebec">getRxBufferSize</a> () const</td></tr>
+<tr class="memdesc:aa34ef8a07af05b56f59f37129498ebec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current receive buffer size in bytes.  <br /></td></tr>
+<tr class="separator:aa34ef8a07af05b56f59f37129498ebec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf1c2be38348fdbc02be42021d96887b" id="r_abf1c2be38348fdbc02be42021d96887b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#abf1c2be38348fdbc02be42021d96887b">getRxMessageBufferSize</a> () const</td></tr>
+<tr class="memdesc:abf1c2be38348fdbc02be42021d96887b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current message buffer size for receiving frames.  <br /></td></tr>
+<tr class="separator:abf1c2be38348fdbc02be42021d96887b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32a476f0e619aec493af1b6f9c97c4f0" id="r_a32a476f0e619aec493af1b6f9c97c4f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a32a476f0e619aec493af1b6f9c97c4f0">getSendDelay</a> () const</td></tr>
+<tr class="memdesc:a32a476f0e619aec493af1b6f9c97c4f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the delay between send retries in milliseconds.  <br /></td></tr>
+<tr class="separator:a32a476f0e619aec493af1b6f9c97c4f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0788069d7bdaee6f021d6abc5a64b45" id="r_ab0788069d7bdaee6f021d6abc5a64b45"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#ab0788069d7bdaee6f021d6abc5a64b45">setRxWhenIdleActive</a> (bool rx_when_idle)</td></tr>
 <tr class="memdesc:ab0788069d7bdaee6f021d6abc5a64b45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set RX when idle mode for the transceiver.  <br /></td></tr>
 <tr class="separator:ab0788069d7bdaee6f021d6abc5a64b45"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,9 +155,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abe1aa606ff352733ac660d84740c223d" id="r_abe1aa606ff352733ac660d84740c223d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#abe1aa606ff352733ac660d84740c223d">setAckTimeoutUs</a> (uint32_t timeout_us)</td></tr>
 <tr class="memdesc:abe1aa606ff352733ac660d84740c223d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the time in us to wait for the ack frame.  <br /></td></tr>
 <tr class="separator:abe1aa606ff352733ac660d84740c223d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9782c2cc14e9a3971937a68685d7634" id="r_ad9782c2cc14e9a3971937a68685d7634"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#ad9782c2cc14e9a3971937a68685d7634">ackTimeoutUs</a> () const</td></tr>
-<tr class="memdesc:ad9782c2cc14e9a3971937a68685d7634"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current acknowledgment timeout in microseconds.  <br /></td></tr>
-<tr class="separator:ad9782c2cc14e9a3971937a68685d7634"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13cf813b3ee9da8b904afb17cce1e67a" id="r_a13cf813b3ee9da8b904afb17cce1e67a"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a13cf813b3ee9da8b904afb17cce1e67a">getAckTimeoutUs</a> () const</td></tr>
+<tr class="memdesc:a13cf813b3ee9da8b904afb17cce1e67a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current acknowledgment timeout in microseconds.  <br /></td></tr>
+<tr class="separator:a13cf813b3ee9da8b904afb17cce1e67a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80a2fc49960519b29b2d5e437e46b81e" id="r_a80a2fc49960519b29b2d5e437e46b81e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a80a2fc49960519b29b2d5e437e46b81e">setRxBufferSize</a> (size_t size)</td></tr>
 <tr class="memdesc:a80a2fc49960519b29b2d5e437e46b81e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the size of the receive buffer. This defines how many bytes we can get by calling <a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#aeb142b35d1e5bdd8604aee1d6688d1f8" title="Read multiple bytes from the receive buffer.">readBytes()</a>;.  <br /></td></tr>
 <tr class="separator:a80a2fc49960519b29b2d5e437e46b81e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -333,34 +345,6 @@ Static Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ad9782c2cc14e9a3971937a68685d7634" name="ad9782c2cc14e9a3971937a68685d7634"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad9782c2cc14e9a3971937a68685d7634">&#9670;&#160;</a></span>ackTimeoutUs()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t ieee802154::ESP32TransceiverStream::ackTimeoutUs </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the current acknowledgment timeout in microseconds. </p>
-<dl class="section return"><dt>Returns</dt><dd>The acknowledgment timeout in microseconds. </dd></dl>
-
-</div>
-</div>
 <a id="a9adbd2f11239bca7c56337e9d4dffcbf" name="a9adbd2f11239bca7c56337e9d4dffcbf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9adbd2f11239bca7c56337e9d4dffcbf">&#9670;&#160;</a></span>available()</h2>
 
@@ -554,6 +538,146 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Get a reference to the <a class="el" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure.">Frame</a> Control Field (FCF) for outgoing frames. </p>
 <dl class="section return"><dt>Returns</dt><dd>Reference to the current <a class="el" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure.">Frame</a> Control Field structure. </dd></dl>
+
+</div>
+</div>
+<a id="a13cf813b3ee9da8b904afb17cce1e67a" name="a13cf813b3ee9da8b904afb17cce1e67a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13cf813b3ee9da8b904afb17cce1e67a">&#9670;&#160;</a></span>getAckTimeoutUs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t ieee802154::ESP32TransceiverStream::getAckTimeoutUs </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the current acknowledgment timeout in microseconds. </p>
+<dl class="section return"><dt>Returns</dt><dd>The acknowledgment timeout in microseconds. </dd></dl>
+
+</div>
+</div>
+<a id="a182e157a88e30828028c9a630247c9b4" name="a182e157a88e30828028c9a630247c9b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a182e157a88e30828028c9a630247c9b4">&#9670;&#160;</a></span>getFrameControlField()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structieee802154_1_1FrameControlField.html">FrameControlField</a> &amp; ieee802154::ESP32TransceiverStream::getFrameControlField </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the current <a class="el" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure.">Frame</a> Control Field (FCF) in use. </p>
+<dl class="section return"><dt>Returns</dt><dd>The current <a class="el" href="structieee802154_1_1FrameControlField.html" title="IEEE 802.15.4 Frame Control Field (FCF) structure Bit fields are ordered LSB to MSB to match IEEE 802...">FrameControlField</a> structure. </dd></dl>
+
+</div>
+</div>
+<a id="aa34ef8a07af05b56f59f37129498ebec" name="aa34ef8a07af05b56f59f37129498ebec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa34ef8a07af05b56f59f37129498ebec">&#9670;&#160;</a></span>getRxBufferSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t ieee802154::ESP32TransceiverStream::getRxBufferSize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the current receive buffer size in bytes. </p>
+<dl class="section return"><dt>Returns</dt><dd>The size of the receive buffer. </dd></dl>
+
+</div>
+</div>
+<a id="abf1c2be38348fdbc02be42021d96887b" name="abf1c2be38348fdbc02be42021d96887b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf1c2be38348fdbc02be42021d96887b">&#9670;&#160;</a></span>getRxMessageBufferSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ieee802154::ESP32TransceiverStream::getRxMessageBufferSize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the current message buffer size for receiving frames. </p>
+<dl class="section return"><dt>Returns</dt><dd>The size of the message buffer in bytes. </dd></dl>
+
+</div>
+</div>
+<a id="a32a476f0e619aec493af1b6f9c97c4f0" name="a32a476f0e619aec493af1b6f9c97c4f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32a476f0e619aec493af1b6f9c97c4f0">&#9670;&#160;</a></span>getSendDelay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ieee802154::ESP32TransceiverStream::getSendDelay </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the delay between send retries in milliseconds. </p>
+<dl class="section return"><dt>Returns</dt><dd>The retry delay in ms. </dd></dl>
 
 </div>
 </div>
@@ -1503,7 +1627,7 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      <a class="code hl_enumvalue" href="classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e">WAITING_FOR_CONFIRMATION</a></div>
-<div class="ttc" id="aclassieee802154_1_1ESP32TransceiverStream_html_aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e"><div class="ttname"><a href="classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e">ieee802154::ESP32TransceiverStream::WAITING_FOR_CONFIRMATION</a></div><div class="ttdeci">@ WAITING_FOR_CONFIRMATION</div><div class="ttdef"><b>Definition</b> ESP32TransceiverStream.h:301</div></div>
+<div class="ttc" id="aclassieee802154_1_1ESP32TransceiverStream_html_aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e"><div class="ttname"><a href="classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e">ieee802154::ESP32TransceiverStream::WAITING_FOR_CONFIRMATION</a></div><div class="ttdeci">@ WAITING_FOR_CONFIRMATION</div><div class="ttdef"><b>Definition</b> ESP32TransceiverStream.h:280</div></div>
 </div><!-- fragment -->
 </div>
 </div>

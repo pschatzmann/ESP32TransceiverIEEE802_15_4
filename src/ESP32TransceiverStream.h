@@ -13,19 +13,20 @@ namespace ieee802154 {
  * Provides buffered read/write access to the transceiver.
  */
 class ESP32TransceiverStream : public Stream {
+ public:
+  /**
+   * @brief Construct a new ESP32TransceiverStream object.
+   * @param transceiver Reference to the IEEE802.15.4 transceiver instance.
+   */
+  ESP32TransceiverStream(ESP32TransceiverIEEE802_15_4& transceiver)
+      : transceiver(transceiver) {
+    transceiver.setReceiveTask(nullptr);
+  }
   /**
    * @brief Get the current Frame Control Field (FCF) in use.
    * @return The current FrameControlField structure.
    */
-  FrameControlField getFrameControlField() const { return fcf; }
-
-  /**
-   * @brief Get the current destination address for the stream.
-   * @return The current Address object.
-   */
-  Address getDestinationAddress() const {
-    return transceiver.getDestinationAddress();
-  }
+  FrameControlField& getFrameControlField() { return transceiver.getFrameControlField(); }
 
   /**
    * @brief Get the current receive buffer size in bytes.
@@ -43,29 +44,7 @@ class ESP32TransceiverStream : public Stream {
    * @brief Get the delay between send retries in milliseconds.
    * @return The retry delay in ms.
    */
-  int getSendRetryDelay() const { return send_retry_delay_ms; }
-
-  /**
-   * @brief Check if send confirmations (ACKs) are enabled.
-   * @return True if confirmations are enabled, false otherwise.
-   */
-  bool isSendConfirmations() { return fcf.ackRequest == 1; }
-
-  /**
-   * @brief Check if sequence numbers are used (not suppressed).
-   * @return True if sequence numbers are used, false otherwise.
-   */
-  bool isSequenceNumbers() { return fcf.sequenceNumberSuppression == 0; }
-
- public:
-  /**
-   * @brief Construct a new ESP32TransceiverStream object.
-   * @param transceiver Reference to the IEEE802.15.4 transceiver instance.
-   */
-  ESP32TransceiverStream(ESP32TransceiverIEEE802_15_4& transceiver)
-      : transceiver(transceiver) {
-    transceiver.setReceiveTask(nullptr);
-  }
+  int getSendDelay() const { return send_delay_ms; }
 
   /**
    * @brief Set RX when idle mode for the transceiver.
@@ -90,7 +69,7 @@ class ESP32TransceiverStream : public Stream {
    * @return Reference to the current Frame Control Field structure.
    */
   FrameControlField& frameControlField() {
-    return transceiver.frameControlField();
+    return transceiver.getFrameControlField();
   }
 
   /**
@@ -115,7 +94,7 @@ class ESP32TransceiverStream : public Stream {
    * @brief Get the current acknowledgment timeout in microseconds.
    * @return The acknowledgment timeout in microseconds.
    */
-  uint32_t ackTimeoutUs() const { return transceiver.ackTimeoutUs(); }
+  uint32_t getAckTimeoutUs() const { return transceiver.getAckTimeoutUs(); }
 
   /**
    * @brief Set the size of the receive buffer. This defines how many bytes
@@ -311,10 +290,10 @@ class ESP32TransceiverStream : public Stream {
   int send_retry_count = 2;
   esp_ieee802154_tx_error_t last_tx_error = ESP_IEEE802154_TX_ERR_NONE;
 
-  bool isSendConfirmations() { return frameControlField().ackRequest == 1; }
+  bool isSendConfirmations() { return getFrameControlField().ackRequest == 1; }
 
   bool isSequenceNumbers() {
-    return frameControlField().sequenceNumberSuppression == 0;
+    return getFrameControlField().sequenceNumberSuppression == 0;
   }
 
   /**
@@ -407,7 +386,7 @@ class ESP32TransceiverStream : public Stream {
       }
       // wait for confirmations
       uint32_t timeout =
-          millis() + ackTimeoutUs() / 1000 + 100;  // Add some margin
+          millis() + getAckTimeoutUs() / 1000 + 100;  // Add some margin
       while (send_confirmation_state == WAITING_FOR_CONFIRMATION &&
              millis() < timeout) {
         delay(10);
