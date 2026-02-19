@@ -178,6 +178,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a590466532c791fdfbf53e807c9e5a04b" id="r_a590466532c791fdfbf53e807c9e5a04b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a590466532c791fdfbf53e807c9e5a04b">setFrameControlField</a> (const <a class="el" href="structieee802154_1_1FrameControlField.html">FrameControlField</a> &amp;fcf)</td></tr>
 <tr class="memdesc:a590466532c791fdfbf53e807c9e5a04b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the <a class="el" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure.">Frame</a> Control Field (FCF) for outgoing frames.  <br /></td></tr>
 <tr class="separator:a590466532c791fdfbf53e807c9e5a04b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fee20ce08713ae755ab42552c3da2dc" id="r_a0fee20ce08713ae755ab42552c3da2dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structieee802154_1_1FrameControlField.html">FrameControlField</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a0fee20ce08713ae755ab42552c3da2dc">frameControlField</a> ()</td></tr>
+<tr class="memdesc:a0fee20ce08713ae755ab42552c3da2dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a reference to the <a class="el" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure.">Frame</a> Control Field (FCF) for outgoing frames.  <br /></td></tr>
+<tr class="separator:a0fee20ce08713ae755ab42552c3da2dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a023ed2ded338c199f51c3d89048f7fd1" id="r_a023ed2ded338c199f51c3d89048f7fd1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structieee802154_1_1Frame.html">Frame</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a023ed2ded338c199f51c3d89048f7fd1">getFrame</a> ()</td></tr>
 <tr class="separator:a023ed2ded338c199f51c3d89048f7fd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a393623030671a905c8ab9501cd4d22d9" id="r_a393623030671a905c8ab9501cd4d22d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a393623030671a905c8ab9501cd4d22d9">setReceiveTask</a> (void(*task)(void *pvParameters))</td></tr>
@@ -194,9 +197,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8b9f8d92c9d076b9a06eb20e82d3e2e5" id="r_a8b9f8d92c9d076b9a06eb20e82d3e2e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a8b9f8d92c9d076b9a06eb20e82d3e2e5">setAutoIncrementSequenceNumber</a> (bool auto_increment)</td></tr>
 <tr class="memdesc:a8b9f8d92c9d076b9a06eb20e82d3e2e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable or disable automatic incrementing of the sequence number after each successful transmission.  <br /></td></tr>
 <tr class="separator:a8b9f8d92c9d076b9a06eb20e82d3e2e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9dd484fc526a7643d5c49ec7a35ff387" id="r_a9dd484fc526a7643d5c49ec7a35ff387"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a9dd484fc526a7643d5c49ec7a35ff387">setAckTimeout</a> (uint32_t timeout_us)</td></tr>
-<tr class="memdesc:a9dd484fc526a7643d5c49ec7a35ff387"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the time in us to wait for the ack frame.  <br /></td></tr>
-<tr class="separator:a9dd484fc526a7643d5c49ec7a35ff387"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd7df4636db31d35045e32cd21d3db01" id="r_afd7df4636db31d35045e32cd21d3db01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#afd7df4636db31d35045e32cd21d3db01">setAckTimeoutUs</a> (uint32_t timeout_us)</td></tr>
+<tr class="memdesc:afd7df4636db31d35045e32cd21d3db01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the time in us to wait for the ack frame.  <br /></td></tr>
+<tr class="separator:afd7df4636db31d35045e32cd21d3db01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39f1f2a81bbcd2421273a72de3718a5d" id="r_a39f1f2a81bbcd2421273a72de3718a5d"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a39f1f2a81bbcd2421273a72de3718a5d">ackTimeoutUs</a> () const</td></tr>
+<tr class="memdesc:a39f1f2a81bbcd2421273a72de3718a5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current acknowledgment timeout in microseconds.  <br /></td></tr>
+<tr class="separator:a39f1f2a81bbcd2421273a72de3718a5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -339,6 +345,34 @@ Friends</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a39f1f2a81bbcd2421273a72de3718a5d" name="a39f1f2a81bbcd2421273a72de3718a5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39f1f2a81bbcd2421273a72de3718a5d">&#9670;&#160;</a></span>ackTimeoutUs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t ieee802154::ESP32TransceiverIEEE802_15_4::ackTimeoutUs </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the current acknowledgment timeout in microseconds. </p>
+<dl class="section return"><dt>Returns</dt><dd>The acknowledgment timeout in microseconds. </dd></dl>
+
+</div>
+</div>
 <a id="ab185578b5de291d786b7712a1fd78738" name="ab185578b5de291d786b7712a1fd78738"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab185578b5de291d786b7712a1fd78738">&#9670;&#160;</a></span>begin() <span class="overload">[1/2]</span></h2>
 
@@ -438,6 +472,34 @@ Friends</h2></td></tr>
 
 <p>Deinitialize the IEEE 802.15.4 transceiver. </p>
 <dl class="section return"><dt>Returns</dt><dd>ESP_OK on success, or an error code on failure. </dd></dl>
+
+</div>
+</div>
+<a id="a0fee20ce08713ae755ab42552c3da2dc" name="a0fee20ce08713ae755ab42552c3da2dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fee20ce08713ae755ab42552c3da2dc">&#9670;&#160;</a></span>frameControlField()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structieee802154_1_1FrameControlField.html">FrameControlField</a> &amp; ieee802154::ESP32TransceiverIEEE802_15_4::frameControlField </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get a reference to the <a class="el" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure.">Frame</a> Control Field (FCF) for outgoing frames. </p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the current <a class="el" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure.">Frame</a> Control Field structure. </dd></dl>
 
 </div>
 </div>
@@ -900,8 +962,8 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a9dd484fc526a7643d5c49ec7a35ff387" name="a9dd484fc526a7643d5c49ec7a35ff387"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9dd484fc526a7643d5c49ec7a35ff387">&#9670;&#160;</a></span>setAckTimeout()</h2>
+<a id="afd7df4636db31d35045e32cd21d3db01" name="afd7df4636db31d35045e32cd21d3db01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd7df4636db31d35045e32cd21d3db01">&#9670;&#160;</a></span>setAckTimeoutUs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -910,7 +972,7 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ieee802154::ESP32TransceiverIEEE802_15_4::setAckTimeout </td>
+          <td class="memname">void ieee802154::ESP32TransceiverIEEE802_15_4::setAckTimeoutUs </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>timeout_us</em></td><td>)</td>
