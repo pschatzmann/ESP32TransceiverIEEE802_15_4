@@ -135,9 +135,6 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1FrameControlField.html">ieee802154::FrameControlField</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">IEEE 802.15.4 <a class="el" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure.">Frame</a> Control Field (FCF) structure Bit fields are ordered LSB to MSB to match IEEE 802.15.4 specification.  <a href="structieee802154_1_1FrameControlField.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1Address.html">ieee802154::Address</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">IEEE 802.15.4 <a class="el" href="classieee802154_1_1Address.html" title="IEEE 802.15.4 Address abstraction.">Address</a> abstraction.  <a href="classieee802154_1_1Address.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,6 +143,9 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1frame__data__t.html">ieee802154::frame_data_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure to hold frame data and frame info.  <a href="structieee802154_1_1frame__data__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1FrameControlField.html">ieee802154::FrameControlField</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">IEEE 802.15.4 <a class="el" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure.">Frame</a> Control Field (FCF) structure Bit fields are ordered LSB to MSB to match IEEE 802.15.4 specification.  <a href="structieee802154_1_1FrameControlField.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -168,13 +168,6 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a6c5000bb7db5903ad056d37b8f901012" id="r_a6c5000bb7db5903ad056d37b8f901012"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceieee802154.html#a6c5000bb7db5903ad056d37b8f901012">ieee802154::Frameype_t</a> : uint8_t { <a class="el" href="namespaceieee802154.html#a6c5000bb7db5903ad056d37b8f901012a4a3fd580504c35a69c1ea7fda0f01fce">ieee802154::BEACON</a> = 0x0
-, <a class="el" href="namespaceieee802154.html#a6c5000bb7db5903ad056d37b8f901012ae44f9e348e41cb272efa87387728571b">ieee802154::DATA</a> = 0x1
-, <a class="el" href="namespaceieee802154.html#a6c5000bb7db5903ad056d37b8f901012a0fc437bc317835cad5faafc12a83fad5">ieee802154::ACK</a> = 0x2
-, <a class="el" href="namespaceieee802154.html#a6c5000bb7db5903ad056d37b8f901012a8aa0e16358bcf493c4824ac4d51a0cf1">ieee802154::MAC_CMD</a> = 0x3
- }</td></tr>
-<tr class="memdesc:a6c5000bb7db5903ad056d37b8f901012"><td class="mdescLeft">&#160;</td><td class="mdescRight">IEEE 802.15.4 FCF field value enumerations.  <a href="namespaceieee802154.html#a6c5000bb7db5903ad056d37b8f901012">More...</a><br /></td></tr>
-<tr class="separator:a6c5000bb7db5903ad056d37b8f901012"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dad406dcef7c26e09faa9662317d10d" id="r_a0dad406dcef7c26e09faa9662317d10d"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceieee802154.html#a0dad406dcef7c26e09faa9662317d10d">ieee802154::addr_mode_t</a> : uint8_t { <a class="el" href="namespaceieee802154.html#a0dad406dcef7c26e09faa9662317d10dab50339a10e1de285ac99d4c3990b8693">ieee802154::NONE</a> = 0x0
 , <a class="el" href="namespaceieee802154.html#a0dad406dcef7c26e09faa9662317d10da83c7f2aa8c3ac10ed8beb75cad162827">ieee802154::RESERVED</a> = 0x1
 , <a class="el" href="namespaceieee802154.html#a0dad406dcef7c26e09faa9662317d10daa35c2b02966b1563e5bf7b81b8b0cf77">ieee802154::SHORT</a> = 0x2
@@ -189,6 +182,13 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a0d160c84ec32faf188db8c12259eceff"><td class="mdescLeft">&#160;</td><td class="mdescRight">IEEE 802.15.4 frame version enumerations.  <a href="namespaceieee802154.html#a0d160c84ec32faf188db8c12259eceff">More...</a><br /></td></tr>
 <tr class="separator:a0d160c84ec32faf188db8c12259eceff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c5000bb7db5903ad056d37b8f901012" id="r_a6c5000bb7db5903ad056d37b8f901012"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceieee802154.html#a6c5000bb7db5903ad056d37b8f901012">ieee802154::Frameype_t</a> : uint8_t { <a class="el" href="namespaceieee802154.html#a6c5000bb7db5903ad056d37b8f901012a4a3fd580504c35a69c1ea7fda0f01fce">ieee802154::BEACON</a> = 0x0
+, <a class="el" href="namespaceieee802154.html#a6c5000bb7db5903ad056d37b8f901012ae44f9e348e41cb272efa87387728571b">ieee802154::DATA</a> = 0x1
+, <a class="el" href="namespaceieee802154.html#a6c5000bb7db5903ad056d37b8f901012a0fc437bc317835cad5faafc12a83fad5">ieee802154::ACK</a> = 0x2
+, <a class="el" href="namespaceieee802154.html#a6c5000bb7db5903ad056d37b8f901012a8aa0e16358bcf493c4824ac4d51a0cf1">ieee802154::MAC_CMD</a> = 0x3
+ }</td></tr>
+<tr class="memdesc:a6c5000bb7db5903ad056d37b8f901012"><td class="mdescLeft">&#160;</td><td class="mdescRight">IEEE 802.15.4 FCF field value enumerations.  <a href="namespaceieee802154.html#a6c5000bb7db5903ad056d37b8f901012">More...</a><br /></td></tr>
+<tr class="separator:a6c5000bb7db5903ad056d37b8f901012"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>

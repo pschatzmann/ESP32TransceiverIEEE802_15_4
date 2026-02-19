@@ -99,52 +99,52 @@ Collaboration diagram for ieee802154::Frame:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac49ba363010d505f6c8aa26e0b05faa4" id="r_ac49ba363010d505f6c8aa26e0b05faa4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#ac49ba363010d505f6c8aa26e0b05faa4">parse</a> (const uint8_t *data, bool verbose)</td></tr>
-<tr class="memdesc:ac49ba363010d505f6c8aa26e0b05faa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">parse frame from raw data  <br /></td></tr>
-<tr class="separator:ac49ba363010d505f6c8aa26e0b05faa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58f9a3e6025d0f303e9b2551e0c0dab3" id="r_a58f9a3e6025d0f303e9b2551e0c0dab3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a58f9a3e6025d0f303e9b2551e0c0dab3">build</a> (uint8_t *<a class="el" href="structieee802154_1_1Frame.html#ad22391fb510cd5f367fba670ac0172a7">buffer</a>, bool verbose) const</td></tr>
 <tr class="memdesc:a58f9a3e6025d0f303e9b2551e0c0dab3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build IEEE 802.15.4 frame array with length byte at start and 0x00 at end.  <br /></td></tr>
 <tr class="separator:a58f9a3e6025d0f303e9b2551e0c0dab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a760c80bc4e2fc24749dbb1e7ddd1caf4" id="r_a760c80bc4e2fc24749dbb1e7ddd1caf4"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a760c80bc4e2fc24749dbb1e7ddd1caf4">to_str</a> (uint8_t frameType)</td></tr>
-<tr class="memdesc:a760c80bc4e2fc24749dbb1e7ddd1caf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a human-readable string representation of the frame.  <br /></td></tr>
-<tr class="separator:a760c80bc4e2fc24749dbb1e7ddd1caf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afcf906b40cd1bbd4b99140263f0d3192" id="r_afcf906b40cd1bbd4b99140263f0d3192"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#afcf906b40cd1bbd4b99140263f0d3192">setSourceAddress</a> (<a class="el" href="classieee802154_1_1Address.html">Address</a> address)</td></tr>
-<tr class="memdesc:afcf906b40cd1bbd4b99140263f0d3192"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the source address for the frame.  <br /></td></tr>
-<tr class="separator:afcf906b40cd1bbd4b99140263f0d3192"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac49ba363010d505f6c8aa26e0b05faa4" id="r_ac49ba363010d505f6c8aa26e0b05faa4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#ac49ba363010d505f6c8aa26e0b05faa4">parse</a> (const uint8_t *data, bool verbose)</td></tr>
+<tr class="memdesc:ac49ba363010d505f6c8aa26e0b05faa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">parse frame from raw data  <br /></td></tr>
+<tr class="separator:ac49ba363010d505f6c8aa26e0b05faa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00c731188ffb491dd143c4e73c5f996e" id="r_a00c731188ffb491dd143c4e73c5f996e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a00c731188ffb491dd143c4e73c5f996e">setDestinationAddress</a> (<a class="el" href="classieee802154_1_1Address.html">Address</a> address)</td></tr>
 <tr class="memdesc:a00c731188ffb491dd143c4e73c5f996e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the destination address for the frame.  <br /></td></tr>
 <tr class="separator:a00c731188ffb491dd143c4e73c5f996e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56c9829ab58425631149421b91dd12f9" id="r_a56c9829ab58425631149421b91dd12f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a56c9829ab58425631149421b91dd12f9">setPayload</a> (const uint8_t *data, size_t len)</td></tr>
-<tr class="memdesc:a56c9829ab58425631149421b91dd12f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the payload for the frame.  <br /></td></tr>
-<tr class="separator:a56c9829ab58425631149421b91dd12f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab045e5329ce34ee82828735167a03dc1" id="r_ab045e5329ce34ee82828735167a03dc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#ab045e5329ce34ee82828735167a03dc1">setPAN</a> (uint16_t panId)</td></tr>
 <tr class="memdesc:ab045e5329ce34ee82828735167a03dc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the Personal Area Network Identifier (PAN ID) for the frame.  <br /></td></tr>
 <tr class="separator:ab045e5329ce34ee82828735167a03dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56c9829ab58425631149421b91dd12f9" id="r_a56c9829ab58425631149421b91dd12f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a56c9829ab58425631149421b91dd12f9">setPayload</a> (const uint8_t *data, size_t len)</td></tr>
+<tr class="memdesc:a56c9829ab58425631149421b91dd12f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the payload for the frame.  <br /></td></tr>
+<tr class="separator:a56c9829ab58425631149421b91dd12f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcf906b40cd1bbd4b99140263f0d3192" id="r_afcf906b40cd1bbd4b99140263f0d3192"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#afcf906b40cd1bbd4b99140263f0d3192">setSourceAddress</a> (<a class="el" href="classieee802154_1_1Address.html">Address</a> address)</td></tr>
+<tr class="memdesc:afcf906b40cd1bbd4b99140263f0d3192"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the source address for the frame.  <br /></td></tr>
+<tr class="separator:afcf906b40cd1bbd4b99140263f0d3192"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a760c80bc4e2fc24749dbb1e7ddd1caf4" id="r_a760c80bc4e2fc24749dbb1e7ddd1caf4"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a760c80bc4e2fc24749dbb1e7ddd1caf4">to_str</a> (uint8_t frameType)</td></tr>
+<tr class="memdesc:a760c80bc4e2fc24749dbb1e7ddd1caf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a human-readable string representation of the frame.  <br /></td></tr>
+<tr class="separator:a760c80bc4e2fc24749dbb1e7ddd1caf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a56a658766cd0c89e41cd83392311bb81" id="r_a56a658766cd0c89e41cd83392311bb81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structieee802154_1_1FrameControlField.html">FrameControlField</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a56a658766cd0c89e41cd83392311bb81">fcf</a> {}</td></tr>
-<tr class="separator:a56a658766cd0c89e41cd83392311bb81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21dda913c937a67ae8e49798069a8797" id="r_a21dda913c937a67ae8e49798069a8797"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a21dda913c937a67ae8e49798069a8797">sequenceNumber</a> = 0</td></tr>
-<tr class="separator:a21dda913c937a67ae8e49798069a8797"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a1fb34cf04ad506d412ac77dcae719f" id="r_a7a1fb34cf04ad506d412ac77dcae719f"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a7a1fb34cf04ad506d412ac77dcae719f">destPanId</a> = 0</td></tr>
-<tr class="separator:a7a1fb34cf04ad506d412ac77dcae719f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac454025db5562b8f2ad8205156798cbc" id="r_ac454025db5562b8f2ad8205156798cbc"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#ac454025db5562b8f2ad8205156798cbc">destAddress</a> [8]</td></tr>
 <tr class="separator:ac454025db5562b8f2ad8205156798cbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d6472426aab7f6e1b475684f4310929" id="r_a1d6472426aab7f6e1b475684f4310929"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a1d6472426aab7f6e1b475684f4310929">srcPanId</a> = 0</td></tr>
-<tr class="separator:a1d6472426aab7f6e1b475684f4310929"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f1bb82213d19986abda680e70dd6829" id="r_a3f1bb82213d19986abda680e70dd6829"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a3f1bb82213d19986abda680e70dd6829">srcAddress</a> [8]</td></tr>
-<tr class="separator:a3f1bb82213d19986abda680e70dd6829"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a734f601412cd86231e321c6bcbbdc976" id="r_a734f601412cd86231e321c6bcbbdc976"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a734f601412cd86231e321c6bcbbdc976">destAddrLen</a> = 0</td></tr>
 <tr class="separator:a734f601412cd86231e321c6bcbbdc976"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3075d5f7d627b4f534482b396f4a248e" id="r_a3075d5f7d627b4f534482b396f4a248e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a3075d5f7d627b4f534482b396f4a248e">srcAddrLen</a> = 0</td></tr>
-<tr class="separator:a3075d5f7d627b4f534482b396f4a248e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72cd276ccd71ff8aac6f0980aab0cb87" id="r_a72cd276ccd71ff8aac6f0980aab0cb87"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a72cd276ccd71ff8aac6f0980aab0cb87">payloadLen</a> = 0</td></tr>
-<tr class="separator:a72cd276ccd71ff8aac6f0980aab0cb87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a1fb34cf04ad506d412ac77dcae719f" id="r_a7a1fb34cf04ad506d412ac77dcae719f"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a7a1fb34cf04ad506d412ac77dcae719f">destPanId</a> = 0</td></tr>
+<tr class="separator:a7a1fb34cf04ad506d412ac77dcae719f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56a658766cd0c89e41cd83392311bb81" id="r_a56a658766cd0c89e41cd83392311bb81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structieee802154_1_1FrameControlField.html">FrameControlField</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a56a658766cd0c89e41cd83392311bb81">fcf</a> {}</td></tr>
+<tr class="separator:a56a658766cd0c89e41cd83392311bb81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49fad7be572a8cc9ceedb4471385bb2f" id="r_a49fad7be572a8cc9ceedb4471385bb2f"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a49fad7be572a8cc9ceedb4471385bb2f">payload</a> = nullptr</td></tr>
 <tr class="separator:a49fad7be572a8cc9ceedb4471385bb2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72cd276ccd71ff8aac6f0980aab0cb87" id="r_a72cd276ccd71ff8aac6f0980aab0cb87"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a72cd276ccd71ff8aac6f0980aab0cb87">payloadLen</a> = 0</td></tr>
+<tr class="separator:a72cd276ccd71ff8aac6f0980aab0cb87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0212080dcc009ec808c6b2291a4c7fd6" id="r_a0212080dcc009ec808c6b2291a4c7fd6"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a0212080dcc009ec808c6b2291a4c7fd6">rssi_lqi</a> = 0</td></tr>
 <tr class="separator:a0212080dcc009ec808c6b2291a4c7fd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21dda913c937a67ae8e49798069a8797" id="r_a21dda913c937a67ae8e49798069a8797"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a21dda913c937a67ae8e49798069a8797">sequenceNumber</a> = 0</td></tr>
+<tr class="separator:a21dda913c937a67ae8e49798069a8797"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f1bb82213d19986abda680e70dd6829" id="r_a3f1bb82213d19986abda680e70dd6829"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a3f1bb82213d19986abda680e70dd6829">srcAddress</a> [8]</td></tr>
+<tr class="separator:a3f1bb82213d19986abda680e70dd6829"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3075d5f7d627b4f534482b396f4a248e" id="r_a3075d5f7d627b4f534482b396f4a248e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a3075d5f7d627b4f534482b396f4a248e">srcAddrLen</a> = 0</td></tr>
+<tr class="separator:a3075d5f7d627b4f534482b396f4a248e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d6472426aab7f6e1b475684f4310929" id="r_a1d6472426aab7f6e1b475684f4310929"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structieee802154_1_1Frame.html#a1d6472426aab7f6e1b475684f4310929">srcPanId</a> = 0</td></tr>
+<tr class="separator:a1d6472426aab7f6e1b475684f4310929"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
