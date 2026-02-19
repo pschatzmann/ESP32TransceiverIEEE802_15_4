@@ -429,7 +429,6 @@ class ESP32TransceiverIEEE802_15_4 {
   int receive_msg_buffer_size = sizeof(frame_data_t) + 4;
   uint32_t ack_timeout_us = (2016 * 16);
   bool auto_increment_sequence_number = true;
-  volatile bool pending_rx = false;
 
   esp_err_t transmit_frame(Frame* frame);
   void onRxDone(uint8_t* frame, esp_ieee802154_frame_info_t* frame_info);
