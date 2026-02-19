@@ -20,12 +20,13 @@ var searchData=
   ['is_5fpromiscuous_5fmode_17',['is_promiscuous_mode',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a845a7fe28f59d7135ceadf98311870c2',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
   ['is_5frx_5fwhen_5fidle_18',['is_rx_when_idle',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a07ee1141cc087441f3fbcfc3b89a9dcc',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
   ['is_5fsend_5fconfirations_5fenabled_19',['is_send_confirations_enabled',['../classieee802154_1_1ESP32TransceiverStream.html#a8e633e24b6c2306fb49782abfaf2b2e8',1,'ieee802154::ESP32TransceiverStream']]],
-  ['isccaactive_20',['isccaactive',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a1d5de16c856cfb4a22feb61646a002b7',1,'ieee802154::ESP32TransceiverIEEE802_15_4::isCCAActive()'],['../classieee802154_1_1ESP32TransceiverStream.html#a525a88ce3e9cb3c1bf8e92f912fd3189',1,'ieee802154::ESP32TransceiverStream::isCCAActive()']]],
-  ['iscoordinatoractive_21',['isCoordinatorActive',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a52a03dc83b7147988b47927f22c3f768',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
-  ['isempty_22',['isEmpty',['../classieee802154_1_1RingBuffer.html#a0979c38e29125291dfcdb4f9437e519f',1,'ieee802154::RingBuffer']]],
-  ['isfull_23',['isFull',['../classieee802154_1_1RingBuffer.html#ac0661d47f018ab40a6b455e4582e469e',1,'ieee802154::RingBuffer']]],
-  ['ispromiscuousmodeactive_24',['isPromiscuousModeActive',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#ada1d2d7f5e26b56b1a071e89584dae0a',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
-  ['isrxwhenidleactive_25',['isRxWhenIdleActive',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#aa04f2443a206b3ed868f573be0420c11',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
-  ['issendconfirmations_26',['isSendConfirmations',['../classieee802154_1_1ESP32TransceiverStream.html#a6d7af9a9d48d07067add4a02709f4705',1,'ieee802154::ESP32TransceiverStream']]],
-  ['issequencenumbers_27',['isSequenceNumbers',['../classieee802154_1_1ESP32TransceiverStream.html#a16063d95016d955fc5a25df9a8aa9167',1,'ieee802154::ESP32TransceiverStream']]]
+  ['isackactive_20',['isAckActive',['../classieee802154_1_1ESP32TransceiverStream.html#a538a345eadf3aad8a0a17e13db7d95af',1,'ieee802154::ESP32TransceiverStream']]],
+  ['isccaactive_21',['isccaactive',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a1d5de16c856cfb4a22feb61646a002b7',1,'ieee802154::ESP32TransceiverIEEE802_15_4::isCCAActive()'],['../classieee802154_1_1ESP32TransceiverStream.html#a525a88ce3e9cb3c1bf8e92f912fd3189',1,'ieee802154::ESP32TransceiverStream::isCCAActive()']]],
+  ['iscoordinatoractive_22',['isCoordinatorActive',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a52a03dc83b7147988b47927f22c3f768',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
+  ['isempty_23',['isEmpty',['../classieee802154_1_1RingBuffer.html#a0979c38e29125291dfcdb4f9437e519f',1,'ieee802154::RingBuffer']]],
+  ['isfull_24',['isFull',['../classieee802154_1_1RingBuffer.html#ac0661d47f018ab40a6b455e4582e469e',1,'ieee802154::RingBuffer']]],
+  ['ispromiscuousmodeactive_25',['isPromiscuousModeActive',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#ada1d2d7f5e26b56b1a071e89584dae0a',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
+  ['isrxwhenidleactive_26',['isRxWhenIdleActive',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#aa04f2443a206b3ed868f573be0420c11',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
+  ['issendconfirmations_27',['isSendConfirmations',['../classieee802154_1_1ESP32TransceiverStream.html#a6d7af9a9d48d07067add4a02709f4705',1,'ieee802154::ESP32TransceiverStream']]],
+  ['issequencenumbers_28',['isSequenceNumbers',['../classieee802154_1_1ESP32TransceiverStream.html#a16063d95016d955fc5a25df9a8aa9167',1,'ieee802154::ESP32TransceiverStream']]]
 ];

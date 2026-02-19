@@ -164,6 +164,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a32a476f0e619aec493af1b6f9c97c4f0" id="r_a32a476f0e619aec493af1b6f9c97c4f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a32a476f0e619aec493af1b6f9c97c4f0">getSendDelay</a> () const</td></tr>
 <tr class="memdesc:a32a476f0e619aec493af1b6f9c97c4f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the delay between send retries in milliseconds.  <br /></td></tr>
 <tr class="separator:a32a476f0e619aec493af1b6f9c97c4f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a538a345eadf3aad8a0a17e13db7d95af" id="r_a538a345eadf3aad8a0a17e13db7d95af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a538a345eadf3aad8a0a17e13db7d95af">isAckActive</a> () const</td></tr>
+<tr class="memdesc:a538a345eadf3aad8a0a17e13db7d95af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if acknowledgment requests are enabled for outgoing frames.  <br /></td></tr>
+<tr class="separator:a538a345eadf3aad8a0a17e13db7d95af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a525a88ce3e9cb3c1bf8e92f912fd3189" id="r_a525a88ce3e9cb3c1bf8e92f912fd3189"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a525a88ce3e9cb3c1bf8e92f912fd3189">isCCAActive</a> () const</td></tr>
 <tr class="memdesc:a525a88ce3e9cb3c1bf8e92f912fd3189"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if CCA (Clear Channel Assessment) is enabled.  <br /></td></tr>
 <tr class="separator:a525a88ce3e9cb3c1bf8e92f912fd3189"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -176,6 +179,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aeb142b35d1e5bdd8604aee1d6688d1f8" id="r_aeb142b35d1e5bdd8604aee1d6688d1f8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#aeb142b35d1e5bdd8604aee1d6688d1f8">readBytes</a> (uint8_t *buffer, size_t size)</td></tr>
 <tr class="memdesc:aeb142b35d1e5bdd8604aee1d6688d1f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read multiple bytes from the receive buffer.  <br /></td></tr>
 <tr class="separator:aeb142b35d1e5bdd8604aee1d6688d1f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3558e8d703afde07bc5dcb450639011" id="r_ab3558e8d703afde07bc5dcb450639011"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#ab3558e8d703afde07bc5dcb450639011">setAckActive</a> (bool ack_active)</td></tr>
+<tr class="memdesc:ab3558e8d703afde07bc5dcb450639011"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable or disable acknowledgment requests for outgoing frames.  <br /></td></tr>
+<tr class="separator:ab3558e8d703afde07bc5dcb450639011"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe1aa606ff352733ac660d84740c223d" id="r_abe1aa606ff352733ac660d84740c223d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#abe1aa606ff352733ac660d84740c223d">setAckTimeoutUs</a> (uint32_t timeout_us)</td></tr>
 <tr class="memdesc:abe1aa606ff352733ac660d84740c223d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the time in us to wait for the ack frame.  <br /></td></tr>
 <tr class="separator:abe1aa606ff352733ac660d84740c223d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -257,7 +263,7 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:afedc84cba684f8336779ba1d4622e82e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcee468ec322063763549f55d6ea0a0f" id="r_afcee468ec322063763549f55d6ea0a0f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#afcee468ec322063763549f55d6ea0a0f">receive_msg_buffer_size</a></td></tr>
 <tr class="separator:afcee468ec322063763549f55d6ea0a0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7185becae036a87a49132ba01465426c" id="r_a7185becae036a87a49132ba01465426c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classieee802154_1_1RingBuffer.html">RingBuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a7185becae036a87a49132ba01465426c">rx_buffer</a> {1024}</td></tr>
+<tr class="memitem:a7185becae036a87a49132ba01465426c" id="r_a7185becae036a87a49132ba01465426c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classieee802154_1_1RingBuffer.html">RingBuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a7185becae036a87a49132ba01465426c">rx_buffer</a> {1024 + <a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#ae794f44cd837a861df7b218953f699e4">MTU</a>}</td></tr>
 <tr class="separator:a7185becae036a87a49132ba01465426c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2a169ff27409ec98d6f98c45ae8c6b6" id="r_af2a169ff27409ec98d6f98c45ae8c6b6"><td class="memItemLeft" align="right" valign="top">volatile <a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259c">send_confirmation_state_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#af2a169ff27409ec98d6f98c45ae8c6b6">send_confirmation_state</a></td></tr>
 <tr class="separator:af2a169ff27409ec98d6f98c45ae8c6b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -775,6 +781,34 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a538a345eadf3aad8a0a17e13db7d95af" name="a538a345eadf3aad8a0a17e13db7d95af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a538a345eadf3aad8a0a17e13db7d95af">&#9670;&#160;</a></span>isAckActive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ieee802154::ESP32TransceiverStream::isAckActive </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if acknowledgment requests are enabled for outgoing frames. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if acknowledgment requests are enabled, false otherwise. </dd></dl>
+
+</div>
+</div>
 <a id="a525a88ce3e9cb3c1bf8e92f912fd3189" name="a525a88ce3e9cb3c1bf8e92f912fd3189"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a525a88ce3e9cb3c1bf8e92f912fd3189">&#9670;&#160;</a></span>isCCAActive()</h2>
 
@@ -1034,6 +1068,41 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Internal method to send a frame without waiting for confirmations. Adds a delay after sending to allow the transceiver to process the frame. </p>
+
+</div>
+</div>
+<a id="ab3558e8d703afde07bc5dcb450639011" name="ab3558e8d703afde07bc5dcb450639011"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3558e8d703afde07bc5dcb450639011">&#9670;&#160;</a></span>setAckActive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ieee802154::ESP32TransceiverStream::setAckActive </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>ack_active</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Enable or disable acknowledgment requests for outgoing frames. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ack_active</td><td>True to enable acknowledgment requests, false to disable. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This method must be called before <a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#afe6b8dc2227146361247237d6b533691" title="Initialize the stream and underlying transceiver.">begin()</a> to take effect! </dd></dl>
 
 </div>
 </div>
@@ -1594,7 +1663,7 @@ Static Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classieee802154_1_1RingBuffer.html">RingBuffer</a> ieee802154::ESP32TransceiverStream::rx_buffer {1024}</td>
+          <td class="memname"><a class="el" href="classieee802154_1_1RingBuffer.html">RingBuffer</a> ieee802154::ESP32TransceiverStream::rx_buffer {1024 + <a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#ae794f44cd837a861df7b218953f699e4">MTU</a>}</td>
         </tr>
       </table>
   </td>
@@ -1627,7 +1696,7 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      <a class="code hl_enumvalue" href="classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e">WAITING_FOR_CONFIRMATION</a></div>
-<div class="ttc" id="aclassieee802154_1_1ESP32TransceiverStream_html_aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e"><div class="ttname"><a href="classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e">ieee802154::ESP32TransceiverStream::WAITING_FOR_CONFIRMATION</a></div><div class="ttdeci">@ WAITING_FOR_CONFIRMATION</div><div class="ttdef"><b>Definition</b> ESP32TransceiverStream.h:280</div></div>
+<div class="ttc" id="aclassieee802154_1_1ESP32TransceiverStream_html_aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e"><div class="ttname"><a href="classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e">ieee802154::ESP32TransceiverStream::WAITING_FOR_CONFIRMATION</a></div><div class="ttdeci">@ WAITING_FOR_CONFIRMATION</div><div class="ttdef"><b>Definition</b> ESP32TransceiverStream.h:296</div></div>
 </div><!-- fragment -->
 </div>
 </div>
