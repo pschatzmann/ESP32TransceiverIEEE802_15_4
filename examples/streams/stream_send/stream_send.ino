@@ -1,8 +1,8 @@
 /*
  * IEEE 802.15.4 Stream Send Example for Performance Measurement
  *
- * Fills the transmit buffer with maximum data (MTU), adds a checksum,
- * sends frames as fast as possible, and prints timing/throughput.
+ * Fills the transmit buffer, adds a checksum,
+ * sends frames as fast as possible and prints timing/throughput.
  */
 #include "ESP32TransceiverStream.h"
 
@@ -28,12 +28,11 @@ void setup() {
   delay(3000);
   Serial.println("Starting...");
 
-  stream.setDestinationAddress(Address({0xAB, 0xCD}));  
-  stream.setSendDelay(10); 
+  stream.setDestinationAddress(Address({0xAB, 0xCD}));
+  stream.setSendDelay(10);
   stream.begin();
 
   startTime = millis();
-  Serial.println("Started");
 }
 
 void loop() {
@@ -42,7 +41,7 @@ void loop() {
   for (size_t i = 0; i < SEND_BUFFER_SIZE - 1; i++) {
     txData[i] = i % 256;
   }
-  
+
   // Send the frame
   size_t written = stream.write(txData, SEND_BUFFER_SIZE);
   sentBytes += written;
