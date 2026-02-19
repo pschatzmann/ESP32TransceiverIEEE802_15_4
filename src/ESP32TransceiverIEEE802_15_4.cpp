@@ -128,6 +128,7 @@ bool ESP32TransceiverIEEE802_15_4::begin() {
     return false;
   }
 
+  ESP_LOGI(TAG, "Setting ACK timeout to %d microseconds", ack_timeout_us);
   if (esp_ieee802154_set_ack_timeout(ack_timeout_us) != ESP_OK) {
     ESP_LOGW(TAG, "Failed to set ACK timeout: %d", ack_timeout_us);
   }
@@ -363,6 +364,8 @@ void ESP32TransceiverIEEE802_15_4::onTransmitDone(
   if (tx_done_callback_) {
     tx_done_callback_(frame, ack, ack_frame_info, tx_done_callback_user_data_);
   }
+  // Free internal buffers after transmission
+  esp_ieee802154_receive_handle_done(ack);  
 }
 
 void ESP32TransceiverIEEE802_15_4::onTransmitFailed(
