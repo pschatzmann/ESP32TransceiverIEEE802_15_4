@@ -30,8 +30,10 @@ This library enables ESP32 devices to send and receive custom low-power IEEE 802
   - [ESP IDF IEEE802.15.4 API](https://github.com/espressif/esp-idf/blob/master/components/ieee802154/include/esp_ieee802154.h)
 
 - Examples
-  - [sniffer](examples/sniffer/sniffer.ino)
-  - [transceiver](examples/transceiver/transceiver.ino)
+  - [sniffer](examples/basic/sniffer/sniffer.ino)
+  - [transceiver](examples/basic/transceiver/transceiver.ino)
+  - [stream_send](examples/streams/stream_send/stream_send.ino)
+  - [stream_receive](examples/streams/stream_receive/stream_receive.ino)
 
 ## Installation in Arduino
 
