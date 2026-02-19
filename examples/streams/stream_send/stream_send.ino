@@ -31,7 +31,7 @@ void setup() {
   Serial.println("starting...");
 
   stream.setDestinationAddress(Address({0xAB, 0xCD}));  
-  stream.setSendDelayOnNoConfirmations(10); 
+  stream.setSendDelay(10); 
   stream.begin();
 
   startTime = millis();
