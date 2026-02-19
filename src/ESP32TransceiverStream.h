@@ -65,14 +65,6 @@ class ESP32TransceiverStream : public Stream {
   }
 
   /**
-   * @brief Get a reference to the Frame Control Field (FCF) for outgoing frames.
-   * @return Reference to the current Frame Control Field structure.
-   */
-  FrameControlField& frameControlField() {
-    return transceiver.getFrameControlField();
-  }
-
-  /**
    * @brief Set the destination address for the stream.
    * @param address The destination address.
    */

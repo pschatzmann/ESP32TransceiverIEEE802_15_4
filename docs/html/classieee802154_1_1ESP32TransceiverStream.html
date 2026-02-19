@@ -146,9 +146,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8b828b9d095c8afddb84de6422150f08" id="r_a8b828b9d095c8afddb84de6422150f08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a8b828b9d095c8afddb84de6422150f08">flush</a> () override</td></tr>
 <tr class="memdesc:a8b828b9d095c8afddb84de6422150f08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush the transmit buffer and send its contents as a frame.  <br /></td></tr>
 <tr class="separator:a8b828b9d095c8afddb84de6422150f08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12501330ad3a89aeef0b041290770597" id="r_a12501330ad3a89aeef0b041290770597"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structieee802154_1_1FrameControlField.html">FrameControlField</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a12501330ad3a89aeef0b041290770597">frameControlField</a> ()</td></tr>
-<tr class="memdesc:a12501330ad3a89aeef0b041290770597"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a reference to the <a class="el" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure.">Frame</a> Control Field (FCF) for outgoing frames.  <br /></td></tr>
-<tr class="separator:a12501330ad3a89aeef0b041290770597"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13cf813b3ee9da8b904afb17cce1e67a" id="r_a13cf813b3ee9da8b904afb17cce1e67a"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a13cf813b3ee9da8b904afb17cce1e67a">getAckTimeoutUs</a> () const</td></tr>
 <tr class="memdesc:a13cf813b3ee9da8b904afb17cce1e67a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current acknowledgment timeout in microseconds.  <br /></td></tr>
 <tr class="separator:a13cf813b3ee9da8b904afb17cce1e67a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -510,34 +507,6 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Flush the transmit buffer and send its contents as a frame. </p>
 <p>Sends all buffered data via the transceiver and clears the buffer. </p>
-
-</div>
-</div>
-<a id="a12501330ad3a89aeef0b041290770597" name="a12501330ad3a89aeef0b041290770597"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12501330ad3a89aeef0b041290770597">&#9670;&#160;</a></span>frameControlField()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structieee802154_1_1FrameControlField.html">FrameControlField</a> &amp; ieee802154::ESP32TransceiverStream::frameControlField </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get a reference to the <a class="el" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure.">Frame</a> Control Field (FCF) for outgoing frames. </p>
-<dl class="section return"><dt>Returns</dt><dd>Reference to the current <a class="el" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure.">Frame</a> Control Field structure. </dd></dl>
 
 </div>
 </div>
@@ -1627,7 +1596,7 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      <a class="code hl_enumvalue" href="classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e">WAITING_FOR_CONFIRMATION</a></div>
-<div class="ttc" id="aclassieee802154_1_1ESP32TransceiverStream_html_aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e"><div class="ttname"><a href="classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e">ieee802154::ESP32TransceiverStream::WAITING_FOR_CONFIRMATION</a></div><div class="ttdeci">@ WAITING_FOR_CONFIRMATION</div><div class="ttdef"><b>Definition</b> ESP32TransceiverStream.h:280</div></div>
+<div class="ttc" id="aclassieee802154_1_1ESP32TransceiverStream_html_aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e"><div class="ttname"><a href="classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e">ieee802154::ESP32TransceiverStream::WAITING_FOR_CONFIRMATION</a></div><div class="ttdeci">@ WAITING_FOR_CONFIRMATION</div><div class="ttdef"><b>Definition</b> ESP32TransceiverStream.h:272</div></div>
 </div><!-- fragment -->
 </div>
 </div>
