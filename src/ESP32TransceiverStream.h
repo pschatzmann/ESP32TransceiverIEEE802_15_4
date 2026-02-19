@@ -50,9 +50,16 @@ class ESP32TransceiverStream : public Stream {
    * @param[in]  timeout  The time to wait for the ack frame, in us.
    *                      It Should be a multiple of 16.
    */
-  void setAckTimeout(uint32_t timeout_us) {
-    transceiver.setAckTimeout(timeout_us);
+  void setAckTimeoutUs(uint32_t timeout_us) {
+    transceiver.setAckTimeoutUs(timeout_us);
   }
+
+  /**
+   * @brief Get the current acknowledgment timeout in microseconds.
+   * @return The acknowledgment timeout in microseconds.
+   */
+  uint32_t ackTimeoutUs() const { return transceiver.ackTimeoutUs(); }
+  
   /**
    * @brief Set the size of the receive buffer. This defines how many bytes
    * we can get by calling readBytes();
@@ -75,6 +82,12 @@ class ESP32TransceiverStream : public Stream {
    * @param delay_ms Delay in milliseconds.
    */
   void setSendDelay(int delay_ms) { send_delay_ms = delay_ms; }
+
+  /***
+   * @brief Defines the retry count for faild send requests
+   * @param count Number of retries.
+   */
+  void setSendRetryCount(int count) { send_retry_count = count; }
 
   /**
    * @brief Initialize the stream and underlying transceiver.
@@ -162,7 +175,7 @@ class ESP32TransceiverStream : public Stream {
   size_t readBytes(uint8_t* buffer, size_t size) {
     // fill receive buffer
     uint32_t end = millis() + _timeout;
-     while(receive() && millis() < end);
+    while (receive() && millis() < end);
     // provide data from receive buffer
     return rx_buffer.readArray(buffer, size);
   }
@@ -223,8 +236,9 @@ class ESP32TransceiverStream : public Stream {
       WAITING_FOR_CONFIRMATION;
   bool is_send_confirations_enabled = false;
   /// Delay after sending a frame when confirmations are not used
-  int send_delay_ms = 10;  
+  int send_delay_ms = 10;
   int last_seq = -1;
+  int send_retry_count = 2;
 
   bool isSendConfirmations() { return frameControlField().ackRequest == 1; }
 
@@ -267,6 +281,9 @@ class ESP32TransceiverStream : public Stream {
       return false;
     }
 
+    ESP_LOGI(TAG, "Received frame: len=%d, seq=%d", frame.payloadLen,
+             frame.sequenceNumber);
+
     // Sequence number check (after successful parse, before buffer handling)
     if (isSequenceNumbers()) {
       int seq = frame.sequenceNumber;
@@ -285,6 +302,7 @@ class ESP32TransceiverStream : public Stream {
     }
 
     if (frame.payloadLen > rx_buffer.availableForWrite()) {
+      // will be made availabe with next call
       ESP_LOGD(TAG, "Received frame payload too large for buffer: %d bytes",
                frame.payloadLen);
       is_open_frame = true;
@@ -306,27 +324,44 @@ class ESP32TransceiverStream : public Stream {
   void sendWithConfirmations() {
     uint8_t tmp[tx_buffer.available()];
     int len = tx_buffer.readArray(tmp, tx_buffer.available());
+    int retry = send_retry_count;
     // send frame
     int attempt = 0;
     do {
-      send_confirmation_state = isSendConfirmations() ? WAITING_FOR_CONFIRMATION
-                                                      : CONFIRMATION_RECEIVED;
+      send_confirmation_state = WAITING_FOR_CONFIRMATION;
       ESP_LOGD(TAG, "Attempt %d: Sending frame, len: %d", attempt, len);
       if (!transceiver.send(tmp, len)) {
         ESP_LOGE(TAG, "Failed to send frame: size %d", len);
         send_confirmation_state = CONFIRMATION_ERROR;
       }
       // wait for confirmations
-      while (send_confirmation_state == WAITING_FOR_CONFIRMATION) {
+      uint32_t timeout =
+          millis() + ackTimeoutUs() / 1000 + 100;  // Add some margin
+      while (send_confirmation_state == WAITING_FOR_CONFIRMATION &&
+             millis() < timeout) {
         delay(10);
       }
 
       // on error retry sending the same frame
-      if (send_confirmation_state == CONFIRMATION_ERROR) {
-        ESP_LOGI(TAG, "Send failed, retrying...");
-        delay(send_delay_ms);  // Short delay before retrying if needed
-      } else {
-        transceiver.incrementSequenceNumber(1);
+      switch (send_confirmation_state) {
+        case CONFIRMATION_ERROR: {
+          ESP_LOGI(TAG, "Send failed, retrying...");
+          retry--;
+          if (retry <= 0) {
+            transceiver.incrementSequenceNumber(1);
+            return;
+          }
+          delay(send_delay_ms);  // Short delay before retrying if needed
+          break;
+        }
+        case CONFIRMATION_RECEIVED: {
+          transceiver.incrementSequenceNumber(1);
+          break;
+        }
+        default:
+          retry--;
+          delay(send_delay_ms);  // Short delay before retrying if needed
+          break;
       }
       ++attempt;
     } while (send_confirmation_state == CONFIRMATION_ERROR);

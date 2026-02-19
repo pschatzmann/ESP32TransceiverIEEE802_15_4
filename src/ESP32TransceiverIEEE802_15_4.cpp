@@ -299,9 +299,14 @@ void ESP32TransceiverIEEE802_15_4::onRxDone(
     uint8_t* frame, esp_ieee802154_frame_info_t* frame_info) {
   ESP_LOGD(TAG, "Received frame with length %d, RSSI: %d, LQI: %d", frame[0],
            frame_info->rssi, frame_info->lqi);
+
+  while(pending_rx) delay(5);
+  pending_rx = true;
+
   if (!message_buffer) {
     ESP_LOGE(TAG, "Message buffer not initialized, dropping packet");
     esp_ieee802154_receive_handle_done(frame);
+    pending_rx = false;
     return;
   }
 
@@ -316,17 +321,20 @@ void ESP32TransceiverIEEE802_15_4::onRxDone(
   size_t bytes_sent =
       xMessageBufferSendFromISR(message_buffer, &packet, sizeof(frame_data_t),
                                 &higher_priority_task_woken);
-  if (bytes_sent == 0) {
-    ESP_LOGW(TAG, "Message buffer full, packet discarded");
-  }
-
   if (esp_ieee802154_receive_handle_done(frame) != ESP_OK) {
     ESP_LOGE(TAG, "Failed to handle receive done");
+  }
+
+  if (bytes_sent == 0) {
+    ESP_LOGW(TAG, "Message buffer full, packet discarded");
   }
 
   if (higher_priority_task_woken) {
     portYIELD_FROM_ISR(higher_priority_task_woken);
   }
+  
+  pending_rx = false;
+
 }
 
 bool ESP32TransceiverIEEE802_15_4::setTxDoneCallback(
