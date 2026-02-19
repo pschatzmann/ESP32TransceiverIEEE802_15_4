@@ -4,14 +4,13 @@
  * Fills the transmit buffer with maximum data (MTU), adds a checksum,
  * sends frames as fast as possible, and prints timing/throughput.
  */
-#include "ESP32TransceiverIEEE802_15_4.h"
 #include "ESP32TransceiverStream.h"
 
 #define TAG "STREAM_SEND"
 const channel_t channel = channel_t::CHANNEL_11;
 Address local({0xAB, 0xCF});
 ESP32TransceiverIEEE802_15_4 transceiver(channel, 0x1234, local);
-ieee802154::ESP32TransceiverStream stream(transceiver);
+ESP32TransceiverStream stream(transceiver);
 
 const int SEND_BUFFER_SIZE = 1024;
 uint8_t txData[SEND_BUFFER_SIZE];
