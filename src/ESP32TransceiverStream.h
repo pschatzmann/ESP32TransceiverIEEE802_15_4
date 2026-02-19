@@ -26,7 +26,9 @@ class ESP32TransceiverStream : public Stream {
    * @brief Get the current Frame Control Field (FCF) in use.
    * @return The current FrameControlField structure.
    */
-  FrameControlField& getFrameControlField() { return transceiver.getFrameControlField(); }
+  FrameControlField& getFrameControlField() {
+    return transceiver.getFrameControlField();
+  }
 
   /**
    * @brief Get the current receive buffer size in bytes.
@@ -257,6 +259,12 @@ class ESP32TransceiverStream : public Stream {
       sendWithoutConfirmations();
     }
   }
+
+  /**
+   * @brief Get the maximum transmission unit (MTU) size for the data content
+   * @return The MTU size in bytes.
+   */
+  int getMTU() const { return MTU; }
 
  protected:
   static constexpr const char* TAG = "ESP32TransceiverStream";
