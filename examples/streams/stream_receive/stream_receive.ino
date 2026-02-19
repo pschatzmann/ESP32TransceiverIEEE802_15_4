@@ -7,7 +7,6 @@
 
 #include "ESP32TransceiverStream.h"
 
-#define TAG "STREAM_RECEIVE"
 const channel_t channel = channel_t::CHANNEL_11;
 Address local({0xAB, 0xCD});  // Different from sender
 ESP32TransceiverIEEE802_15_4 transceiver(channel, 0x1234, local);
@@ -24,7 +23,7 @@ void setup() {
   // Short delay to allow serial monitor to connect
   delay(3000);
 
-  ESP_LOGI(TAG, "Starting stream receive test...");
+  Serial.println("Starting...");
   stream.begin();
   startTime = millis();
 }

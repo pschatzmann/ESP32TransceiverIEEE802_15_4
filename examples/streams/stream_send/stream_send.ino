@@ -6,7 +6,6 @@
  */
 #include "ESP32TransceiverStream.h"
 
-#define TAG "STREAM_SEND"
 const channel_t channel = channel_t::CHANNEL_11;
 Address local({0xAB, 0xCF});
 ESP32TransceiverIEEE802_15_4 transceiver(channel, 0x1234, local);
@@ -27,7 +26,7 @@ void setup() {
   Serial.begin(115200);
   // Short delay to allow serial monitor to connect
   delay(3000);
-  Serial.println("starting...");
+  Serial.println("Starting...");
 
   stream.setDestinationAddress(Address({0xAB, 0xCD}));  
   stream.setSendDelay(10); 
