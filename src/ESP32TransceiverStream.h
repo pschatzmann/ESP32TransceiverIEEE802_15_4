@@ -272,7 +272,7 @@ class ESP32TransceiverStream : public Stream {
   int receive_msg_buffer_size =
       (sizeof(frame_data_t) + 4) * 100;  // Default size for message buffer
   ESP32TransceiverIEEE802_15_4& transceiver;
-  RingBuffer rx_buffer{1024};
+  RingBuffer rx_buffer{1024 + MTU};
   RingBuffer tx_buffer{MTU};
   Frame frame;  // For parsing and buffering received frames
   bool is_open_frame = false;
