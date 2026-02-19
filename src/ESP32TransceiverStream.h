@@ -91,6 +91,22 @@ class ESP32TransceiverStream : public Stream {
   uint32_t getAckTimeoutUs() const { return transceiver.getAckTimeoutUs(); }
 
   /**
+   * @brief Enable or disable acknowledgment requests for outgoing frames.
+   * @param ack_active True to enable acknowledgment requests, false to disable.
+   * @note This method must be called before begin() to take effect!
+   */
+  void setAckActive(bool ack_active) {
+    // Set the acknowledgment request bit in the Frame Control Field
+    transceiver.getFrameControlField().ackRequest = ack_active;
+  }
+
+  /**
+   * @brief Check if acknowledgment requests are enabled for outgoing frames.
+   * @return True if acknowledgment requests are enabled, false otherwise.
+   */
+  bool isAckActive() const { return transceiver.getFrameControlField().ackRequest == 1; }
+
+  /**
    * @brief Set the size of the receive buffer. This defines how many bytes
    * we can get by calling readBytes();
    * @param size New size of the receive buffer.
