@@ -30,10 +30,8 @@ void setup() {
   delay(3000);
   Serial.println("starting...");
 
-  FrameControlField fcf;
-  fcf.ackRequest = true;
-  stream.setFrameControlField(fcf);
-  stream.setDestinationAddress(Address({0xAB, 0xCD}));  // Different from sender
+  stream.setDestinationAddress(Address({0xAB, 0xCD}));  
+  stream.setSendDelayOnNoConfirmations(10); 
   stream.begin();
 
   startTime = millis();

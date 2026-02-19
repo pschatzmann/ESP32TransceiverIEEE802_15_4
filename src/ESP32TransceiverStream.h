@@ -32,6 +32,10 @@ class ESP32TransceiverStream : public Stream {
     transceiver.setFrameControlField(fcf);
   }
 
+  FrameControlField& frameControlField() {
+    return transceiver.frameControlField();
+  }
+
   /**
    * @brief Set the destination address for the stream.
    * @param address The destination address.
@@ -67,10 +71,10 @@ class ESP32TransceiverStream : public Stream {
   }
 
   /**
-   * @brief Set the delay between send retries.
+   * @brief Set the delay between sends or send retries.
    * @param delay_ms Delay in milliseconds.
    */
-  void setSendRetryDelay(int delay_ms) { send_retry_delay_ms = delay_ms; }
+  void setSendDelay(int delay_ms) { send_delay_ms = delay_ms; }
 
   /**
    * @brief Initialize the stream and underlying transceiver.
@@ -89,8 +93,10 @@ class ESP32TransceiverStream : public Stream {
                                   this);
     transceiver.setTxFailedCallback(ieee802154_transceiver_tx_failed_callback,
                                     this);
-    transceiver.begin();
-    return true;
+    // start with 1;
+    transceiver.incrementSequenceNumber(1);
+
+    return transceiver.begin();
   }
 
   /**
@@ -98,7 +104,6 @@ class ESP32TransceiverStream : public Stream {
    * @return True on success, false otherwise.
    */
   bool begin(FrameControlField fcf) {
-    this->fcf = fcf;
     transceiver.setFrameControlField(fcf);
     return begin();
   }
@@ -156,7 +161,8 @@ class ESP32TransceiverStream : public Stream {
    */
   size_t readBytes(uint8_t* buffer, size_t size) {
     // fill receive buffer
-    while (receive());
+    uint32_t end = millis() + _timeout;
+     while(receive() && millis() < end);
     // provide data from receive buffer
     return rx_buffer.readArray(buffer, size);
   }
@@ -198,16 +204,9 @@ class ESP32TransceiverStream : public Stream {
     }
   }
 
-  /**
-   * @brief Set the delay after sending a frame when confirmations are not used.
-   * @param delay_ms Delay in milliseconds.
-   */
-  void setSendDelayOnNoConfirmations(int delay_ms) { send_delay_ms = delay_ms; }
-
  protected:
   static constexpr const char* TAG = "ESP32TransceiverStream";
   static constexpr int MTU = 116;
-  FrameControlField fcf;
   int receive_msg_buffer_size =
       (sizeof(frame_data_t) + 4) * 100;  // Default size for message buffer
   ESP32TransceiverIEEE802_15_4& transceiver;
@@ -223,14 +222,15 @@ class ESP32TransceiverStream : public Stream {
   volatile send_confirmation_state_t send_confirmation_state =
       WAITING_FOR_CONFIRMATION;
   bool is_send_confirations_enabled = false;
-  int send_retry_delay_ms = 50;  // Delay between retries in milliseconds
+  /// Delay after sending a frame when confirmations are not used
+  int send_delay_ms = 10;  
   int last_seq = -1;
-  int send_delay_ms =
-      500;  // Delay after sending a frame when confirmations are not used
 
-  bool isSendConfirmations() { return fcf.ackRequest == 1; }
+  bool isSendConfirmations() { return frameControlField().ackRequest == 1; }
 
-  bool isSequenceNumbers() { return fcf.sequenceNumberSuppression == 0; }
+  bool isSequenceNumbers() {
+    return frameControlField().sequenceNumberSuppression == 0;
+  }
 
   /**
    * @brief Internal method to receive frames and fill the receive buffer.
@@ -300,7 +300,8 @@ class ESP32TransceiverStream : public Stream {
 
   /**
    * @brief Internal method to send a frame with confirmation handling.
-   * Retries sending the frame if confirmation fails, with a delay between attempts.
+   * Retries sending the frame if confirmation fails, with a delay between
+   * attempts.
    */
   void sendWithConfirmations() {
     uint8_t tmp[tx_buffer.available()];
@@ -323,7 +324,7 @@ class ESP32TransceiverStream : public Stream {
       // on error retry sending the same frame
       if (send_confirmation_state == CONFIRMATION_ERROR) {
         ESP_LOGI(TAG, "Send failed, retrying...");
-        delay(send_retry_delay_ms);  // Short delay before retrying if needed
+        delay(send_delay_ms);  // Short delay before retrying if needed
       } else {
         transceiver.incrementSequenceNumber(1);
       }
@@ -339,7 +340,9 @@ class ESP32TransceiverStream : public Stream {
     uint8_t tmp[tx_buffer.available()];
     int len = tx_buffer.readArray(tmp, tx_buffer.available());
     ESP_LOGD(TAG, "Sending frame, len: %d", len);
-    if (!transceiver.send(tmp, len)) {
+    if (transceiver.send(tmp, len)) {
+      transceiver.incrementSequenceNumber(1);
+    } else {
       ESP_LOGE(TAG, "Failed to send frame: size %d", len);
     }
     delay(send_delay_ms);

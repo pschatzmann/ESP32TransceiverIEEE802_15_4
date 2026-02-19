@@ -326,6 +326,13 @@ class ESP32TransceiverIEEE802_15_4 {
     frame_control_field = fcf;
   }
 
+  /**
+   * @brief Get a reference to the Frame Control Field (FCF) for outgoing frames.
+   * @return Reference to the current Frame Control Field structure.
+   */
+
+  FrameControlField& frameControlField() { return frame_control_field; }  
+
   /***
    * @brief Get a reference to the actual frame object that is used for
    * sending..

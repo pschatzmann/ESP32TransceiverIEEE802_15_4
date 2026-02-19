@@ -81,7 +81,7 @@ public:
       --count;
       return byte;
     }
-    return -1;  // No data available
+    return 0;  // No data available
   }
 
   // Read up to len bytes into dest, returns number of bytes read
