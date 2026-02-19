@@ -203,6 +203,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a39f1f2a81bbcd2421273a72de3718a5d" id="r_a39f1f2a81bbcd2421273a72de3718a5d"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a39f1f2a81bbcd2421273a72de3718a5d">ackTimeoutUs</a> () const</td></tr>
 <tr class="memdesc:a39f1f2a81bbcd2421273a72de3718a5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current acknowledgment timeout in microseconds.  <br /></td></tr>
 <tr class="separator:a39f1f2a81bbcd2421273a72de3718a5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a621baa29a0ff38e0479881dbe9354128" id="r_a621baa29a0ff38e0479881dbe9354128"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a621baa29a0ff38e0479881dbe9354128">setCCAActive</a> (bool <a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#aeaf3f291957298043a678ab0903ed406">cca_enabled</a>)</td></tr>
+<tr class="memdesc:a621baa29a0ff38e0479881dbe9354128"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable or disable CCA (Clear Channel Assessment).  <br /></td></tr>
+<tr class="separator:a621baa29a0ff38e0479881dbe9354128"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d5de16c856cfb4a22feb61646a002b7" id="r_a1d5de16c856cfb4a22feb61646a002b7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a1d5de16c856cfb4a22feb61646a002b7">isCCAActive</a> () const</td></tr>
+<tr class="memdesc:a1d5de16c856cfb4a22feb61646a002b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if CCA (Clear Channel Assessment) is enabled.  <br /></td></tr>
+<tr class="separator:a1d5de16c856cfb4a22feb61646a002b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -282,6 +288,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a478eb4325b188676ffd41699908fa257"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb9d179978dc7c66198c78615baa9b0d" id="r_abb9d179978dc7c66198c78615baa9b0d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#abb9d179978dc7c66198c78615baa9b0d">auto_increment_sequence_number</a> = true</td></tr>
 <tr class="separator:abb9d179978dc7c66198c78615baa9b0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaf3f291957298043a678ab0903ed406" id="r_aeaf3f291957298043a678ab0903ed406"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#aeaf3f291957298043a678ab0903ed406">cca_enabled</a> = false</td></tr>
+<tr class="separator:aeaf3f291957298043a678ab0903ed406"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
@@ -644,6 +652,34 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>this is automatically called after each successful transmission, but you can call it </dd></dl>
+
+</div>
+</div>
+<a id="a1d5de16c856cfb4a22feb61646a002b7" name="a1d5de16c856cfb4a22feb61646a002b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d5de16c856cfb4a22feb61646a002b7">&#9670;&#160;</a></span>isCCAActive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ieee802154::ESP32TransceiverIEEE802_15_4::isCCAActive </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if CCA (Clear Channel Assessment) is enabled. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if CCA is enabled, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -1054,6 +1090,40 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set the destination address to the broadcast address (0xFFFF). </p>
+
+</div>
+</div>
+<a id="a621baa29a0ff38e0479881dbe9354128" name="a621baa29a0ff38e0479881dbe9354128"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a621baa29a0ff38e0479881dbe9354128">&#9670;&#160;</a></span>setCCAActive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ieee802154::ESP32TransceiverIEEE802_15_4::setCCAActive </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>cca_enabled</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Enable or disable CCA (Clear Channel Assessment). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cca_enabled</td><td>True to enable CCA (Clear Channel Assessment), false to disable. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1595,6 +1665,28 @@ Friends</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">bool ieee802154::ESP32TransceiverIEEE802_15_4::auto_increment_sequence_number = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeaf3f291957298043a678ab0903ed406" name="aeaf3f291957298043a678ab0903ed406"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaf3f291957298043a678ab0903ed406">&#9670;&#160;</a></span>cca_enabled</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ieee802154::ESP32TransceiverIEEE802_15_4::cca_enabled = false</td>
         </tr>
       </table>
   </td>

@@ -127,6 +127,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abb1b53f3c34391d26c690f1d836c53c0" id="r_abb1b53f3c34391d26c690f1d836c53c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#abb1b53f3c34391d26c690f1d836c53c0">ESP32TransceiverStream</a> (<a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html">ESP32TransceiverIEEE802_15_4</a> &amp;<a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#ab9cdff5d865a6b0881f1dafa1f306023">transceiver</a>)</td></tr>
 <tr class="memdesc:abb1b53f3c34391d26c690f1d836c53c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classieee802154_1_1ESP32TransceiverStream.html" title="Arduino Stream interface for IEEE 802.15.4 transceiver.">ESP32TransceiverStream</a> object.  <br /></td></tr>
 <tr class="separator:abb1b53f3c34391d26c690f1d836c53c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0788069d7bdaee6f021d6abc5a64b45" id="r_ab0788069d7bdaee6f021d6abc5a64b45"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#ab0788069d7bdaee6f021d6abc5a64b45">setRxWhenIdleActive</a> (bool rx_when_idle)</td></tr>
+<tr class="memdesc:ab0788069d7bdaee6f021d6abc5a64b45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set RX when idle mode for the transceiver.  <br /></td></tr>
+<tr class="separator:ab0788069d7bdaee6f021d6abc5a64b45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca7cdae2986240c6d4930c354b6a7cc6" id="r_aca7cdae2986240c6d4930c354b6a7cc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#aca7cdae2986240c6d4930c354b6a7cc6">setFrameControlField</a> (const <a class="el" href="structieee802154_1_1FrameControlField.html">FrameControlField</a> &amp;fcf)</td></tr>
 <tr class="memdesc:aca7cdae2986240c6d4930c354b6a7cc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the <a class="el" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure.">Frame</a> Control Field (FCF) for outgoing frames.  <br /></td></tr>
 <tr class="separator:aca7cdae2986240c6d4930c354b6a7cc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -152,6 +155,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:acfe3d72a7b6bd7055037ab1c5e6dc5c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95d2c8de426eded66c00595d47480143" id="r_a95d2c8de426eded66c00595d47480143"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a95d2c8de426eded66c00595d47480143">setSendRetryCount</a> (int count)</td></tr>
 <tr class="separator:a95d2c8de426eded66c00595d47480143"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac550f64281d17f63c325a63097619cca" id="r_ac550f64281d17f63c325a63097619cca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#ac550f64281d17f63c325a63097619cca">setCCAActive</a> (bool cca_enabled)</td></tr>
+<tr class="memdesc:ac550f64281d17f63c325a63097619cca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable or disable CCA (Clear Channel Assessment).  <br /></td></tr>
+<tr class="separator:ac550f64281d17f63c325a63097619cca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a525a88ce3e9cb3c1bf8e92f912fd3189" id="r_a525a88ce3e9cb3c1bf8e92f912fd3189"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a525a88ce3e9cb3c1bf8e92f912fd3189">isCCAActive</a> () const</td></tr>
+<tr class="memdesc:a525a88ce3e9cb3c1bf8e92f912fd3189"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if CCA (Clear Channel Assessment) is enabled.  <br /></td></tr>
+<tr class="separator:a525a88ce3e9cb3c1bf8e92f912fd3189"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe6b8dc2227146361247237d6b533691" id="r_afe6b8dc2227146361247237d6b533691"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#afe6b8dc2227146361247237d6b533691">begin</a> ()</td></tr>
 <tr class="memdesc:afe6b8dc2227146361247237d6b533691"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the stream and underlying transceiver.  <br /></td></tr>
 <tr class="separator:afe6b8dc2227146361247237d6b533691"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -244,6 +253,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:ab6143c74fc9266207a2cff568cca017f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04bbfe662205ae49f6a63888c4dea1f7" id="r_a04bbfe662205ae49f6a63888c4dea1f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a04bbfe662205ae49f6a63888c4dea1f7">send_retry_count</a> = 2</td></tr>
 <tr class="separator:a04bbfe662205ae49f6a63888c4dea1f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afedc84cba684f8336779ba1d4622e82e" id="r_afedc84cba684f8336779ba1d4622e82e"><td class="memItemLeft" align="right" valign="top">esp_ieee802154_tx_error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#afedc84cba684f8336779ba1d4622e82e">last_tx_error</a> = ESP_IEEE802154_TX_ERR_NONE</td></tr>
+<tr class="separator:afedc84cba684f8336779ba1d4622e82e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
 Static Protected Attributes</h2></td></tr>
@@ -634,6 +645,34 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a525a88ce3e9cb3c1bf8e92f912fd3189" name="a525a88ce3e9cb3c1bf8e92f912fd3189"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a525a88ce3e9cb3c1bf8e92f912fd3189">&#9670;&#160;</a></span>isCCAActive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ieee802154::ESP32TransceiverStream::isCCAActive </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if CCA (Clear Channel Assessment) is enabled. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if CCA is enabled, false otherwise. </dd></dl>
+
+</div>
+</div>
 <a id="a6d7af9a9d48d07067add4a02709f4705" name="a6d7af9a9d48d07067add4a02709f4705"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6d7af9a9d48d07067add4a02709f4705">&#9670;&#160;</a></span>isSendConfirmations()</h2>
 
@@ -902,6 +941,40 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ac550f64281d17f63c325a63097619cca" name="ac550f64281d17f63c325a63097619cca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac550f64281d17f63c325a63097619cca">&#9670;&#160;</a></span>setCCAActive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ieee802154::ESP32TransceiverStream::setCCAActive </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>cca_enabled</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Enable or disable CCA (Clear Channel Assessment). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cca_enabled</td><td>True to enable CCA (Clear Channel Assessment), false to disable. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a3a46f24cf462833aa9abbcd6635ecd97" name="a3a46f24cf462833aa9abbcd6635ecd97"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3a46f24cf462833aa9abbcd6635ecd97">&#9670;&#160;</a></span>setDestinationAddress()</h2>
 
@@ -1037,6 +1110,41 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>This method must be called before <a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#afe6b8dc2227146361247237d6b533691" title="Initialize the stream and underlying transceiver.">begin()</a> to take effect. </dd></dl>
+
+</div>
+</div>
+<a id="ab0788069d7bdaee6f021d6abc5a64b45" name="ab0788069d7bdaee6f021d6abc5a64b45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0788069d7bdaee6f021d6abc5a64b45">&#9670;&#160;</a></span>setRxWhenIdleActive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ieee802154::ESP32TransceiverStream::setRxWhenIdleActive </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>rx_when_idle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set RX when idle mode for the transceiver. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rx_when_idle</td><td>True to enable RX when idle, false to disable. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the mode was set successfully, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -1270,6 +1378,28 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="afedc84cba684f8336779ba1d4622e82e" name="afedc84cba684f8336779ba1d4622e82e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afedc84cba684f8336779ba1d4622e82e">&#9670;&#160;</a></span>last_tx_error</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_ieee802154_tx_error_t ieee802154::ESP32TransceiverStream::last_tx_error = ESP_IEEE802154_TX_ERR_NONE</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae794f44cd837a861df7b218953f699e4" name="ae794f44cd837a861df7b218953f699e4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae794f44cd837a861df7b218953f699e4">&#9670;&#160;</a></span>MTU</h2>
 
@@ -1359,7 +1489,7 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      <a class="code hl_enumvalue" href="classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e">WAITING_FOR_CONFIRMATION</a></div>
-<div class="ttc" id="aclassieee802154_1_1ESP32TransceiverStream_html_aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e"><div class="ttname"><a href="classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e">ieee802154::ESP32TransceiverStream::WAITING_FOR_CONFIRMATION</a></div><div class="ttdeci">@ WAITING_FOR_CONFIRMATION</div><div class="ttdef"><b>Definition</b> ESP32TransceiverStream.h:231</div></div>
+<div class="ttc" id="aclassieee802154_1_1ESP32TransceiverStream_html_aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e"><div class="ttname"><a href="classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e">ieee802154::ESP32TransceiverStream::WAITING_FOR_CONFIRMATION</a></div><div class="ttdeci">@ WAITING_FOR_CONFIRMATION</div><div class="ttdef"><b>Definition</b> ESP32TransceiverStream.h:252</div></div>
 </div><!-- fragment -->
 </div>
 </div>
