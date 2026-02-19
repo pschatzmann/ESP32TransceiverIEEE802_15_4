@@ -1,8 +1,4 @@
 #pragma once
-#include <freertos/stream_buffer.h>
-
-#include "freertos/FreeRTOS.h"
-#define ESP32X
 
 namespace ieee802154 {
 
