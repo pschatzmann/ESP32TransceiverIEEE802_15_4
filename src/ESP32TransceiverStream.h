@@ -13,6 +13,50 @@ namespace ieee802154 {
  * Provides buffered read/write access to the transceiver.
  */
 class ESP32TransceiverStream : public Stream {
+  /**
+   * @brief Get the current Frame Control Field (FCF) in use.
+   * @return The current FrameControlField structure.
+   */
+  FrameControlField getFrameControlField() const { return fcf; }
+
+  /**
+   * @brief Get the current destination address for the stream.
+   * @return The current Address object.
+   */
+  Address getDestinationAddress() const {
+    return transceiver.getDestinationAddress();
+  }
+
+  /**
+   * @brief Get the current receive buffer size in bytes.
+   * @return The size of the receive buffer.
+   */
+  size_t getRxBufferSize() const { return rx_buffer.size(); }
+
+  /**
+   * @brief Get the current message buffer size for receiving frames.
+   * @return The size of the message buffer in bytes.
+   */
+  int getRxMessageBufferSize() const { return receive_msg_buffer_size; }
+
+  /**
+   * @brief Get the delay between send retries in milliseconds.
+   * @return The retry delay in ms.
+   */
+  int getSendRetryDelay() const { return send_retry_delay_ms; }
+
+  /**
+   * @brief Check if send confirmations (ACKs) are enabled.
+   * @return True if confirmations are enabled, false otherwise.
+   */
+  bool isSendConfirmations() { return fcf.ackRequest == 1; }
+
+  /**
+   * @brief Check if sequence numbers are used (not suppressed).
+   * @return True if sequence numbers are used, false otherwise.
+   */
+  bool isSequenceNumbers() { return fcf.sequenceNumberSuppression == 0; }
+
  public:
   /**
    * @brief Construct a new ESP32TransceiverStream object.
@@ -28,7 +72,7 @@ class ESP32TransceiverStream : public Stream {
    * @param rx_when_idle True to enable RX when idle, false to disable.
    * @return True if the mode was set successfully, false otherwise.
    */
-  bool setRxWhenIdleActive(bool rx_when_idle){ 
+  bool setRxWhenIdleActive(bool rx_when_idle) {
     return transceiver.setRxWhenIdleActive(rx_when_idle);
   }
 
@@ -41,6 +85,10 @@ class ESP32TransceiverStream : public Stream {
     transceiver.setFrameControlField(fcf);
   }
 
+  /**
+   * @brief Get a reference to the Frame Control Field (FCF) for outgoing frames.
+   * @return Reference to the current Frame Control Field structure.
+   */
   FrameControlField& frameControlField() {
     return transceiver.frameControlField();
   }
@@ -92,7 +140,7 @@ class ESP32TransceiverStream : public Stream {
    */
   void setSendDelay(int delay_ms) { send_delay_ms = delay_ms; }
 
-  /***
+  /**
    * @brief Defines the retry count for faild send requests
    * @param count Number of retries.
    */
@@ -100,7 +148,8 @@ class ESP32TransceiverStream : public Stream {
 
   /**
    * @brief Enable or disable CCA (Clear Channel Assessment).
-   * @param cca_enabled True to enable CCA (Clear Channel Assessment), false to disable.
+   * @param cca_enabled True to enable CCA (Clear Channel Assessment), false to
+   * disable.
    */
   void setCCAActive(bool cca_enabled) { transceiver.setCCAActive(cca_enabled); }
 
