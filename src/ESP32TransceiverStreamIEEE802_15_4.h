@@ -382,9 +382,35 @@ class ESP32TransceiverStreamIEEE802_15_4 : public Stream {
 
   /**
    * @brief Get the maximum transmission unit (MTU) size for the data content
-   * @return The MTU size in bytes.
+   * @return The MTU size in bytes: 116 bytes for data payload (127 bytes total
+   * frame size minus 11 bytes for frame overhead).
    */
-  int getMTU() const { return MTU; }
+  int getMaxMTU() const { return MTU; }
+
+  /**
+   * @brief Set the transmit buffer size for the stream. This defines how much
+   * data can be buffered for sending before it is flushed.
+   * @param buffer_size The desired buffer size in bytes. Must be greater than 0
+   * but not exceed the maximum data MTU size.
+   * @return True if the buffer size was set successfully, false if the
+   * specified size is invalid.
+   */
+  bool setTxBufferSize(int buffer_size) {
+    if (buffer_size > 0 && buffer_size <= getMaxMTU()) {
+      tx_buffer.resize(buffer_size);
+      return true;
+    }
+    ESP_LOGE(TAG, "Invalid TX buffer size: %d. Must be between 1 and %d.",
+             buffer_size, getMaxMTU());
+    return false;  // Invalid MTU size
+  }
+
+  /**
+   * @brief Get the current transmit buffer size for the stream.
+   * @return The size of the transmit buffer in bytes (default 116 bytes).
+   */
+  int getTxBufferSize() const { return tx_buffer.size(); }
+
 
  protected:
   static constexpr const char* TAG = "ESP32TransceiverStream";
@@ -405,6 +431,7 @@ class ESP32TransceiverStreamIEEE802_15_4 : public Stream {
   volatile send_confirmation_state_t send_confirmation_state =
       WAITING_FOR_CONFIRMATION;
   bool is_send_confirations_enabled = false;
+  bool is_auto_flush = false;
   /// Delay after sending a frame when confirmations are not used
   int send_delay_ms = 10;
   int last_seq = -1;
@@ -524,11 +551,11 @@ class ESP32TransceiverStreamIEEE802_15_4 : public Stream {
           if (retry <= 0) {
             // abort retry and move to next frame
             p_transceiver->incrementSequenceNumber(1);
-            delay(send_delay_ms);  
+            delay(send_delay_ms);
             return;
           }
           // Short delay before retrying
-          delay(send_delay_ms);  
+          delay(send_delay_ms);
           break;
         }
         case CONFIRMATION_RECEIVED: {
@@ -537,7 +564,7 @@ class ESP32TransceiverStreamIEEE802_15_4 : public Stream {
           break;
         }
         default:
-          // we should not be here, but if we are, we just retry 
+          // we should not be here, but if we are, we just retry
           retry--;
           delay(send_delay_ms);  // Short delay before retrying if needed
           break;
