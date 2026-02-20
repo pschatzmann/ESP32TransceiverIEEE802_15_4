@@ -559,4 +559,7 @@ class ESP32TransceiverStreamIEEE802_15_4 : public Stream {
   }
 };
 
+/// @brief Alias for ESP32TransceiverStreamIEEE802_15_4 to simplify usage.
+using ESP32TransceiverIEEE802_15_4Stream = ESP32TransceiverStreamIEEE802_15_4;
+
 }  // namespace ieee802154
