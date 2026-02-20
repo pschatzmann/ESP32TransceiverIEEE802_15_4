@@ -11,6 +11,20 @@ namespace ieee802154 {
  * Allows using ESP32TransceiverIEEE802_15_4 as a Stream for easy integration
  * with Arduino APIs and libraries that expect a Stream object.
  * Provides buffered read/write access to the transceiver.
+ *
+ * If you want to control the creation of the individual frame segments,
+ * write data smaller than the MTU (127 bytes) and call flush() to send the
+ * frame immediately.
+ *
+ * When you write data to the stream, that is bigger than the MTU, it is
+ * automatically split into multiple frames and sent one after another.
+ *
+ * When you enable acknowledgment requests for outgoing frames, the stream will
+ * wait for the acknowledgment frame from the receiver before sending the next
+ * frame. If the acknowledgment is not received within the configured timeout,
+ * the stream will retry sending the frame after a delay. This process will
+ * repeat until the frame is acknowledged or a maximum number of retries is
+ * reached.
  */
 class ESP32TransceiverStreamIEEE802_15_4 : public Stream {
  public:
@@ -32,7 +46,8 @@ class ESP32TransceiverStreamIEEE802_15_4 : public Stream {
    * transceiver.
    * @param localAddress The local address for the device.
    */
-  ESP32TransceiverStreamIEEE802_15_4(channel_t channel, int16_t panID, Address localAdr) {
+  ESP32TransceiverStreamIEEE802_15_4(channel_t channel, int16_t panID,
+                                     Address localAdr) {
     p_transceiver = new ESP32TransceiverIEEE802_15_4(channel, panID, localAdr);
     p_transceiver->setReceiveTask(nullptr);
     owns_transceiver = true;
@@ -308,7 +323,7 @@ class ESP32TransceiverStreamIEEE802_15_4 : public Stream {
     }
   }
 
-   /**
+  /**
    * @brief Get the current IEEE 802.15.4 channel.
    * @return The current channel.
    */
@@ -319,7 +334,9 @@ class ESP32TransceiverStreamIEEE802_15_4 : public Stream {
    * @param channel The channel to set.
    * @return True if the channel was set successfully, false otherwise.
    */
-  bool setChannel(channel_t channel) { return p_transceiver->setChannel(channel); }
+  bool setChannel(channel_t channel) {
+    return p_transceiver->setChannel(channel);
+  }
 
   /**
    * @brief Get the current transmit power in dBm.
@@ -339,20 +356,24 @@ class ESP32TransceiverStreamIEEE802_15_4 : public Stream {
    * @param coordinator True to enable coordinator mode, false to disable.
    * @return True if the mode was set successfully, false otherwise.
    */
-  bool setCoordinatorActive(bool coordinator) { return p_transceiver->setCoordinatorActive(coordinator); }
+  bool setCoordinatorActive(bool coordinator) {
+    return p_transceiver->setCoordinatorActive(coordinator);
+  }
 
   /**
    * @brief Set promiscuous mode for the transceiver.
    * @param promiscuous True to enable promiscuous mode, false to disable.
    * @return True if the mode was set successfully, false otherwise.
    */
-  bool setPromiscuousModeActive(bool promiscuous) { return p_transceiver->setPromiscuousModeActive(promiscuous); }
+  bool setPromiscuousModeActive(bool promiscuous) {
+    return p_transceiver->setPromiscuousModeActive(promiscuous);
+  }
 
   /**
    * @brief Set the destination address to the broadcast address (0xFFFF).
    */
   void setBroadcast() { p_transceiver->setBroadcast(); }
- 
+
   /**
    * @brief Get a reference to the underlying transceiver instance.
    * @return Reference to the ESP32TransceiverIEEE802_15_4 instance.

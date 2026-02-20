@@ -317,7 +317,10 @@ Static Protected Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Arduino Stream interface for IEEE 802.15.4 transceiver. </p>
-<p>Allows using <a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html" title="Class to manage an IEEE 802.15.4 transceiver using the ESP-IDF API. On the sending side we support br...">ESP32TransceiverIEEE802_15_4</a> as a Stream for easy integration with Arduino APIs and libraries that expect a Stream object. Provides buffered read/write access to the transceiver. </p>
+<p>Allows using <a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html" title="Class to manage an IEEE 802.15.4 transceiver using the ESP-IDF API. On the sending side we support br...">ESP32TransceiverIEEE802_15_4</a> as a Stream for easy integration with Arduino APIs and libraries that expect a Stream object. Provides buffered read/write access to the transceiver.</p>
+<p>If you want to control the creation of the individual frame segments, write data smaller than the MTU (127 bytes) and call <a class="el" href="classieee802154_1_1ESP32TransceiverStreamIEEE802__15__4.html#ab5ead39fb7d17bf188b2acb85a5a65c2" title="Flush the transmit buffer and send its contents as a frame.">flush()</a> to send the frame immediately.</p>
+<p>When you write data to the stream, that is bigger than the MTU, it is automatically split into multiple frames and sent one after another.</p>
+<p>When you enable acknowledgment requests for outgoing frames, the stream will wait for the acknowledgment frame from the receiver before sending the next frame. If the acknowledgment is not received within the configured timeout, the stream will retry sending the frame after a delay. This process will repeat until the frame is acknowledged or a maximum number of retries is reached. </p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a811e221a46320ed37f3a461ee9d7955f" name="a811e221a46320ed37f3a461ee9d7955f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a811e221a46320ed37f3a461ee9d7955f">&#9670;&#160;</a></span>send_confirmation_state_t</h2>
@@ -2101,7 +2104,7 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      <a class="code hl_enumvalue" href="classieee802154_1_1ESP32TransceiverStreamIEEE802__15__4.html#a811e221a46320ed37f3a461ee9d7955fa42269e25491ee3af0105db47cfb36528">WAITING_FOR_CONFIRMATION</a></div>
-<div class="ttc" id="aclassieee802154_1_1ESP32TransceiverStreamIEEE802__15__4_html_a811e221a46320ed37f3a461ee9d7955fa42269e25491ee3af0105db47cfb36528"><div class="ttname"><a href="classieee802154_1_1ESP32TransceiverStreamIEEE802__15__4.html#a811e221a46320ed37f3a461ee9d7955fa42269e25491ee3af0105db47cfb36528">ieee802154::ESP32TransceiverStreamIEEE802_15_4::WAITING_FOR_CONFIRMATION</a></div><div class="ttdeci">@ WAITING_FOR_CONFIRMATION</div><div class="ttdef"><b>Definition</b> ESP32TransceiverStreamIEEE802_15_4.h:380</div></div>
+<div class="ttc" id="aclassieee802154_1_1ESP32TransceiverStreamIEEE802__15__4_html_a811e221a46320ed37f3a461ee9d7955fa42269e25491ee3af0105db47cfb36528"><div class="ttname"><a href="classieee802154_1_1ESP32TransceiverStreamIEEE802__15__4.html#a811e221a46320ed37f3a461ee9d7955fa42269e25491ee3af0105db47cfb36528">ieee802154::ESP32TransceiverStreamIEEE802_15_4::WAITING_FOR_CONFIRMATION</a></div><div class="ttdeci">@ WAITING_FOR_CONFIRMATION</div><div class="ttdef"><b>Definition</b> ESP32TransceiverStreamIEEE802_15_4.h:401</div></div>
 </div><!-- fragment -->
 </div>
 </div>
