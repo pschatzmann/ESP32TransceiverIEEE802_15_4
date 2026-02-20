@@ -257,7 +257,7 @@ bool ESP32TransceiverIEEE802_15_4::setChannel(channel_t channel) {
   if (static_cast<uint8_t>(channel) < 11 ||
       static_cast<uint8_t>(channel) > 26) {
     ESP_LOGE(TAG, "Invalid channel: %d", channel);
-    return ESP_ERR_INVALID_ARG;
+    return false;
   }
 
   this->channel = channel;

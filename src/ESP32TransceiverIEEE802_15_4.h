@@ -243,6 +243,12 @@ class ESP32TransceiverIEEE802_15_4 {
   bool setChannel(channel_t channel);
 
   /**
+   * @brief Get the current channel of the transceiver.
+   * @return The current channel number (11-26).
+   */
+  channel_t getChannel() const { return channel; }
+
+  /**
    * @brief Get the current pending mode of the transceiver.
    * @return The pending mode value from the ESP-IDF driver.
    */

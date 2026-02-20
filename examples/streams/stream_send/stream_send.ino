@@ -4,11 +4,11 @@
  * Fills the transmit buffer, adds a checksum,
  * sends frames as fast as possible and prints timing/throughput.
  */
-#include "ESP32TransceiverStream.h"
+#include "ESP32TransceiverStreamIEEE802_15_4.h"
 
 const channel_t channel = channel_t::CHANNEL_11;
 Address local({0xAB, 0xCF});
-ESP32TransceiverStream stream(channel, 0x1234, local);
+ESP32TransceiverStreamIEEE802_15_4 stream(channel, 0x1234, local);
 
 const int SEND_BUFFER_SIZE = 1024;
 uint8_t txData[SEND_BUFFER_SIZE];

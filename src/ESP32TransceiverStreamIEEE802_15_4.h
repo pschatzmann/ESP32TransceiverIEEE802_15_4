@@ -12,13 +12,13 @@ namespace ieee802154 {
  * with Arduino APIs and libraries that expect a Stream object.
  * Provides buffered read/write access to the transceiver.
  */
-class ESP32TransceiverStream : public Stream {
+class ESP32TransceiverStreamIEEE802_15_4 : public Stream {
  public:
   /**
    * @brief Construct a new ESP32TransceiverStream object.
    * @param transceiver Reference to the IEEE802.15.4 transceiver instance.
    */
-  ESP32TransceiverStream(ESP32TransceiverIEEE802_15_4& transceiver)
+  ESP32TransceiverStreamIEEE802_15_4(ESP32TransceiverIEEE802_15_4& transceiver)
       : p_transceiver(&transceiver) {
     transceiver.setReceiveTask(nullptr);
     owns_transceiver = false;
@@ -32,7 +32,7 @@ class ESP32TransceiverStream : public Stream {
    * transceiver.
    * @param localAddress The local address for the device.
    */
-  ESP32TransceiverStream(channel_t channel, int16_t panID, Address localAdr) {
+  ESP32TransceiverStreamIEEE802_15_4(channel_t channel, int16_t panID, Address localAdr) {
     p_transceiver = new ESP32TransceiverIEEE802_15_4(channel, panID, localAdr);
     p_transceiver->setReceiveTask(nullptr);
     owns_transceiver = true;
@@ -41,7 +41,7 @@ class ESP32TransceiverStream : public Stream {
   /**
    * @brief Destroy the ESP32TransceiverStream object.
    */
-  ~ESP32TransceiverStream() {
+  ~ESP32TransceiverStreamIEEE802_15_4() {
     if (owns_transceiver) {
       delete p_transceiver;
     }
@@ -308,6 +308,51 @@ class ESP32TransceiverStream : public Stream {
     }
   }
 
+   /**
+   * @brief Get the current IEEE 802.15.4 channel.
+   * @return The current channel.
+   */
+  channel_t getChannel() const { return p_transceiver->getChannel(); }
+
+  /**
+   * @brief Set the IEEE 802.15.4 channel.
+   * @param channel The channel to set.
+   * @return True if the channel was set successfully, false otherwise.
+   */
+  bool setChannel(channel_t channel) { return p_transceiver->setChannel(channel); }
+
+  /**
+   * @brief Get the current transmit power in dBm.
+   * @return The transmit power.
+   */
+  int8_t getTxPower() const { return p_transceiver->getTxPower(); }
+
+  /**
+   * @brief Set the transmit power in dBm.
+   * @param power The transmit power to set.
+   * @return True if the power was set successfully, false otherwise.
+   */
+  bool setTxPower(int power) { return p_transceiver->setTxPower(power); }
+
+  /**
+   * @brief Set the coordinator mode for the transceiver.
+   * @param coordinator True to enable coordinator mode, false to disable.
+   * @return True if the mode was set successfully, false otherwise.
+   */
+  bool setCoordinatorActive(bool coordinator) { return p_transceiver->setCoordinatorActive(coordinator); }
+
+  /**
+   * @brief Set promiscuous mode for the transceiver.
+   * @param promiscuous True to enable promiscuous mode, false to disable.
+   * @return True if the mode was set successfully, false otherwise.
+   */
+  bool setPromiscuousModeActive(bool promiscuous) { return p_transceiver->setPromiscuousModeActive(promiscuous); }
+
+  /**
+   * @brief Set the destination address to the broadcast address (0xFFFF).
+   */
+  void setBroadcast() { p_transceiver->setBroadcast(); }
+ 
   /**
    * @brief Get a reference to the underlying transceiver instance.
    * @return Reference to the ESP32TransceiverIEEE802_15_4 instance.
@@ -496,8 +541,8 @@ class ESP32TransceiverStream : public Stream {
   static void ieee802154_transceiver_tx_done_callback(
       const uint8_t* frame, const uint8_t* ack,
       esp_ieee802154_frame_info_t* ack_frame_info, void* user_data) {
-    ESP32TransceiverStream& self =
-        *static_cast<ESP32TransceiverStream*>(user_data);
+    ESP32TransceiverStreamIEEE802_15_4& self =
+        *static_cast<ESP32TransceiverStreamIEEE802_15_4*>(user_data);
     self.send_confirmation_state = CONFIRMATION_RECEIVED;
     self.last_tx_error = ESP_IEEE802154_TX_ERR_NONE;
   }
@@ -507,8 +552,8 @@ class ESP32TransceiverStream : public Stream {
    */
   static void ieee802154_transceiver_tx_failed_callback(
       const uint8_t* frame, esp_ieee802154_tx_error_t error, void* user_data) {
-    ESP32TransceiverStream& self =
-        *static_cast<ESP32TransceiverStream*>(user_data);
+    ESP32TransceiverStreamIEEE802_15_4& self =
+        *static_cast<ESP32TransceiverStreamIEEE802_15_4*>(user_data);
     self.send_confirmation_state = CONFIRMATION_ERROR;
     self.last_tx_error = error;
   }
