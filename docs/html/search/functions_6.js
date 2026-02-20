@@ -9,5 +9,6 @@ var searchData=
   ['getrxbuffersize_6',['getRxBufferSize',['../classieee802154_1_1ESP32TransceiverStream.html#aa34ef8a07af05b56f59f37129498ebec',1,'ieee802154::ESP32TransceiverStream']]],
   ['getrxmessagebuffersize_7',['getRxMessageBufferSize',['../classieee802154_1_1ESP32TransceiverStream.html#abf1c2be38348fdbc02be42021d96887b',1,'ieee802154::ESP32TransceiverStream']]],
   ['getsenddelay_8',['getSendDelay',['../classieee802154_1_1ESP32TransceiverStream.html#a32a476f0e619aec493af1b6f9c97c4f0',1,'ieee802154::ESP32TransceiverStream']]],
-  ['gettxpower_9',['getTxPower',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a3d7ddbb1dc60258ea2bb71075cf64d5f',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]]
+  ['gettransceiver_9',['getTransceiver',['../classieee802154_1_1ESP32TransceiverStream.html#a720ac908902d819a2a548797756a58b6',1,'ieee802154::ESP32TransceiverStream']]],
+  ['gettxpower_10',['getTxPower',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a3d7ddbb1dc60258ea2bb71075cf64d5f',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]]
 ];

@@ -104,22 +104,21 @@ Collaboration diagram for ieee802154::ESP32TransceiverStream:</div>
 <div class="dyncontent">
 <div class="center"><img src="classieee802154_1_1ESP32TransceiverStream__coll__graph.png" border="0" usemap="#aieee802154_1_1ESP32TransceiverStream_coll__map" alt="Collaboration graph"/></div>
 <map name="aieee802154_1_1ESP32TransceiverStream_coll__map" id="aieee802154_1_1ESP32TransceiverStream_coll__map">
-<area shape="rect" title="Arduino Stream interface for IEEE 802.15.4 transceiver." alt="" coords="957,101,1177,141"/>
-<area shape="rect" title=" " alt="" coords="687,5,757,31"/>
-<area shape="poly" title=" " alt="" coords="771,18,848,27,934,47,990,71,1037,98,1034,103,987,76,932,53,847,33,770,23"/>
-<area shape="rect" href="structieee802154_1_1FrameControlField.html" title="IEEE 802.15.4 Frame Control Field (FCF) structure Bit fields are ordered LSB to MSB to match IEEE 802..." alt="" coords="5,122,200,162"/>
-<area shape="poly" title=" " alt="" coords="213,120,269,114,434,105,562,103,856,105,933,105,957,106,957,111,933,110,856,110,562,108,434,110,270,119,214,125"/>
-<area shape="rect" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html" title="Class to manage an IEEE 802.15.4 transceiver using the ESP&#45;IDF API. On the sending side we support br..." alt="" coords="612,169,832,209"/>
-<area shape="poly" title=" " alt="" coords="190,163,270,178,359,187,450,192,612,191,612,197,450,197,359,193,269,183,189,168"/>
-<area shape="rect" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure." alt="" coords="275,129,422,155"/>
-<area shape="poly" title=" " alt="" coords="214,139,275,139,275,145,214,145"/>
-<area shape="poly" title=" " alt="" coords="845,168,933,151,990,138,991,143,934,157,846,173"/>
-<area shape="poly" title=" " alt="" coords="436,137,957,121,957,127,436,142"/>
-<area shape="poly" title=" " alt="" coords="405,156,452,166,533,176,612,182,611,188,533,182,452,171,404,161"/>
-<area shape="rect" href="classieee802154_1_1Address.html" title="IEEE 802.15.4 Address abstraction." alt="" coords="269,263,428,288"/>
-<area shape="poly" title=" " alt="" coords="433,287,471,288,511,285,550,276,586,260,595,251,598,241,601,230,610,219,630,206,633,211,614,223,606,232,603,243,599,254,590,264,552,281,512,290,471,293,433,292"/>
-<area shape="rect" href="classieee802154_1_1RingBuffer.html" title="Efficient ring buffer for storing frame data." alt="" coords="635,233,809,259"/>
-<area shape="poly" title=" " alt="" coords="822,231,878,218,932,201,991,171,1039,139,1042,143,993,175,934,206,879,224,824,236"/>
+<area shape="rect" title="Arduino Stream interface for IEEE 802.15.4 transceiver." alt="" coords="973,128,1193,168"/>
+<area shape="rect" title=" " alt="" coords="687,49,757,74"/>
+<area shape="poly" title=" " alt="" coords="771,68,950,107,1018,125,1016,131,949,112,770,73"/>
+<area shape="rect" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html" title="Class to manage an IEEE 802.15.4 transceiver using the ESP&#45;IDF API. On the sending side we support br..." alt="" coords="612,99,832,139"/>
+<area shape="poly" title=" " alt="" coords="846,126,973,136,973,142,846,131"/>
+<area shape="rect" href="structieee802154_1_1Frame.html" title="IEEE 802.15.4 MAC frame structure." alt="" coords="275,133,422,158"/>
+<area shape="poly" title=" " alt="" coords="436,151,612,163,722,165,832,163,973,155,973,160,832,168,722,171,612,168,435,156"/>
+<area shape="poly" title=" " alt="" coords="436,139,588,129,612,127,612,133,588,135,436,144"/>
+<area shape="rect" href="structieee802154_1_1FrameControlField.html" title="IEEE 802.15.4 Frame Control Field (FCF) structure Bit fields are ordered LSB to MSB to match IEEE 802..." alt="" coords="5,95,200,135"/>
+<area shape="poly" title=" " alt="" coords="213,104,389,97,489,97,588,100,612,102,612,107,588,105,489,102,389,102,214,109"/>
+<area shape="poly" title=" " alt="" coords="214,126,275,134,275,139,213,131"/>
+<area shape="rect" href="classieee802154_1_1Address.html" title="IEEE 802.15.4 Address abstraction." alt="" coords="269,19,428,45"/>
+<area shape="poly" title=" " alt="" coords="442,30,516,40,553,49,589,63,602,74,613,84,639,96,637,101,611,89,598,78,587,68,552,54,515,45,442,35"/>
+<area shape="rect" href="classieee802154_1_1RingBuffer.html" title="Efficient ring buffer for storing frame data." alt="" coords="635,226,809,251"/>
+<area shape="poly" title=" " alt="" coords="823,240,886,236,949,223,1007,197,1054,166,1057,171,1009,202,950,228,887,241,824,245"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -140,7 +139,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a786bf74dbab7c1d17664e6b9db531b02" id="r_a786bf74dbab7c1d17664e6b9db531b02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a786bf74dbab7c1d17664e6b9db531b02">end</a> ()</td></tr>
 <tr class="memdesc:a786bf74dbab7c1d17664e6b9db531b02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinitialize the stream and underlying transceiver.  <br /></td></tr>
 <tr class="separator:a786bf74dbab7c1d17664e6b9db531b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb1b53f3c34391d26c690f1d836c53c0" id="r_abb1b53f3c34391d26c690f1d836c53c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#abb1b53f3c34391d26c690f1d836c53c0">ESP32TransceiverStream</a> (<a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html">ESP32TransceiverIEEE802_15_4</a> &amp;<a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#ab9cdff5d865a6b0881f1dafa1f306023">transceiver</a>)</td></tr>
+<tr class="memitem:a5044020b30e75e9d3e8ee9d4ac70e53c" id="r_a5044020b30e75e9d3e8ee9d4ac70e53c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a5044020b30e75e9d3e8ee9d4ac70e53c">ESP32TransceiverStream</a> (<a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2e">channel_t</a> channel, int16_t panID, <a class="el" href="classieee802154_1_1Address.html">Address</a> localAdr)</td></tr>
+<tr class="memdesc:a5044020b30e75e9d3e8ee9d4ac70e53c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classieee802154_1_1ESP32TransceiverStream.html" title="Arduino Stream interface for IEEE 802.15.4 transceiver.">ESP32TransceiverStream</a> object with transceiver parameters.  <br /></td></tr>
+<tr class="separator:a5044020b30e75e9d3e8ee9d4ac70e53c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb1b53f3c34391d26c690f1d836c53c0" id="r_abb1b53f3c34391d26c690f1d836c53c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#abb1b53f3c34391d26c690f1d836c53c0">ESP32TransceiverStream</a> (<a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html">ESP32TransceiverIEEE802_15_4</a> &amp;transceiver)</td></tr>
 <tr class="memdesc:abb1b53f3c34391d26c690f1d836c53c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classieee802154_1_1ESP32TransceiverStream.html" title="Arduino Stream interface for IEEE 802.15.4 transceiver.">ESP32TransceiverStream</a> object.  <br /></td></tr>
 <tr class="separator:abb1b53f3c34391d26c690f1d836c53c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b828b9d095c8afddb84de6422150f08" id="r_a8b828b9d095c8afddb84de6422150f08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a8b828b9d095c8afddb84de6422150f08">flush</a> () override</td></tr>
@@ -164,6 +166,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a32a476f0e619aec493af1b6f9c97c4f0" id="r_a32a476f0e619aec493af1b6f9c97c4f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a32a476f0e619aec493af1b6f9c97c4f0">getSendDelay</a> () const</td></tr>
 <tr class="memdesc:a32a476f0e619aec493af1b6f9c97c4f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the delay between send retries in milliseconds.  <br /></td></tr>
 <tr class="separator:a32a476f0e619aec493af1b6f9c97c4f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a720ac908902d819a2a548797756a58b6" id="r_a720ac908902d819a2a548797756a58b6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html">ESP32TransceiverIEEE802_15_4</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a720ac908902d819a2a548797756a58b6">getTransceiver</a> ()</td></tr>
+<tr class="memdesc:a720ac908902d819a2a548797756a58b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a reference to the underlying transceiver instance.  <br /></td></tr>
+<tr class="separator:a720ac908902d819a2a548797756a58b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a538a345eadf3aad8a0a17e13db7d95af" id="r_a538a345eadf3aad8a0a17e13db7d95af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a538a345eadf3aad8a0a17e13db7d95af">isAckActive</a> () const</td></tr>
 <tr class="memdesc:a538a345eadf3aad8a0a17e13db7d95af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if acknowledgment requests are enabled for outgoing frames.  <br /></td></tr>
 <tr class="separator:a538a345eadf3aad8a0a17e13db7d95af"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -215,6 +220,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:acf35b784cf2a32acec5afc98fcd325a3" id="r_acf35b784cf2a32acec5afc98fcd325a3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#acf35b784cf2a32acec5afc98fcd325a3">write</a> (const uint8_t byte) override</td></tr>
 <tr class="memdesc:acf35b784cf2a32acec5afc98fcd325a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a single byte to the transceiver.  <br /></td></tr>
 <tr class="separator:acf35b784cf2a32acec5afc98fcd325a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99d7a288460f749818b6b13ecc6d70e6" id="r_a99d7a288460f749818b6b13ecc6d70e6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a99d7a288460f749818b6b13ecc6d70e6">~ESP32TransceiverStream</a> ()</td></tr>
+<tr class="memdesc:a99d7a288460f749818b6b13ecc6d70e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classieee802154_1_1ESP32TransceiverStream.html" title="Arduino Stream interface for IEEE 802.15.4 transceiver.">ESP32TransceiverStream</a> object.  <br /></td></tr>
+<tr class="separator:a99d7a288460f749818b6b13ecc6d70e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-types" name="pro-types"></a>
 Protected Types</h2></td></tr>
@@ -261,6 +269,10 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:ab6143c74fc9266207a2cff568cca017f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afedc84cba684f8336779ba1d4622e82e" id="r_afedc84cba684f8336779ba1d4622e82e"><td class="memItemLeft" align="right" valign="top">esp_ieee802154_tx_error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#afedc84cba684f8336779ba1d4622e82e">last_tx_error</a> = ESP_IEEE802154_TX_ERR_NONE</td></tr>
 <tr class="separator:afedc84cba684f8336779ba1d4622e82e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d9484f93c73250565bfdb19b1031bd5" id="r_a9d9484f93c73250565bfdb19b1031bd5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a9d9484f93c73250565bfdb19b1031bd5">owns_transceiver</a> = false</td></tr>
+<tr class="separator:a9d9484f93c73250565bfdb19b1031bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2f8787d0622cb1d2957cf41ab32b0fe" id="r_ac2f8787d0622cb1d2957cf41ab32b0fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html">ESP32TransceiverIEEE802_15_4</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#ac2f8787d0622cb1d2957cf41ab32b0fe">p_transceiver</a> = nullptr</td></tr>
+<tr class="separator:ac2f8787d0622cb1d2957cf41ab32b0fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcee468ec322063763549f55d6ea0a0f" id="r_afcee468ec322063763549f55d6ea0a0f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#afcee468ec322063763549f55d6ea0a0f">receive_msg_buffer_size</a></td></tr>
 <tr class="separator:afcee468ec322063763549f55d6ea0a0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7185becae036a87a49132ba01465426c" id="r_a7185becae036a87a49132ba01465426c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classieee802154_1_1RingBuffer.html">RingBuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a7185becae036a87a49132ba01465426c">rx_buffer</a> {1024 + <a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#ae794f44cd837a861df7b218953f699e4">MTU</a>}</td></tr>
@@ -272,8 +284,6 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a48d269f73ba847edf68dbfc09cbb7a24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04bbfe662205ae49f6a63888c4dea1f7" id="r_a04bbfe662205ae49f6a63888c4dea1f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#a04bbfe662205ae49f6a63888c4dea1f7">send_retry_count</a> = 2</td></tr>
 <tr class="separator:a04bbfe662205ae49f6a63888c4dea1f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9cdff5d865a6b0881f1dafa1f306023" id="r_ab9cdff5d865a6b0881f1dafa1f306023"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html">ESP32TransceiverIEEE802_15_4</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#ab9cdff5d865a6b0881f1dafa1f306023">transceiver</a></td></tr>
-<tr class="separator:ab9cdff5d865a6b0881f1dafa1f306023"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac278c3d1748ca4f16387b109039e8a52" id="r_ac278c3d1748ca4f16387b109039e8a52"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classieee802154_1_1RingBuffer.html">RingBuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#ac278c3d1748ca4f16387b109039e8a52">tx_buffer</a> {<a class="el" href="classieee802154_1_1ESP32TransceiverStream.html#ae794f44cd837a861df7b218953f699e4">MTU</a>}</td></tr>
 <tr class="separator:ac278c3d1748ca4f16387b109039e8a52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -317,7 +327,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="abb1b53f3c34391d26c690f1d836c53c0" name="abb1b53f3c34391d26c690f1d836c53c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb1b53f3c34391d26c690f1d836c53c0">&#9670;&#160;</a></span>ESP32TransceiverStream()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#abb1b53f3c34391d26c690f1d836c53c0">&#9670;&#160;</a></span>ESP32TransceiverStream() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -347,6 +357,85 @@ Static Protected Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a5044020b30e75e9d3e8ee9d4ac70e53c" name="a5044020b30e75e9d3e8ee9d4ac70e53c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5044020b30e75e9d3e8ee9d4ac70e53c">&#9670;&#160;</a></span>ESP32TransceiverStream() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ieee802154::ESP32TransceiverStream::ESP32TransceiverStream </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2e">channel_t</a>&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t&#160;</td>
+          <td class="paramname"><em>panID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classieee802154_1_1Address.html">Address</a>&#160;</td>
+          <td class="paramname"><em>localAdr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classieee802154_1_1ESP32TransceiverStream.html" title="Arduino Stream interface for IEEE 802.15.4 transceiver.">ESP32TransceiverStream</a> object with transceiver parameters. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">channel</td><td>The IEEE 802.15.4 channel to use. </td></tr>
+    <tr><td class="paramname">panID</td><td>The Personal Area Network Identifier to use for the transceiver. </td></tr>
+    <tr><td class="paramname">localAddress</td><td>The local address for the device. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a99d7a288460f749818b6b13ecc6d70e6" name="a99d7a288460f749818b6b13ecc6d70e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99d7a288460f749818b6b13ecc6d70e6">&#9670;&#160;</a></span>~ESP32TransceiverStream()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ieee802154::ESP32TransceiverStream::~ESP32TransceiverStream </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Destroy the <a class="el" href="classieee802154_1_1ESP32TransceiverStream.html" title="Arduino Stream interface for IEEE 802.15.4 transceiver.">ESP32TransceiverStream</a> object. </p>
 
 </div>
 </div>
@@ -684,6 +773,34 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Get the delay between send retries in milliseconds. </p>
 <dl class="section return"><dt>Returns</dt><dd>The retry delay in ms. </dd></dl>
+
+</div>
+</div>
+<a id="a720ac908902d819a2a548797756a58b6" name="a720ac908902d819a2a548797756a58b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a720ac908902d819a2a548797756a58b6">&#9670;&#160;</a></span>getTransceiver()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html">ESP32TransceiverIEEE802_15_4</a> &amp; ieee802154::ESP32TransceiverStream::getTransceiver </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get a reference to the underlying transceiver instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the <a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html" title="Class to manage an IEEE 802.15.4 transceiver using the ESP-IDF API. On the sending side we support br...">ESP32TransceiverIEEE802_15_4</a> instance. </dd></dl>
 
 </div>
 </div>
@@ -1629,6 +1746,50 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a9d9484f93c73250565bfdb19b1031bd5" name="a9d9484f93c73250565bfdb19b1031bd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d9484f93c73250565bfdb19b1031bd5">&#9670;&#160;</a></span>owns_transceiver</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ieee802154::ESP32TransceiverStream::owns_transceiver = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac2f8787d0622cb1d2957cf41ab32b0fe" name="ac2f8787d0622cb1d2957cf41ab32b0fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2f8787d0622cb1d2957cf41ab32b0fe">&#9670;&#160;</a></span>p_transceiver</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html">ESP32TransceiverIEEE802_15_4</a>* ieee802154::ESP32TransceiverStream::p_transceiver = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="afcee468ec322063763549f55d6ea0a0f" name="afcee468ec322063763549f55d6ea0a0f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afcee468ec322063763549f55d6ea0a0f">&#9670;&#160;</a></span>receive_msg_buffer_size</h2>
 
@@ -1696,7 +1857,7 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      <a class="code hl_enumvalue" href="classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e">WAITING_FOR_CONFIRMATION</a></div>
-<div class="ttc" id="aclassieee802154_1_1ESP32TransceiverStream_html_aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e"><div class="ttname"><a href="classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e">ieee802154::ESP32TransceiverStream::WAITING_FOR_CONFIRMATION</a></div><div class="ttdeci">@ WAITING_FOR_CONFIRMATION</div><div class="ttdef"><b>Definition</b> ESP32TransceiverStream.h:296</div></div>
+<div class="ttc" id="aclassieee802154_1_1ESP32TransceiverStream_html_aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e"><div class="ttname"><a href="classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259ca73190967772a003843d6857de194496e">ieee802154::ESP32TransceiverStream::WAITING_FOR_CONFIRMATION</a></div><div class="ttdeci">@ WAITING_FOR_CONFIRMATION</div><div class="ttdef"><b>Definition</b> ESP32TransceiverStream.h:335</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1762,28 +1923,6 @@ Static Protected Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ab9cdff5d865a6b0881f1dafa1f306023" name="ab9cdff5d865a6b0881f1dafa1f306023"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab9cdff5d865a6b0881f1dafa1f306023">&#9670;&#160;</a></span>transceiver</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classieee802154_1_1ESP32TransceiverIEEE802__15__4.html">ESP32TransceiverIEEE802_15_4</a>&amp; ieee802154::ESP32TransceiverStream::transceiver</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
