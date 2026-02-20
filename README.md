@@ -15,6 +15,7 @@ This library enables ESP32 devices to send and receive custom low-power IEEE 802
 - Transmit and receive IEEE 802.15.4 frames with support for custom frame structures.
 - Register callbacks to process received frames.
 - Arduino Stream integration
+- Maximum thruput w/o ack is around 23100 bytes/second
 
 ## Requirements
 

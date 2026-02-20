@@ -27,8 +27,9 @@ void setup() {
   delay(3000);
   Serial.println("Starting...");
 
+  // maximise throughput by reducing inter-frame delay, but still allow some time for
+  stream.setSendDelay(5);
   stream.setDestinationAddress(Address({0xAB, 0xCD}));
-  stream.setSendDelay(10);
   stream.begin();
 
   startTime = millis();
