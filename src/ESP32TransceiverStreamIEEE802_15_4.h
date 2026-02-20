@@ -346,7 +346,7 @@ class ESP32TransceiverStreamIEEE802_15_4 : public Stream {
 
   /**
    * @brief Set the transmit power in dBm.
-   * @param power The transmit power to set.
+   * @param power Transmit power value to set (in dBm). -24 dBm  to  +20 dBm
    * @return True if the power was set successfully, false otherwise.
    */
   bool setTxPower(int power) { return p_transceiver->setTxPower(power); }
