@@ -1,9 +1,9 @@
 var searchData=
 [
   ['securityenabled_0',['securityEnabled',['../structieee802154_1_1FrameControlField.html#ac6148e763f8c4cb7c41c97a060ba33c0',1,'ieee802154::FrameControlField']]],
-  ['send_5fconfirmation_5fstate_1',['send_confirmation_state',['../classieee802154_1_1ESP32TransceiverStream.html#af2a169ff27409ec98d6f98c45ae8c6b6',1,'ieee802154::ESP32TransceiverStream']]],
-  ['send_5fdelay_5fms_2',['send_delay_ms',['../classieee802154_1_1ESP32TransceiverStream.html#a48d269f73ba847edf68dbfc09cbb7a24',1,'ieee802154::ESP32TransceiverStream']]],
-  ['send_5fretry_5fcount_3',['send_retry_count',['../classieee802154_1_1ESP32TransceiverStream.html#a04bbfe662205ae49f6a63888c4dea1f7',1,'ieee802154::ESP32TransceiverStream']]],
+  ['send_5fconfirmation_5fstate_1',['send_confirmation_state',['../classieee802154_1_1ESP32TransceiverStreamIEEE802__15__4.html#a8ea1561fb4efa70ba87b7c9026578469',1,'ieee802154::ESP32TransceiverStreamIEEE802_15_4']]],
+  ['send_5fdelay_5fms_2',['send_delay_ms',['../classieee802154_1_1ESP32TransceiverStreamIEEE802__15__4.html#ac08fd3e347b6f5453591609b4f2c7b6c',1,'ieee802154::ESP32TransceiverStreamIEEE802_15_4']]],
+  ['send_5fretry_5fcount_3',['send_retry_count',['../classieee802154_1_1ESP32TransceiverStreamIEEE802__15__4.html#af828a816597f8eccb76f9be8df0c9027',1,'ieee802154::ESP32TransceiverStreamIEEE802_15_4']]],
   ['sequencenumber_4',['sequenceNumber',['../structieee802154_1_1Frame.html#a21dda913c937a67ae8e49798069a8797',1,'ieee802154::Frame']]],
   ['sequencenumbersuppression_5',['sequenceNumberSuppression',['../structieee802154_1_1FrameControlField.html#ac90d72977fb778dfa1ad67edbf1d33e0',1,'ieee802154::FrameControlField']]],
   ['sfd_5fcallback_5f_6',['sfd_callback_',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#aa23aa292e3179f2eb886fac56b0b9a7c',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],

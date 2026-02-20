@@ -20,6 +20,6 @@ var searchData=
   ['channel_5f26_17',['CHANNEL_26',['../namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2ea7a22694f681746c5e514afac2616d733',1,'ieee802154']]],
   ['channel_5ft_18',['channel_t',['../namespaceieee802154.html#a3ad96a1cb3e35bcf3516f74897a78f2e',1,'ieee802154']]],
   ['clear_19',['clear',['../classieee802154_1_1RingBuffer.html#a8ad0524ac34b9a4606876ca6a4e7546a',1,'ieee802154::RingBuffer']]],
-  ['confirmation_5ferror_20',['CONFIRMATION_ERROR',['../classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259caf4ab8df7a976ec56f8832db428c9effd',1,'ieee802154::ESP32TransceiverStream']]],
-  ['confirmation_5freceived_21',['CONFIRMATION_RECEIVED',['../classieee802154_1_1ESP32TransceiverStream.html#aef0ddc98fc52b376a4c4a5fc8dbb259cab7360af1fbce59907d04186d5c9d368a',1,'ieee802154::ESP32TransceiverStream']]]
+  ['confirmation_5ferror_20',['CONFIRMATION_ERROR',['../classieee802154_1_1ESP32TransceiverStreamIEEE802__15__4.html#a811e221a46320ed37f3a461ee9d7955fa3a4cf93f3235dd20ee84c3a163f9e8c9',1,'ieee802154::ESP32TransceiverStreamIEEE802_15_4']]],
+  ['confirmation_5freceived_21',['CONFIRMATION_RECEIVED',['../classieee802154_1_1ESP32TransceiverStreamIEEE802__15__4.html#a811e221a46320ed37f3a461ee9d7955fa7d85f37db39e91920b2cc685a32af330',1,'ieee802154::ESP32TransceiverStreamIEEE802_15_4']]]
 ];

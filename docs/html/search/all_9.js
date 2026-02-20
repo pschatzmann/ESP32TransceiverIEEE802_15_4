@@ -4,5 +4,5 @@ var searchData=
   ['max_5fframe_5flen_1',['MAX_FRAME_LEN',['../Frame_8h.html#ae480dcd4682b4ad7442fdd1db297083e',1,'Frame.h']]],
   ['message_5fbuffer_2',['message_buffer',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#aa66d510d932f12c868a00ce95d29a178',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
   ['mode_3',['mode',['../classieee802154_1_1Address.html#a3112e1a7760307d7e9d7cb3609d731d2',1,'ieee802154::Address']]],
-  ['mtu_4',['MTU',['../classieee802154_1_1ESP32TransceiverStream.html#ae794f44cd837a861df7b218953f699e4',1,'ieee802154::ESP32TransceiverStream']]]
+  ['mtu_4',['MTU',['../classieee802154_1_1ESP32TransceiverStreamIEEE802__15__4.html#a8be24fd00901f249fe9c78575c8e836f',1,'ieee802154::ESP32TransceiverStreamIEEE802_15_4']]]
 ];
