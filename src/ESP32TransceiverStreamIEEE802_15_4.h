@@ -500,18 +500,20 @@ class ESP32TransceiverStreamIEEE802_15_4 : public Stream {
     // send frame
     int attempt = 0;
     do {
+      // send data
       send_confirmation_state = WAITING_FOR_CONFIRMATION;
       ESP_LOGD(TAG, "Attempt %d: Sending frame, len: %d", attempt, len);
       if (!p_transceiver->send(tmp, len)) {
         ESP_LOGE(TAG, "Failed to send frame: size %d", len);
         send_confirmation_state = CONFIRMATION_ERROR;
       }
+
       // wait for confirmations
       uint32_t timeout =
-          millis() + getAckTimeoutUs() / 1000 + 100;  // Add some margin
+          millis() + (getAckTimeoutUs() / 1000) + 2;  // Add some margin
       while (send_confirmation_state == WAITING_FOR_CONFIRMATION &&
              millis() < timeout) {
-        delay(10);
+        delay(2);
       }
 
       // on error retry sending the same frame
@@ -520,24 +522,28 @@ class ESP32TransceiverStreamIEEE802_15_4 : public Stream {
           ESP_LOGI(TAG, "Send failed with rc=%d, retrying...", last_tx_error);
           retry--;
           if (retry <= 0) {
+            // abort retry and move to next frame
             p_transceiver->incrementSequenceNumber(1);
+            delay(send_delay_ms);  
             return;
           }
-          delay(send_delay_ms);  // Short delay before retrying if needed
+          // Short delay before retrying
+          delay(send_delay_ms);  
           break;
         }
         case CONFIRMATION_RECEIVED: {
           p_transceiver->incrementSequenceNumber(1);
+          delay(send_delay_ms);
           break;
         }
         default:
+          // we should not be here, but if we are, we just retry 
           retry--;
           delay(send_delay_ms);  // Short delay before retrying if needed
           break;
       }
       ++attempt;
     } while (send_confirmation_state == CONFIRMATION_ERROR);
-    delay(send_delay_ms);  // Short delay before retrying if needed
   }
 
   /**
