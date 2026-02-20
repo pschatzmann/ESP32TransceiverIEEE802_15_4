@@ -26,8 +26,9 @@ var searchData=
   ['setsfdcallback_23',['setSfdCallback',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a838a113d23ef27d295fa64a5db13df27',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
   ['setsfdtxcallback_24',['setSfdTxCallback',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#ae044e749dc536556d93ac54db27b8fca',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
   ['setsourceaddress_25',['setSourceAddress',['../structieee802154_1_1Frame.html#afcf906b40cd1bbd4b99140263f0d3192',1,'ieee802154::Frame']]],
-  ['settxdonecallback_26',['setTxDoneCallback',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#ab5076c3efeac64d0d818192d5b426163',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
-  ['settxfailedcallback_27',['setTxFailedCallback',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a56f0935ee49ded14aee93ebb07bb6dc8',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
-  ['settxpower_28',['settxpower',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#ae3b5c44e25905cc37a9e645068b7d1a5',1,'ieee802154::ESP32TransceiverIEEE802_15_4::setTxPower()'],['../classieee802154_1_1ESP32TransceiverStreamIEEE802__15__4.html#a2e8a19354ee0b6a51bc2cbe7cc44dcef',1,'ieee802154::ESP32TransceiverStreamIEEE802_15_4::setTxPower()']]],
-  ['size_29',['size',['../classieee802154_1_1RingBuffer.html#ad7bdd823ed3ac73be21b0f933c238b8f',1,'ieee802154::RingBuffer']]]
+  ['settxbuffersize_26',['setTxBufferSize',['../classieee802154_1_1ESP32TransceiverStreamIEEE802__15__4.html#a4b6fe011fe6b79050f9c122c7ce0e093',1,'ieee802154::ESP32TransceiverStreamIEEE802_15_4']]],
+  ['settxdonecallback_27',['setTxDoneCallback',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#ab5076c3efeac64d0d818192d5b426163',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
+  ['settxfailedcallback_28',['setTxFailedCallback',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#a56f0935ee49ded14aee93ebb07bb6dc8',1,'ieee802154::ESP32TransceiverIEEE802_15_4']]],
+  ['settxpower_29',['settxpower',['../classieee802154_1_1ESP32TransceiverIEEE802__15__4.html#ae3b5c44e25905cc37a9e645068b7d1a5',1,'ieee802154::ESP32TransceiverIEEE802_15_4::setTxPower()'],['../classieee802154_1_1ESP32TransceiverStreamIEEE802__15__4.html#a2e8a19354ee0b6a51bc2cbe7cc44dcef',1,'ieee802154::ESP32TransceiverStreamIEEE802_15_4::setTxPower()']]],
+  ['size_30',['size',['../classieee802154_1_1RingBuffer.html#ad7bdd823ed3ac73be21b0f933c238b8f',1,'ieee802154::RingBuffer']]]
 ];
