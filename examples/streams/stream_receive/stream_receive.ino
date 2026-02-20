@@ -9,8 +9,7 @@
 
 const channel_t channel = channel_t::CHANNEL_11;
 Address local({0xAB, 0xCD});  // Different from sender
-ESP32TransceiverIEEE802_15_4 transceiver(channel, 0x1234, local);
-ESP32TransceiverStream stream(transceiver);
+ESP32TransceiverStream stream(channel, 0x1234, local);
 
 const int RECEIVE_BUFFER_SIZE = 1024;
 uint8_t rxData[RECEIVE_BUFFER_SIZE];

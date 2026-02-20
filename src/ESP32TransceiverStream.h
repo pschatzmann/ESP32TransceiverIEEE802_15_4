@@ -19,15 +19,40 @@ class ESP32TransceiverStream : public Stream {
    * @param transceiver Reference to the IEEE802.15.4 transceiver instance.
    */
   ESP32TransceiverStream(ESP32TransceiverIEEE802_15_4& transceiver)
-      : transceiver(transceiver) {
+      : p_transceiver(&transceiver) {
     transceiver.setReceiveTask(nullptr);
+    owns_transceiver = false;
   }
+
+  /**
+   * @brief Construct a new ESP32TransceiverStream object with transceiver
+   * parameters.
+   * @param channel The IEEE 802.15.4 channel to use.
+   * @param panID The Personal Area Network Identifier to use for the
+   * transceiver.
+   * @param localAddress The local address for the device.
+   */
+  ESP32TransceiverStream(channel_t channel, int16_t panID, Address localAdr) {
+    p_transceiver = new ESP32TransceiverIEEE802_15_4(channel, panID, localAdr);
+    p_transceiver->setReceiveTask(nullptr);
+    owns_transceiver = true;
+  }
+
+  /**
+   * @brief Destroy the ESP32TransceiverStream object.
+   */
+  ~ESP32TransceiverStream() {
+    if (owns_transceiver) {
+      delete p_transceiver;
+    }
+  }
+
   /**
    * @brief Get the current Frame Control Field (FCF) in use.
    * @return The current FrameControlField structure.
    */
   FrameControlField& getFrameControlField() {
-    return transceiver.getFrameControlField();
+    return p_transceiver->getFrameControlField();
   }
 
   /**
@@ -54,7 +79,7 @@ class ESP32TransceiverStream : public Stream {
    * @return True if the mode was set successfully, false otherwise.
    */
   bool setRxWhenIdleActive(bool rx_when_idle) {
-    return transceiver.setRxWhenIdleActive(rx_when_idle);
+    return p_transceiver->setRxWhenIdleActive(rx_when_idle);
   }
 
   /**
@@ -63,7 +88,7 @@ class ESP32TransceiverStream : public Stream {
    * @note This method must be called before begin() to take effect!
    */
   void setFrameControlField(const FrameControlField& fcf) {
-    transceiver.setFrameControlField(fcf);
+    p_transceiver->setFrameControlField(fcf);
   }
 
   /**
@@ -71,7 +96,7 @@ class ESP32TransceiverStream : public Stream {
    * @param address The destination address.
    */
   void setDestinationAddress(const Address& address) {
-    transceiver.setDestinationAddress(address);
+    p_transceiver->setDestinationAddress(address);
   }
 
   /**
@@ -81,14 +106,14 @@ class ESP32TransceiverStream : public Stream {
    *                      It Should be a multiple of 16.
    */
   void setAckTimeoutUs(uint32_t timeout_us) {
-    transceiver.setAckTimeoutUs(timeout_us);
+    p_transceiver->setAckTimeoutUs(timeout_us);
   }
 
   /**
    * @brief Get the current acknowledgment timeout in microseconds.
    * @return The acknowledgment timeout in microseconds.
    */
-  uint32_t getAckTimeoutUs() const { return transceiver.getAckTimeoutUs(); }
+  uint32_t getAckTimeoutUs() const { return p_transceiver->getAckTimeoutUs(); }
 
   /**
    * @brief Enable or disable acknowledgment requests for outgoing frames.
@@ -97,14 +122,16 @@ class ESP32TransceiverStream : public Stream {
    */
   void setAckActive(bool ack_active) {
     // Set the acknowledgment request bit in the Frame Control Field
-    transceiver.getFrameControlField().ackRequest = ack_active;
+    p_transceiver->getFrameControlField().ackRequest = ack_active;
   }
 
   /**
    * @brief Check if acknowledgment requests are enabled for outgoing frames.
    * @return True if acknowledgment requests are enabled, false otherwise.
    */
-  bool isAckActive() const { return transceiver.getFrameControlField().ackRequest == 1; }
+  bool isAckActive() const {
+    return p_transceiver->getFrameControlField().ackRequest == 1;
+  }
 
   /**
    * @brief Set the size of the receive buffer. This defines how many bytes
@@ -120,7 +147,7 @@ class ESP32TransceiverStream : public Stream {
    */
   void setRxMessageBufferSize(int size) {
     receive_msg_buffer_size = size;
-    transceiver.setReceiveBufferSize(size);
+    p_transceiver->setReceiveBufferSize(size);
   }
 
   /**
@@ -140,13 +167,15 @@ class ESP32TransceiverStream : public Stream {
    * @param cca_enabled True to enable CCA (Clear Channel Assessment), false to
    * disable.
    */
-  void setCCAActive(bool cca_enabled) { transceiver.setCCAActive(cca_enabled); }
+  void setCCAActive(bool cca_enabled) {
+    p_transceiver->setCCAActive(cca_enabled);
+  }
 
   /**
    * @brief Check if CCA (Clear Channel Assessment) is enabled.
    * @return True if CCA is enabled, false otherwise.
    */
-  bool isCCAActive() const { return transceiver.isCCAActive(); }
+  bool isCCAActive() const { return p_transceiver->isCCAActive(); }
 
   /**
    * @brief Initialize the stream and underlying transceiver.
@@ -155,20 +184,23 @@ class ESP32TransceiverStream : public Stream {
   bool begin() {
     is_open_frame = false;
     last_seq = -1;
+    if (p_transceiver == nullptr) {
+      return false;  // Cannot begin without a transceiver
+    }
     // use no separate task!
-    transceiver.setAutoIncrementSequenceNumber(false);
-    transceiver.setReceiveTask(nullptr);
-    transceiver.setReceiveBufferSize(
+    p_transceiver->setAutoIncrementSequenceNumber(false);
+    p_transceiver->setReceiveTask(nullptr);
+    p_transceiver->setReceiveBufferSize(
         receive_msg_buffer_size);  // Set default message buffer size
     setRxBufferSize(1024);
-    transceiver.setTxDoneCallback(ieee802154_transceiver_tx_done_callback,
-                                  this);
-    transceiver.setTxFailedCallback(ieee802154_transceiver_tx_failed_callback,
-                                    this);
+    p_transceiver->setTxDoneCallback(ieee802154_transceiver_tx_done_callback,
+                                     this);
+    p_transceiver->setTxFailedCallback(
+        ieee802154_transceiver_tx_failed_callback, this);
     // start with 1;
-    transceiver.incrementSequenceNumber(1);
+    p_transceiver->incrementSequenceNumber(1);
 
-    return transceiver.begin();
+    return p_transceiver->begin();
   }
 
   /**
@@ -176,14 +208,14 @@ class ESP32TransceiverStream : public Stream {
    * @return True on success, false otherwise.
    */
   bool begin(FrameControlField fcf) {
-    transceiver.setFrameControlField(fcf);
+    p_transceiver->setFrameControlField(fcf);
     return begin();
   }
 
   /**
    * @brief Deinitialize the stream and underlying transceiver.
    */
-  void end() { transceiver.end(); }
+  void end() { p_transceiver->end(); }
 
   /**
    * @brief Write a buffer of bytes to the transceiver.
@@ -277,6 +309,12 @@ class ESP32TransceiverStream : public Stream {
   }
 
   /**
+   * @brief Get a reference to the underlying transceiver instance.
+   * @return Reference to the ESP32TransceiverIEEE802_15_4 instance.
+   */
+  ESP32TransceiverIEEE802_15_4& getTransceiver() { return *p_transceiver; }
+
+  /**
    * @brief Get the maximum transmission unit (MTU) size for the data content
    * @return The MTU size in bytes.
    */
@@ -287,7 +325,8 @@ class ESP32TransceiverStream : public Stream {
   static constexpr int MTU = 116;
   int receive_msg_buffer_size =
       (sizeof(frame_data_t) + 4) * 100;  // Default size for message buffer
-  ESP32TransceiverIEEE802_15_4& transceiver;
+  ESP32TransceiverIEEE802_15_4* p_transceiver = nullptr;
+  bool owns_transceiver = false;
   RingBuffer rx_buffer{1024 + MTU};
   RingBuffer tx_buffer{MTU};
   Frame frame;  // For parsing and buffering received frames
@@ -332,8 +371,9 @@ class ESP32TransceiverStream : public Stream {
 
     // get next frame
     size_t read_bytes = 0;
-    read_bytes = xMessageBufferReceive(transceiver.getMessageBuffer(), &packet,
-                                       sizeof(frame_data_t), pdMS_TO_TICKS(20));
+    read_bytes =
+        xMessageBufferReceive(p_transceiver->getMessageBuffer(), &packet,
+                              sizeof(frame_data_t), pdMS_TO_TICKS(20));
     if (read_bytes != sizeof(frame_data_t)) {
       if (read_bytes != 0) {
         ESP_LOGE(TAG, "Invalid packet size received: %d", read_bytes);
@@ -396,7 +436,7 @@ class ESP32TransceiverStream : public Stream {
     do {
       send_confirmation_state = WAITING_FOR_CONFIRMATION;
       ESP_LOGD(TAG, "Attempt %d: Sending frame, len: %d", attempt, len);
-      if (!transceiver.send(tmp, len)) {
+      if (!p_transceiver->send(tmp, len)) {
         ESP_LOGE(TAG, "Failed to send frame: size %d", len);
         send_confirmation_state = CONFIRMATION_ERROR;
       }
@@ -414,14 +454,14 @@ class ESP32TransceiverStream : public Stream {
           ESP_LOGI(TAG, "Send failed with rc=%d, retrying...", last_tx_error);
           retry--;
           if (retry <= 0) {
-            transceiver.incrementSequenceNumber(1);
+            p_transceiver->incrementSequenceNumber(1);
             return;
           }
           delay(send_delay_ms);  // Short delay before retrying if needed
           break;
         }
         case CONFIRMATION_RECEIVED: {
-          transceiver.incrementSequenceNumber(1);
+          p_transceiver->incrementSequenceNumber(1);
           break;
         }
         default:
@@ -442,8 +482,8 @@ class ESP32TransceiverStream : public Stream {
     uint8_t tmp[tx_buffer.available()];
     int len = tx_buffer.readArray(tmp, tx_buffer.available());
     ESP_LOGD(TAG, "Sending frame, len: %d", len);
-    if (transceiver.send(tmp, len)) {
-      transceiver.incrementSequenceNumber(1);
+    if (p_transceiver->send(tmp, len)) {
+      p_transceiver->incrementSequenceNumber(1);
     } else {
       ESP_LOGE(TAG, "Failed to send frame: size %d", len);
     }
